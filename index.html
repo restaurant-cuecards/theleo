@@ -6,18 +6,23 @@
 <title>The Leo — Service Prep</title>
 <style>
 :root {
-  --bg: #0a1128; /* Deep midnight blue from the ceiling */
-  --card-bg: #111c3a; /* Slightly lighter navy for cards */
-  --ink: #fdfbf7; /* Warm off-white */
-  --ink-soft: #8b9bb4; /* Muted slate for secondary text */
-  --acc: #d4af37; /* Metallic Gold/brass */
-  --acc-light: #f2d16b; /* Light gold for highlights */
-  --line: #23325a; /* Subtle borders */
-  --drink-bg: #070b1a; /* Even darker for the bar section */
-  --drink-card: #131c36;
-  --drink-acc: #c46b8a; /* Blush/pink from the barstools */
-  --drink-acc-s: #f0a3bc; /* Lighter blush */
-  --drink-line: #2a1f30;
+  --bg: #ede5d8; /* Cream */
+  --card-bg: #f5ecd7; /* Lighter cream */
+  --ink: #2a1f14; /* Dark ink */
+  --ink-soft: #6b5d46;
+  --acc: #b89222; /* Rich Gold */
+  --acc-light: #d4af37;
+  --line: #d4c4a0;
+  
+  /* Bar Dark Theme */
+  --drink-bg: #0a1128;
+  --drink-card: #111c3a;
+  --drink-ink: #fdfbf7;
+  --drink-ink-soft: #8b9bb4;
+  --drink-acc: #d4af37; 
+  --drink-acc-s: #f0a3bc;
+  --drink-line: #23325a;
+  
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, sans-serif;
 }
@@ -38,10 +43,9 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   text-align: center;
   font-size: 11px;
   letter-spacing: 0.22em;
-  color: var(--acc);
+  color: var(--ink-soft);
   margin-bottom: 14px;
   text-transform: uppercase;
-  font-weight: 600;
 }
 .home-title {
   font-family: var(--serif);
@@ -67,12 +71,12 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   display: flex; align-items: center; gap: 14px;
   cursor: pointer;
   border-left: 4px solid var(--acc);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
   transition: transform 0.12s, box-shadow 0.12s;
 }
-.h-card:active { transform: scale(0.98); box-shadow: 0 1px 6px rgba(0,0,0,0.3); }
-.h-card.drink-card { border-left-color: var(--drink-acc); }
-.h-card.quiz-card { border-left-color: #6b8e23; }
+.h-card:active { transform: scale(0.98); box-shadow: 0 1px 6px rgba(0,0,0,0.07); }
+.h-card.drink-card { border-left-color: var(--drink-card); }
+.h-card.quiz-card { border-left-color: #4a6e2a; }
 .h-icon { font-size: 26px; width: 38px; text-align: center; flex-shrink: 0; }
 .h-body { flex: 1; min-width: 0; }
 .h-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
@@ -90,7 +94,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 /* DECK SCREENS */
 .deck-wrap { max-width: 600px; margin: 0 auto; padding: 24px 20px 100px; }
 .deck-screen { background: var(--bg); }
-.deck-screen.drink-theme { background: var(--drink-bg); }
+.deck-screen.drink-theme { background: var(--drink-bg); color: var(--drink-ink); }
 
 .back-btn {
   background: none; border: none; cursor: pointer;
@@ -99,15 +103,16 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   letter-spacing: 0.04em;
 }
 .back-btn:hover { color: var(--ink); }
-.drink-theme .back-btn { color: #7a8f9e; }
-.drink-theme .back-btn:hover { color: var(--ink); }
+.drink-theme .back-btn { color: var(--drink-ink-soft); }
+.drink-theme .back-btn:hover { color: var(--drink-ink); }
 
 .deck-eyebrow {
   font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--acc); margin-bottom: 6px;
+  color: var(--ink-soft); margin-bottom: 6px;
 }
-.drink-theme .deck-eyebrow { color: var(--drink-acc); }
+.drink-theme .deck-eyebrow { color: var(--drink-acc-s); }
 .deck-title { font-family: var(--serif); font-size: 34px; font-weight: 400; color: var(--ink); }
+.drink-theme .deck-title { color: var(--drink-ink); }
 .deck-divider { width: 32px; height: 2px; background: var(--acc); margin-top: 12px; margin-bottom: 20px; }
 .drink-theme .deck-divider { background: var(--drink-acc); }
 
@@ -119,12 +124,12 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
   color: var(--ink-soft); cursor: pointer; transition: all 0.15s;
 }
-.cat-btn.active { background: var(--acc); border-color: var(--acc); color: #000; }
-.drink-theme .cat-btn { border-color: var(--drink-line); color: #7a8f9e; }
-.drink-theme .cat-btn.active { background: var(--drink-acc); border-color: var(--drink-acc); color: #fff; }
+.cat-btn.active { background: var(--ink); border-color: var(--ink); color: #f5ecd7; }
+.drink-theme .cat-btn { border-color: var(--drink-line); color: var(--drink-ink-soft); }
+.drink-theme .cat-btn.active { background: var(--drink-acc); border-color: var(--drink-acc); color: #000; }
 
 .progress { font-size: 13px; color: var(--ink-soft); text-align: center; margin-bottom: 16px; }
-.drink-theme .progress { color: #7a8f9e; }
+.drink-theme .progress { color: var(--drink-ink-soft); }
 
 /* CARD */
 .card-wrap { perspective: 1600px; cursor: pointer; margin-bottom: 20px; }
@@ -142,30 +147,30 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 }
 .card-front {
   background: var(--card-bg);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
   display: flex; flex-direction: column;
-  border: 1px solid var(--line);
 }
 .drink-theme .card-front {
   background: var(--drink-card);
-  border-color: var(--drink-line);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  color: var(--drink-ink);
 }
 .card-back {
-  background: #050814;
-  color: var(--ink);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  background: #2a1f14;
+  color: #f0e8d8;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
   position: absolute; top: 0; left: 0; right: 0;
   transform: rotateY(180deg);
   display: flex; flex-direction: column;
-  border: 1px solid #1a2542;
 }
-.drink-theme .card-back { background: #0a0f1e; border-color: var(--drink-line); }
+.drink-theme .card-back { background: #050814; color: var(--drink-ink); border: 1px solid var(--drink-line); }
 
 /* front face */
-.front-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); margin-bottom: 10px; font-weight: 600; }
+.front-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); margin-bottom: 10px; font-weight: 600;}
 .drink-theme .card-front .front-cat { color: var(--drink-acc-s); }
-.front-name { font-family: var(--serif); font-size: 32px; font-weight: 400; flex: 1; display: flex; align-items: center; margin: 8px 0 16px; line-height: 1.1; color: var(--ink); }
-.front-price { font-size: 24px; font-weight: 600; color: var(--acc); margin-bottom: 10px; letter-spacing: 0.05em; }
+.front-name { font-family: var(--serif); font-size: 32px; font-weight: 400; flex: 1; display: flex; align-items: center; margin: 8px 0 16px; line-height: 1.1; color: var(--ink);}
+.drink-theme .card-front .front-name { color: var(--drink-ink); }
+.front-price { font-size: 24px; font-weight: 600; color: var(--acc); margin-bottom: 10px; letter-spacing: 0.05em;}
 .drink-theme .card-front .front-price { color: var(--drink-acc-s); }
 .tap-hint { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--line); margin-top: auto; }
 .drink-theme .card-front .tap-hint { color: var(--drink-line); }
@@ -186,26 +191,25 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 .pitch-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
 .pitch-item { display: flex; align-items: baseline; gap: 12px; }
 .pitch-num { font-size: 10px; color: rgba(255,255,255,0.35); min-width: 16px; }
-.pitch-word { font-size: 18px; font-family: var(--serif); font-weight: 400; color: var(--ink); }
+.pitch-word { font-size: 18px; font-family: var(--serif); font-weight: 400; color: #f0e8d8; }
 
 .info-block {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.06);
   border-radius: 8px; padding: 12px 14px;
   margin-bottom: 10px;
-  border: 1px solid rgba(255,255,255,0.05);
 }
-.info-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--acc-light); margin-bottom: 6px; font-weight: 600; }
-.drink-theme .info-label { color: var(--drink-acc-s); }
+.info-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; font-weight: 600;}
 .info-text { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.85); }
 .info-text.italic { font-style: italic; color: #fff; }
 .mise-line { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
-.note-line { font-size: 12px; color: rgba(255,255,255,0.45); font-style: italic; margin-top: 12px; border-left: 2px solid var(--acc); padding-left: 8px; }
-.drink-theme .note-line { border-left-color: var(--drink-acc); }
+.note-line { font-size: 12px; color: rgba(255,255,255,0.45); font-style: italic; margin-top: 12px; border-left: 2px solid var(--acc-light); padding-left: 8px;}
 
 /* quiz back */
 .quiz-q { font-family: var(--serif); font-size: 24px; font-weight: 400; flex: 1; display: flex; align-items: center; line-height: 1.4; margin: 8px 0 16px; color: var(--ink); }
+.drink-theme .quiz-q { color: var(--drink-ink); }
 .quiz-context { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
-.quiz-a { font-family: var(--serif); font-size: 30px; font-weight: 400; flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--acc-light); margin: 20px 0; }
+.drink-theme .quiz-context { color: var(--drink-ink-soft); }
+.quiz-a { font-family: var(--serif); font-size: 30px; font-weight: 400; flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--acc-light); margin: 20px 0;}
 .quiz-context-back { font-size: 12px; color: rgba(255,255,255,0.45); text-align: center; margin-top: 8px; }
 
 /* NAV BUTTONS */
@@ -225,11 +229,11 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 }
 .nav-btn:active { transform: scale(0.96); }
 .nav-btn.primary {
-  flex: 1; background: var(--acc); color: #000; border-color: var(--acc);
+  flex: 1; background: var(--acc); color: #fff; border-color: var(--acc);
   font-size: 15px; font-weight: 600;
 }
-.drink-theme .nav-btn { background: var(--drink-card); border-color: var(--drink-line); }
-.drink-theme .nav-btn.primary { background: var(--drink-acc); border-color: var(--drink-acc); color: #fff;}
+.drink-theme .nav-btn { background: var(--drink-card); border-color: var(--drink-line); color: var(--drink-ink-soft); }
+.drink-theme .nav-btn.primary { background: var(--drink-acc); border-color: var(--drink-acc); color: #000; }
 
 .extra-row { display: flex; justify-content: center; gap: 24px; }
 .extra-btn {
@@ -238,6 +242,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   color: var(--ink-soft); display: flex; align-items: center; gap: 6px;
   padding: 6px 0;
 }
+.drink-theme .extra-btn { color: var(--drink-ink-soft); }
 
 /* SPACED REPETITION */
 .sr-row {
@@ -260,14 +265,18 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   font-weight: 600; margin-left: 8px;
   vertical-align: middle;
 }
-.sr-badge.wrong  { background: rgba(179,58,58,0.2); color: #e07070; }
-.sr-badge.unsure { background: rgba(204,122,42,0.2); color: #e8a060; }
-.sr-badge.right  { background: rgba(46,140,78,0.2); color: #70e090; }
+.sr-badge.wrong  { background: rgba(179,58,58,0.15); color: #b33a3a; }
+.sr-badge.unsure { background: rgba(204,122,42,0.15); color: #cc7a2a; }
+.sr-badge.right  { background: rgba(46,140,78,0.15); color: #2e8c4e; }
+.drink-theme .sr-badge.wrong  { background: rgba(179,58,58,0.25); color: #e07070; }
+.drink-theme .sr-badge.unsure { background: rgba(204,122,42,0.25); color: #e8a060; }
+.drink-theme .sr-badge.right  { background: rgba(46,140,78,0.25); color: #70e090; }
 
 .sr-progress-bar-wrap {
-  height: 4px; background: rgba(255,255,255,0.1);
+  height: 4px; background: rgba(0,0,0,0.08);
   border-radius: 4px; margin-bottom: 14px; overflow: hidden;
 }
+.drink-theme .sr-progress-bar-wrap { background: rgba(255,255,255,0.08); }
 .sr-progress-bar {
   height: 100%; background: #2e8c4e;
   border-radius: 4px; transition: width 0.4s ease;
@@ -276,11 +285,12 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   text-align: center; font-size: 11px; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px;
 }
+.drink-theme .sr-stats { color: var(--drink-ink-soft); }
 
 /* BOTTOM NAV */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0;
-  background: rgba(10,17,40,0.95); backdrop-filter: blur(10px);
+  background: rgba(245,236,215,0.95); backdrop-filter: blur(10px);
   border-top: 1px solid var(--line);
   display: flex; z-index: 100;
   padding-bottom: env(safe-area-inset-bottom, 0);
@@ -1134,7 +1144,7 @@ const DRINK_QUIZ = [
   { "section": "Ingredients", "q": "What is in the Banana Bang?", "a": "Banana peel palm sugar, cacao bitters, oleo saccharum infused whiskey", "context": "$21" },
   { "section": "Ingredients", "q": "What is in the Dai-Curry?", "a": "Appleton Rum, curry syrup, fresh lime juice, whole milk", "context": "$21" },
 
-  // Style (New!)
+  // Style
   { "section": "Style", "q": "How would you describe the Leo Smash to a guest?", "a": "A bright, refreshing twist on a Margarita with herbal Thai basil and a peppery finish.", "context": "Related to: Margarita. Sweetness: Balanced/Tart." },
   { "section": "Style", "q": "How would you describe the Southeast Sour?", "a": "A silky, frothy whiskey sour with tart lemon and a subtle, fruity goji berry sweetness.", "context": "Related to: Whiskey Sour. Sweetness: Balanced." },
   { "section": "Style", "q": "How would you describe the Starry Night?", "a": "Light, aromatic, and slightly tropical with a unique floral pandan note.", "context": "Related to: Pisco Sour. Sweetness: Lightly Sweet." },
@@ -1597,9 +1607,9 @@ function srUpdateProgress(id) {
     const wrong = weights.filter(w => w === 3).length;
     const unsure = weights.filter(w => w === 2).length;
     stats.innerHTML =
-      (mastered ? `<span style="color:#70e090">✓ ${mastered}</span> &nbsp;` : '') +
-      (unsure   ? `<span style="color:#e8a060">~ ${unsure}</span> &nbsp;` : '') +
-      (wrong    ? `<span style="color:#e07070">✗ ${wrong}</span> &nbsp;` : '') +
+      (mastered ? `<span style="color:#2e8c4e">✓ ${mastered}</span> &nbsp;` : '') +
+      (unsure   ? `<span style="color:#cc7a2a">~ ${unsure}</span> &nbsp;` : '') +
+      (wrong    ? `<span style="color:#b33a3a">✗ ${wrong}</span> &nbsp;` : '') +
       `<span style="opacity:0.5">${total} cards</span>`;
   }
 }
