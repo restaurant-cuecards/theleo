@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>The Leo — Service Prep</title>
+<style>
+:root {
+  --bg: #1a1a1a;
+  --card-bg: #242424;
+  --ink: #e0e0e0;
+  --ink-soft: #8a8a8a;
+  --acc: #d95d39; /* Ember orange */
+  --acc-light: #f08c65;
+  --line: #3a3a3a;
+  --cocktail-bg: #14161a;
+  --cocktail-card: #1e2228;
+  --cocktail-acc: #4a8fb5;
+  --cocktail-line: #2f3a42;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; overflow-x: hidden; }
+
+/* SCREENS */
+.screen { display: none; min-height: 100vh; padding-bottom: 80px; }
+
+/* HOME */
+#home {
+  background: var(--bg);
+  padding: 52px 24px 90px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.home-restaurant {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--acc);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.home-title {
+  font-family: var(--serif);
+  font-size: 54px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.05;
+  color: var(--ink);
+}
+.home-title em { font-style: italic; color: var(--acc); }
+.home-div { width: 36px; height: 2px; background: var(--acc); margin: 18px auto; }
+.home-sub { text-align: center; font-size: 14px; color: var(--ink-soft); margin-bottom: 40px; }
+.section-label {
+  font-size: 10px; letter-spacing: 0.2em;
+  color: var(--ink-soft); text-transform: uppercase;
+  margin-bottom: 14px; padding: 0 2px;
+}
+.card-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.h-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 18px 18px 18px 14px;
+  display: flex; align-items: center; gap: 14px;
+  cursor: pointer;
+  border-left: 4px solid var(--acc);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.h-card:active { transform: scale(0.98); }
+.h-card.cocktail-card { border-left-color: var(--cocktail-acc); }
+.h-card.quiz-card { border-left-color: #6b8e23; }
+.h-icon { font-size: 26px; width: 38px; text-align: center; flex-shrink: 0; }
+.h-body { flex: 1; min-width: 0; }
+.h-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+.h-name { font-weight: 600; font-size: 16px; }
+.h-count { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+.h-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.45; margin-bottom: 9px; }
+.h-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.h-tag {
+  font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase;
+  border: 1px solid var(--line); border-radius: 20px;
+  padding: 2px 9px; color: var(--ink-soft);
+}
+.h-arrow { color: var(--line); font-size: 20px; flex-shrink: 0; }
+
+/* DECK SCREENS */
+.deck-wrap { max-width: 600px; margin: 0 auto; padding: 24px 20px 100px; }
+.deck-screen { background: var(--bg); }
+.deck-screen.cocktail-theme { background: var(--cocktail-bg); }
+
+.back-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 13px; color: var(--ink-soft);
+  padding: 0 0 20px; display: flex; align-items: center; gap: 6px;
+  letter-spacing: 0.04em;
+}
+.back-btn:hover { color: var(--ink); }
+.cocktail-theme .back-btn { color: #7a8f9e; }
+.cocktail-theme .back-btn:hover { color: var(--ink); }
+
+.deck-eyebrow {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--acc); margin-bottom: 6px;
+}
+.cocktail-theme .deck-eyebrow { color: var(--cocktail-acc); }
+.deck-title { font-family: var(--serif); font-size: 34px; font-weight: 400; }
+.deck-divider { width: 32px; height: 2px; background: var(--acc); margin-top: 12px; margin-bottom: 20px; }
+.cocktail-theme .deck-divider { background: var(--cocktail-acc); }
+
+/* filter pills */
+.cat-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.cat-btn {
+  background: none; border: 1.5px solid var(--line);
+  border-radius: 24px; padding: 6px 16px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--ink-soft); cursor: pointer; transition: all 0.15s;
+}
+.cat-btn.active { background: var(--acc); border-color: var(--acc); color: #fff; }
+.cocktail-theme .cat-btn { border-color: var(--cocktail-line); color: #7a8f9e; }
+.cocktail-theme .cat-btn.active { background: var(--cocktail-acc); border-color: var(--cocktail-acc); color: #fff; }
+
+.progress { font-size: 13px; color: var(--ink-soft); text-align: center; margin-bottom: 16px; }
+
+/* CARD */
+.card-wrap { perspective: 1600px; cursor: pointer; margin-bottom: 20px; }
+.card-inner {
+  position: relative; transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  border-radius: 16px; min-height: 300px;
+  height: auto;
+}
+.card-inner.flipped { transform: rotateY(180deg); }
+.card-face {
+  border-radius: 16px; padding: 28px 26px;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  min-height: 300px;
+}
+.card-front {
+  background: var(--card-bg);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line);
+}
+.cocktail-theme .card-front {
+  background: var(--cocktail-card);
+  border-color: var(--cocktail-line);
+}
+.card-back {
+  background: #111;
+  color: #eee;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  position: absolute; top: 0; left: 0; right: 0;
+  transform: rotateY(180deg);
+  display: flex; flex-direction: column;
+  border: 1px solid #333;
+}
+.cocktail-theme .card-back { background: #0d1014; border-color: var(--cocktail-line); }
+
+/* front face */
+.front-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); margin-bottom: 10px; font-weight: 600; }
+.cocktail-theme .card-front .front-cat { color: var(--cocktail-acc); }
+.front-name { font-family: var(--serif); font-size: 32px; font-weight: 400; flex: 1; display: flex; align-items: center; margin: 8px 0 16px; line-height: 1.1; }
+.front-price { font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 10px; letter-spacing: 0.05em; }
+.tap-hint { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--line); margin-top: auto; }
+
+/* back face shared */
+.section-tag {
+  display: inline-block;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px; padding: 2px 7px;
+  margin-bottom: 8px;
+}
+.back-name { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 18px; color: #fff; }
+.back-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 16px 0; }
+
+/* menu back */
+.pitch-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
+.pitch-item { display: flex; align-items: baseline; gap: 12px; }
+.pitch-num { font-size: 10px; color: rgba(255,255,255,0.35); min-width: 16px; }
+.pitch-word { font-size: 18px; font-family: var(--serif); font-weight: 400; color: #fff; }
+
+.info-block {
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px; padding: 12px 14px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.info-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--acc-light); margin-bottom: 6px; font-weight: 600; }
+.info-text { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.85); }
+.info-text.italic { font-style: italic; color: #fff; }
+.mise-line { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+.note-line { font-size: 12px; color: rgba(255,255,255,0.45); font-style: italic; margin-top: 12px; border-left: 2px solid var(--acc); padding-left: 8px; }
+
+/* quiz back */
+.quiz-q { font-family: var(--serif); font-size: 24px; font-weight: 400; flex: 1; display: flex; align-items: center; line-height: 1.4; margin: 8px 0 16px; color: #fff; }
+.quiz-context { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+.quiz-a { font-family: var(--serif); font-size: 30px; font-weight: 400; flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--acc-light); margin: 20px 0; }
+.quiz-context-back { font-size: 12px; color: rgba(255,255,255,0.45); text-align: center; margin-top: 8px; }
+
+/* NAV BUTTONS */
+.nav-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.deck-controls {
+  position: relative;
+  padding: 16px 0 24px;
+  background: none;
+  z-index: 10;
+  max-width: 600px; margin: 0 auto;
+}
+.nav-btn {
+  background: var(--card-bg); border: 1.5px solid var(--line);
+  border-radius: 50px; padding: 11px 22px;
+  font-size: 14px; font-weight: 500; color: var(--ink);
+  cursor: pointer; transition: all 0.15s;
+}
+.nav-btn:active { transform: scale(0.96); }
+.nav-btn.primary {
+  flex: 1; background: var(--acc); color: #fff; border-color: var(--acc);
+  font-size: 15px; font-weight: 600;
+}
+.cocktail-theme .nav-btn { background: var(--cocktail-card); border-color: var(--cocktail-line); }
+.cocktail-theme .nav-btn.primary { background: var(--cocktail-acc); border-color: var(--cocktail-acc); }
+
+.extra-row { display: flex; justify-content: center; gap: 24px; }
+.extra-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-soft); display: flex; align-items: center; gap: 6px;
+  padding: 6px 0;
+}
+
+/* SPACED REPETITION */
+.sr-row {
+  display: flex; gap: 8px; margin-top: 10px;
+}
+.sr-btn {
+  flex: 1; border: none; border-radius: 50px;
+  padding: 11px 6px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all 0.15s; letter-spacing: 0.02em;
+  display: none;
+}
+.sr-btn:active { transform: scale(0.96); }
+.sr-btn.sr-wrong  { background: #b33a3a; color: #fff; }
+.sr-btn.sr-unsure { background: #cc7a2a; color: #fff; }
+.sr-btn.sr-right  { background: #2e8c4e; color: #fff; }
+
+.sr-badge {
+  display: inline-block; font-size: 11px;
+  padding: 2px 8px; border-radius: 20px;
+  font-weight: 600; margin-left: 8px;
+  vertical-align: middle;
+}
+.sr-badge.wrong  { background: rgba(179,58,58,0.2); color: #e07070; }
+.sr-badge.unsure { background: rgba(204,122,42,0.2); color: #e8a060; }
+.sr-badge.right  { background: rgba(46,140,78,0.2); color: #70e090; }
+
+.sr-progress-bar-wrap {
+  height: 4px; background: rgba(255,255,255,0.1);
+  border-radius: 4px; margin-bottom: 14px; overflow: hidden;
+}
+.sr-progress-bar {
+  height: 100%; background: #2e8c4e;
+  border-radius: 4px; transition: width 0.4s ease;
+}
+.sr-stats {
+  text-align: center; font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(26,26,26,0.95); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  display: flex; z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  overflow-x: auto;
+}
+.nav-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 3px; padding: 10px 4px 8px;
+  cursor: pointer; font-size: 9px; color: var(--ink-soft);
+  letter-spacing: 0.07em; text-transform: uppercase;
+  background: none; border: none; transition: color 0.15s;
+  white-space: nowrap; min-width: 60px;
+}
+.nav-item svg { stroke: var(--ink-soft); transition: stroke 0.15s; width: 18px; height: 18px;}
+.nav-item.active { color: var(--acc); }
+.nav-item.active svg { stroke: var(--acc); }
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="home" class="screen" style="display:block;">
+  <div style="max-width:600px;margin:0 auto;padding:52px 24px 90px;">
+    <div class="home-restaurant">The Leo</div>
+    <h1 class="home-title">Service<br><em>Prep</em></h1>
+    <div class="home-div"></div>
+    <p class="home-sub">Master the menu, the grill, and the bar.</p>
+
+    <div class="section-label">Reference — Full Detail</div>
+    <div class="card-list">
+      <div class="h-card" onclick="showScreen('menu-screen')">
+        <div class="h-icon">🍽</div>
+        <div class="h-body">
+          <div class="h-top"><div class="h-name">Menu Cards</div><div class="h-count" id="count-menu">26 dishes</div></div>
+          <div class="h-desc">Ingredients, components, allergens, and critical standards.</div>
+          <div class="h-tags"><span class="h-tag">Starters</span><span class="h-tag">Mains</span><span class="h-tag">Sides</span><span class="h-tag">Desserts</span></div>
+        </div>
+        <div class="h-arrow">›</div>
+      </div>
+      <div class="h-card" onclick="showScreen('grill-screen')">
+        <div class="h-icon">🔥</div>
+        <div class="h-body">
+          <div class="h-top"><div class="h-name">Josper & Land</div><div class="h-count" id="count-grill">7 cards</div></div>
+          <div class="h-desc">Cuts, weights, doneness guide, and house sauces.</div>
+          <div class="h-tags"><span class="h-tag">Cuts</span><span class="h-tag">Sauces</span><span class="h-tag">Josper</span></div>
+        </div>
+        <div class="h-arrow">›</div>
+      </div>
+      <div class="h-card" onclick="showScreen('seafood-screen')">
+        <div class="h-icon">🦞</div>
+        <div class="h-body">
+          <div class="h-top"><div class="h-name">Seafood Prep</div><div class="h-count" id="count-seafood">3 cards</div></div>
+          <div class="h-desc">The three signature sauce preparations for lobster and crab.</div>
+          <div class="h-tags"><span class="h-tag">Singapore</span><span class="h-tag">White Pepper</span><span class="h-tag">Chinatown</span></div>
+        </div>
+        <div class="h-arrow">›</div>
+      </div>
+      <div class="h-card cocktail-card" onclick="showScreen('drinks-screen')">
+        <div class="h-icon">🍸</div>
+        <div class="h-body">
+          <div class="h-top"><div class="h-name">Bar Menu</div><div class="h-count" id="count-drinks">18 items</div></div>
+          <div class="h-desc">Signature cocktails, mocktails, and beer.</div>
+          <div class="h-tags"><span class="h-tag">Cocktails</span><span class="h-tag">Mocktails</span><span class="h-tag">Beer</span></div>
+        </div>
+        <div class="h-arrow">›</div>
+      </div>
+    </div>
+
+    <div class="section-label">Quick Quiz — One Question, One Answer</div>
+    <div class="card-list">
+      <div class="h-card quiz-card" onclick="showScreen('foodq-screen')">
+        <div class="h-icon">🧠</div>
+        <div class="h-body">
+          <div class="h-top"><div class="h-name">Food Quiz</div><div class="h-count" id="count-foodq">45 cards</div></div>
+          <div class="h-desc">Components, definitions, allergens, critical standards, and service.</div>
+          <div class="h-tags"><span class="h-tag">Components</span><span class="h-tag">Allergens</span><span class="h-tag">Standards</span></div>
+        </div>
+        <div class="h-arrow">›</div>
+      </div>
+      <div class="h-card quiz-card" onclick="showScreen('drinkq-screen')">
+        <div class="h-icon">🍋</div>
+        <div class="h-body">
+          <div class="h-top"><div class="h-name">Bar Quiz</div><div class="h-count" id="count-drinkq">20 cards</div></div>
+          <div class="h-desc">Ingredients, spirits, and prices for all drinks.</div>
+          <div class="h-tags"><span class="h-tag">Ingredients</span><span class="h-tag">Spirits</span><span class="h-tag">Price</span></div>
+        </div>
+        <div class="h-arrow">›</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU SCREEN -->
+<div id="menu-screen" class="screen deck-screen">
+  <div class="deck-wrap">
+    <button class="back-btn" onclick="showScreen('home')">← Back</button>
+    <div class="deck-eyebrow">Reference</div>
+    <div class="deck-title">Menu Cards</div>
+    <div class="deck-divider"></div>
+    <div class="cat-row" id="menu-cats"></div>
+    <div class="progress" id="menu-prog"></div>
+    <div class="sr-stats" id="menu-sr-stats"></div>
+    <div class="sr-progress-bar-wrap"><div class="sr-progress-bar" id="menu-sr-bar" style="width:0%"></div></div>
+    <div class="card-wrap" onclick="flip('menu')">
+      <div class="card-inner" id="menu-card">
+        <div class="card-face card-front" id="menu-front"></div>
+        <div class="card-face card-back" id="menu-back"></div>
+      </div>
+    </div>
+    <div class="deck-controls">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="prev('menu')">←</button>
+        <button class="nav-btn primary" id="menu-flip" onclick="flip('menu')">Flip</button>
+        <button class="nav-btn" onclick="next('menu')">→</button>
+      </div>
+      <div class="extra-row">
+        <button class="extra-btn" onclick="shuffle('menu')">⇄ Shuffle</button>
+        <button class="extra-btn" onclick="reset('menu')">↺ Reset</button>
+      </div>
+      <div class="sr-row" id="menu-sr-row">
+        <button class="sr-btn sr-wrong"  id="menu-sr-wrong"  onclick="srMark('menu','wrong')">A = Incorrect</button>
+        <button class="sr-btn sr-unsure" id="menu-sr-unsure" onclick="srMark('menu','unsure')">S = Unsure</button>
+        <button class="sr-btn sr-right"  id="menu-sr-right"  onclick="srMark('menu','right')">D = Correct</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GRILL SCREEN -->
+<div id="grill-screen" class="screen deck-screen">
+  <div class="deck-wrap">
+    <button class="back-btn" onclick="showScreen('home')">← Back</button>
+    <div class="deck-eyebrow">Reference</div>
+    <div class="deck-title">Josper & Land</div>
+    <div class="deck-divider"></div>
+    <div class="cat-row" id="grill-cats"></div>
+    <div class="progress" id="grill-prog"></div>
+    <div class="sr-stats" id="grill-sr-stats"></div>
+    <div class="sr-progress-bar-wrap"><div class="sr-progress-bar" id="grill-sr-bar" style="width:0%"></div></div>
+    <div class="card-wrap" onclick="flip('grill')">
+      <div class="card-inner" id="grill-card">
+        <div class="card-face card-front" id="grill-front"></div>
+        <div class="card-face card-back" id="grill-back"></div>
+      </div>
+    </div>
+    <div class="deck-controls">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="prev('grill')">←</button>
+        <button class="nav-btn primary" id="grill-flip" onclick="flip('grill')">Flip</button>
+        <button class="nav-btn" onclick="next('grill')">→</button>
+      </div>
+      <div class="extra-row">
+        <button class="extra-btn" onclick="shuffle('grill')">⇄ Shuffle</button>
+        <button class="extra-btn" onclick="reset('grill')">↺ Reset</button>
+      </div>
+      <div class="sr-row" id="grill-sr-row">
+        <button class="sr-btn sr-wrong"  id="grill-sr-wrong"  onclick="srMark('grill','wrong')">A = Incorrect</button>
+        <button class="sr-btn sr-unsure" id="grill-sr-unsure" onclick="srMark('grill','unsure')">S = Unsure</button>
+        <button class="sr-btn sr-right"  id="grill-sr-right"  onclick="srMark('grill','right')">D = Correct</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEAFOOD SCREEN -->
+<div id="seafood-screen" class="screen deck-screen">
+  <div class="deck-wrap">
+    <button class="back-btn" onclick="showScreen('home')">← Back</button>
+    <div class="deck-eyebrow">Reference</div>
+    <div class="deck-title">Seafood Prep</div>
+    <div class="deck-divider"></div>
+    <div class="cat-row" id="seafood-cats"></div>
+    <div class="progress" id="seafood-prog"></div>
+    <div class="sr-stats" id="seafood-sr-stats"></div>
+    <div class="sr-progress-bar-wrap"><div class="sr-progress-bar" id="seafood-sr-bar" style="width:0%"></div></div>
+    <div class="card-wrap" onclick="flip('seafood')">
+      <div class="card-inner" id="seafood-card">
+        <div class="card-face card-front" id="seafood-front"></div>
+        <div class="card-face card-back" id="seafood-back"></div>
+      </div>
+    </div>
+    <div class="deck-controls">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="prev('seafood')">←</button>
+        <button class="nav-btn primary" id="seafood-flip" onclick="flip('seafood')">Flip</button>
+        <button class="nav-btn" onclick="next('seafood')">→</button>
+      </div>
+      <div class="extra-row">
+        <button class="extra-btn" onclick="shuffle('seafood')">⇄ Shuffle</button>
+        <button class="extra-btn" onclick="reset('seafood')">↺ Reset</button>
+      </div>
+      <div class="sr-row" id="seafood-sr-row">
+        <button class="sr-btn sr-wrong"  id="seafood-sr-wrong"  onclick="srMark('seafood','wrong')">A = Incorrect</button>
+        <button class="sr-btn sr-unsure" id="seafood-sr-unsure" onclick="srMark('seafood','unsure')">S = Unsure</button>
+        <button class="sr-btn sr-right"  id="seafood-sr-right"  onclick="srMark('seafood','right')">D = Correct</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DRINKS SCREEN -->
+<div id="drinks-screen" class="screen deck-screen cocktail-theme">
+  <div class="deck-wrap">
+    <button class="back-btn" onclick="showScreen('home')">← Back</button>
+    <div class="deck-eyebrow">Bar Program</div>
+    <div class="deck-title">Drinks</div>
+    <div class="deck-divider"></div>
+    <div class="cat-row" id="drinks-cats"></div>
+    <div class="progress" id="drinks-prog"></div>
+    <div class="sr-stats" id="drinks-sr-stats"></div>
+    <div class="sr-progress-bar-wrap"><div class="sr-progress-bar" id="drinks-sr-bar" style="width:0%"></div></div>
+    <div class="card-wrap" onclick="flip('drinks')">
+      <div class="card-inner" id="drinks-card">
+        <div class="card-face card-front" id="drinks-front"></div>
+        <div class="card-face card-back" id="drinks-back"></div>
+      </div>
+    </div>
+    <div class="deck-controls">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="prev('drinks')">←</button>
+        <button class="nav-btn primary" id="drinks-flip" onclick="flip('drinks')">Flip</button>
+        <button class="nav-btn" onclick="next('drinks')">→</button>
+      </div>
+      <div class="extra-row">
+        <button class="extra-btn" onclick="shuffle('drinks')">⇄ Shuffle</button>
+        <button class="extra-btn" onclick="reset('drinks')">↺ Reset</button>
+      </div>
+      <div class="sr-row" id="drinks-sr-row">
+        <button class="sr-btn sr-wrong"  id="drinks-sr-wrong"  onclick="srMark('drinks','wrong')">A = Incorrect</button>
+        <button class="sr-btn sr-unsure" id="drinks-sr-unsure" onclick="srMark('drinks','unsure')">S = Unsure</button>
+        <button class="sr-btn sr-right"  id="drinks-sr-right"  onclick="srMark('drinks','right')">D = Correct</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOD QUIZ SCREEN -->
+<div id="foodq-screen" class="screen deck-screen">
+  <div class="deck-wrap">
+    <button class="back-btn" onclick="showScreen('home')">← Back</button>
+    <div class="deck-eyebrow">Quick Quiz</div>
+    <div class="deck-title">Food Quiz</div>
+    <div class="deck-divider"></div>
+    <div class="cat-row" id="foodq-cats"></div>
+    <div class="progress" id="foodq-prog"></div>
+    <div class="sr-stats" id="foodq-sr-stats"></div>
+    <div class="sr-progress-bar-wrap"><div class="sr-progress-bar" id="foodq-sr-bar" style="width:0%"></div></div>
+    <div class="card-wrap" onclick="flip('foodq')">
+      <div class="card-inner" id="foodq-card">
+        <div class="card-face card-front" id="foodq-front"></div>
+        <div class="card-face card-back" id="foodq-back"></div>
+      </div>
+    </div>
+    <div class="deck-controls">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="prev('foodq')">←</button>
+        <button class="nav-btn primary" id="foodq-flip" onclick="flip('foodq')">Flip</button>
+        <button class="nav-btn" onclick="next('foodq')">→</button>
+      </div>
+      <div class="extra-row">
+        <button class="extra-btn" onclick="shuffle('foodq')">⇄ Shuffle</button>
+        <button class="extra-btn" onclick="reset('foodq')">↺ Reset</button>
+      </div>
+      <div class="sr-row" id="foodq-sr-row">
+        <button class="sr-btn sr-wrong"  id="foodq-sr-wrong"  onclick="srMark('foodq','wrong')">A = Incorrect</button>
+        <button class="sr-btn sr-unsure" id="foodq-sr-unsure" onclick="srMark('foodq','unsure')">S = Unsure</button>
+        <button class="sr-btn sr-right"  id="foodq-sr-right"  onclick="srMark('foodq','right')">D = Correct</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DRINK QUIZ SCREEN -->
+<div id="drinkq-screen" class="screen deck-screen cocktail-theme">
+  <div class="deck-wrap">
+    <button class="back-btn" onclick="showScreen('home')">← Back</button>
+    <div class="deck-eyebrow">Quick Quiz</div>
+    <div class="deck-title">Bar Quiz</div>
+    <div class="deck-divider"></div>
+    <div class="cat-row" id="drinkq-cats"></div>
+    <div class="progress" id="drinkq-prog"></div>
+    <div class="sr-stats" id="drinkq-sr-stats"></div>
+    <div class="sr-progress-bar-wrap"><div class="sr-progress-bar" id="drinkq-sr-bar" style="width:0%"></div></div>
+    <div class="card-wrap" onclick="flip('drinkq')">
+      <div class="card-inner" id="drinkq-card">
+        <div class="card-face card-front" id="drinkq-front"></div>
+        <div class="card-face card-back" id="drinkq-back"></div>
+      </div>
+    </div>
+    <div class="deck-controls">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="prev('drinkq')">←</button>
+        <button class="nav-btn primary" id="drinkq-flip" onclick="flip('drinkq')">Flip</button>
+        <button class="nav-btn" onclick="next('drinkq')">→</button>
+      </div>
+      <div class="extra-row">
+        <button class="extra-btn" onclick="shuffle('drinkq')">⇄ Shuffle</button>
+        <button class="extra-btn" onclick="reset('drinkq')">↺ Reset</button>
+      </div>
+      <div class="sr-row" id="drinkq-sr-row">
+        <button class="sr-btn sr-wrong"  id="drinkq-sr-wrong"  onclick="srMark('drinkq','wrong')">A = Incorrect</button>
+        <button class="sr-btn sr-unsure" id="drinkq-sr-unsure" onclick="srMark('drinkq','unsure')">S = Unsure</button>
+        <button class="sr-btn sr-right"  id="drinkq-sr-right"  onclick="srMark('drinkq','right')">D = Correct</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-item active" id="nav-home" onclick="showScreen('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+    Home
+  </button>
+  <button class="nav-item" id="nav-menu" onclick="showScreen('menu-screen')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+    Menu
+  </button>
+  <button class="nav-item" id="nav-grill" onclick="showScreen('grill-screen')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    Grill
+  </button>
+  <button class="nav-item" id="nav-seafood" onclick="showScreen('seafood-screen')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+    Sea
+  </button>
+  <button class="nav-item" id="nav-drinks" onclick="showScreen('drinks-screen')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M8 22h8M12 16v6M2 2l10 10 10-10H2z"/></svg>
+    Bar
+  </button>
+  <button class="nav-item" id="nav-foodq" onclick="showScreen('foodq-screen')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+    Food Q
+  </button>
+  <button class="nav-item" id="nav-drinkq" onclick="showScreen('drinkq-screen')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+    Bar Q
+  </button>
+</nav>
+
+<script>
+const DISHES = [
+  // STARTERS
+  {
+    "name": "Bread Service",
+    "price": 12,
+    "category": "Starters",
+    "full": "Whipped tallow butter",
+    "components": ["Bread", "Whipped tallow butter"],
+    "flavour": "Rich, warm, savoury",
+    "allergens": "Gluten, Dairy",
+    "note": "Tallow is rendered beef fat. This is a premium, savoury butter alternative."
+  },
+  {
+    "name": "Hokkaido Scallop Ceviche",
+    "price": 24,
+    "category": "Starters",
+    "full": "Nuoc Cham, compressed baby cucumber, breakfast radish, lime leaf oil and chili oil",
+    "components": ["Hokkaido scallops", "Nuoc Cham dressing", "Compressed baby cucumber", "Breakfast radish", "Cucamelon", "Chili oil", "Micro herbs"],
+    "flavour": "Fresh, bright, umami, light citrus, gentle heat",
+    "texture": "Silky, crisp, juicy, delicate",
+    "allergens": "Shellfish, Fish",
+    "standards": "Never allow scallops to sit in dressing. Serve on chilled plate. Lime leaf oil sparingly.",
+    "note": "Dressed à la minute. Vietnamese inspiration. Nuoc Cham enhances, not overpowers."
+  },
+  {
+    "name": "Wagyu Carpaccio",
+    "price": 28,
+    "category": "Starters",
+    "full": "Ssamjang aioli, pickled shimeji mushrooms, puffed rice pearls",
+    "components": ["Hand-cut beef tenderloin", "Ssamjang aioli", "White kimchi", "Pickled shimeji mushrooms", "Tamago togarashi rice chips", "Fresh chives"],
+    "flavour": "Rich, umami, mild heat, tangy, savoury",
+    "texture": "Tender, creamy, crunchy",
+    "allergens": "Egg, Soy, Gluten",
+    "standards": "Sliced by hand daily. Balanced with acidity and crunch.",
+    "note": "Korean ssamjang and Japanese dashi influences. Seasoned with soy, ponzu and egg yolk."
+  },
+  {
+    "name": "Chicken Liver Parfait",
+    "price": 22,
+    "category": "Starters",
+    "full": "Asian pear, cured egg yolk, shokupan toast",
+    "components": ["Sous vide chicken liver parfait", "Asian pear", "Cured egg yolk", "Toasted shokupan (brioche)"],
+    "flavour": "Rich, savoury, buttery, slightly sweet",
+    "texture": "Silky, creamy, crisp",
+    "allergens": "Dairy, Egg, Gluten",
+    "standards": "Must be perfectly smooth. Serve slightly chilled, never ice cold. Brioche toasted to order. Cured egg yolk grated at pickup.",
+    "note": "French technique, sous vide for consistency. Balanced by fresh pear."
+  },
+  {
+    "name": "Crab Cake",
+    "price": 39,
+    "category": "Starters",
+    "full": "Sichuan aioli, dressed watercress",
+    "components": ["Blue crab", "Snow crab", "Panko", "Sichuan aioli", "Watercress salad", "Lime"],
+    "flavour": "Sweet, savoury, mild heat, citrus",
+    "texture": "Crisp, tender, creamy",
+    "allergens": "Shellfish, Egg, Gluten",
+    "standards": "Do not overmix crab. Maintain crisp exterior. Serve immediately. Watercress dressed at pickup.",
+    "note": "Minimal filler. Pan-fried then finished in oven."
+  },
+  {
+    "name": "Caesar Salad",
+    "price": 20,
+    "category": "Starters",
+    "full": "Thai basil, lime, parmigiano reggiano, candied peanuts",
+    "components": ["Baby gem lettuce", "Thai Caesar dressing", "Parmigiano Reggiano", "Candied peanuts", "Thai basil", "Micro coriander"],
+    "flavour": "Fresh, savoury, tangy, nutty, umami",
+    "texture": "Crisp, creamy, crunchy",
+    "allergens": "Dairy, Egg, Fish, Peanut",
+    "standards": "Do not overdress. Lettuce completely dry. Peanuts added at pickup. Serve immediately.",
+    "note": "Dressing uses fish sauce, tamarind, lime instead of Worcestershire/lemon."
+  },
+  {
+    "name": "Typhoon Shelter Eggplant",
+    "price": 16,
+    "category": "Starters",
+    "full": "Dashi glaze, typhoon shelter crumbs",
+    "components": ["Eggplant", "Dashi glaze", "Typhoon shelter crumbs"],
+    "flavour": "Savory, umami, slight heat",
+    "allergens": "Gluten, Shellfish (likely in crumbs - confirm)",
+    "note": "Typhoon shelter style originates from Hong Kong, usually featuring garlic, chili, and dried shrimp. Confirm exact crumb spec with kitchen."
+  },
+  {
+    "name": "Lobster Pao Fan Soup",
+    "price": 19,
+    "category": "Starters",
+    "full": "Lobster meat, lobster stock, crispy rice",
+    "components": ["Butter-poached Nova Scotia lobster", "Crystal-clear lobster consommé", "Crispy compressed jasmine rice cake", "Ginger julienne", "Shiitake mushroom", "Crispy garlic chips", "Scallion oil"],
+    "flavour": "Sweet, delicate, deep umami, aromatic, refined",
+    "texture": "Crispy, tender, silky, broth-soaked",
+    "allergens": "Shellfish, Fish",
+    "standards": "Consommé must be perfectly clear. Lobster tender, never overcooked. Rice cake crisp until broth poured. Broth poured tableside. Keep garnish restrained.",
+    "note": "Pao Fan means 'soaked rice'. Signature dish. Consommé made from roasted shells, dried shrimp/scallops, chicken stock."
+  },
+  
+  // LAND
+  {
+    "name": "Australian Striploin",
+    "price": 85,
+    "category": "Land",
+    "full": "16oz Westholm Farms Australian wagyu Striploin",
+    "components": ["16oz Wagyu Striploin", "Choice of sauce"],
+    "flavour": "Rich, beefy, heavy marbling",
+    "allergens": "None (sauce dependent)",
+    "note": "Josper grilled. Served with choice of Demon Chimichurri, Green Peppercorn, or Nduja Vinaigrette."
+  },
+  {
+    "name": "Bone-In AAA Prime Ribeye",
+    "price": 130,
+    "category": "Land",
+    "full": "24oz or 55oz Ebony farms Australian AAA",
+    "components": ["Bone-in Ribeye", "Choice of sauce"],
+    "flavour": "Heavily marbled, juicy, intensely flavourful",
+    "allergens": "None (sauce dependent)",
+    "note": "24oz is $130. 55oz Tomahawk is $255 (designed for sharing). Josper grilled."
+  },
+  {
+    "name": "Bone-In Ibérico Pork Chop",
+    "price": 65,
+    "category": "Land",
+    "full": "14oz Iberico Porkchop",
+    "components": ["14oz Iberico Porkchop", "Choice of sauce"],
+    "flavour": "Richly marbled Spanish pork, exceptional sweetness, nuttiness",
+    "allergens": "None (sauce dependent)",
+    "note": "Josper grilled."
+  },
+  {
+    "name": "Canadian Prime Lamb Rack",
+    "price": 110,
+    "category": "Land",
+    "full": "Newmarket Lamb Chops (Full or Half)",
+    "components": ["Lamb Rack", "Choice of sauce"],
+    "flavour": "Locally sourced, naturally tender, clean finish",
+    "allergens": "None (sauce dependent)",
+    "note": "Full rack is $110, Half is $60. Josper grilled."
+  },
+
+  // SEA
+  {
+    "name": "Nova Scotia Lobster",
+    "price": "MP",
+    "category": "Sea",
+    "full": "Fried Atlantic Lobster (Market Price)",
+    "components": ["Lobster", "Choice of preparation"],
+    "flavour": "Sweet, rich",
+    "allergens": "Shellfish",
+    "note": "Lightly dusted in cornstarch and fried until crisp. Choice of Singapore Chili, Malaysian White Pepper, or Chinatown Style sauce."
+  },
+  {
+    "name": "BC Dungeness Crab",
+    "price": "MP",
+    "category": "Sea",
+    "full": "Dungeness Crab (Market Price)",
+    "components": ["Crab", "Choice of preparation"],
+    "flavour": "Sweet, delicate",
+    "allergens": "Shellfish",
+    "note": "May be grilled or fried depending on sauce. Choice of Singapore Chili, Malaysian White Pepper, or Chinatown Style sauce."
+  },
+  {
+    "name": "Grilled Sea Bream",
+    "price": 42,
+    "category": "Sea",
+    "full": "Whole fish grilled in the Josper",
+    "components": ["Sea Bream", "Choice of preparation"],
+    "flavour": "Moist flesh, crisp skin",
+    "allergens": "Fish",
+    "note": "Cooked simply to preserve natural sweetness. Choice of Singapore Chili, Malaysian White Pepper, or Chinatown Style sauce."
+  },
+
+  // SIDES
+  {
+    "name": "Wagyu XO Fried Rice",
+    "price": 22,
+    "category": "Sides",
+    "full": "Wagyu beef, harmee, egg",
+    "components": ["Day-old jasmine rice", "Diced wagyu beef", "House XO sauce", "Har Mi oil", "Scallions", "Egg Floss", "Fresh chives"],
+    "flavour": "Deep umami, smoky, savoury, rich, aromatic",
+    "texture": "Light, separate grains, tender beef, slight crisp",
+    "allergens": "Shellfish, Soy, Gluten. May contain: Egg.",
+    "standards": "Wok-fried over extremely high heat for wok hei. Served piping hot.",
+    "note": "Har mi is dried shrimp oil. XO sauce features dried scallops/shrimp."
+  },
+  {
+    "name": "Grilled Miso Broccolini",
+    "price": 16,
+    "category": "Sides",
+    "full": "Miso, brown butter",
+    "components": ["Broccolini", "Miso", "Brown butter", "Seasonal garnish"],
+    "flavour": "Fresh, smoky, green, umami",
+    "texture": "Tender, crisp",
+    "allergens": "Dairy, Soy",
+    "standards": "Maintain vibrant green colour. Do not overcook. Serve immediately.",
+    "note": "Charcoal grilled."
+  },
+  {
+    "name": "Grilled Mushrooms",
+    "price": 16,
+    "category": "Sides",
+    "full": "Shio koji marinade, chives",
+    "components": ["Cremini mushrooms", "King oyster mushrooms", "Oyster mushrooms", "Shio koji", "Brown butter", "Lemon", "Fresh chives"],
+    "flavour": "Earthy, smoky, umami, buttery",
+    "texture": "Juicy, meaty, charred",
+    "allergens": "Soy, Dairy",
+    "standards": "Do not over-marinate. Maintain distinct mushroom texture. Finish with butter, chives, lemon just before service.",
+    "note": "Shio koji is a Japanese fermented seasoning."
+  },
+  {
+    "name": "Truffle Fries",
+    "price": 16,
+    "category": "Sides",
+    "full": "Truffle oil and truffle aioli",
+    "components": ["Fries", "Truffle oil", "Truffle aioli"],
+    "flavour": "Earthy, rich, savoury",
+    "allergens": "Egg (aioli)",
+    "note": "Confirm spec with kitchen."
+  },
+  {
+    "name": "Fried Bao",
+    "price": 8,
+    "category": "Sides",
+    "full": "Chinese fried mantou",
+    "components": ["Mantou (steamed then fried bun)"],
+    "flavour": "Sweet, fluffy, crisp exterior",
+    "allergens": "Gluten",
+    "note": "Perfect for dipping in leftover seafood sauces."
+  },
+
+  // DESSERT
+  {
+    "name": "Baked Alaska",
+    "price": 16,
+    "category": "Desserts",
+    "full": "Chocolate passion fruit",
+    "components": ["Meringue", "Ice cream", "Chocolate", "Passion fruit"],
+    "flavour": "Sweet, tart, creamy",
+    "allergens": "Dairy, Egg, Gluten",
+    "note": "Usually flambéed or torched tableside. Confirm service style with kitchen."
+  },
+  {
+    "name": "Apple Tart",
+    "price": 18,
+    "category": "Desserts",
+    "full": "Apple tart",
+    "components": ["Apples", "Pastry"],
+    "flavour": "Sweet, buttery, warm",
+    "allergens": "Dairy, Gluten",
+    "note": "Confirm accompaniments (ice cream, caramel) with kitchen."
+  },
+  {
+    "name": "Tiramisu",
+    "price": 16,
+    "category": "Desserts",
+    "full": "Tiramisu",
+    "components": ["Mascarpone", "Coffee", "Ladyfingers", "Cocoa"],
+    "flavour": "Coffee, sweet, creamy",
+    "allergens": "Dairy, Egg, Gluten",
+    "note": "Contains caffeine."
+  },
+  {
+    "name": "Mille Feuille",
+    "price": 16,
+    "category": "Desserts",
+    "full": "Salted caramel orange",
+    "components": ["Puff pastry", "Pastry cream", "Salted caramel", "Orange"],
+    "flavour": "Sweet, salty, citrus, buttery",
+    "allergens": "Dairy, Gluten, Egg",
+    "note": "Literally 'a thousand leaves' — layered puff pastry."
+  },
+  {
+    "name": "Alcohol Infused Ice Cream",
+    "price": 16,
+    "category": "Desserts",
+    "full": "Choice of flavor",
+    "components": ["Ice cream base", "Alcohol infusion"],
+    "flavour": "Varies",
+    "allergens": "Dairy",
+    "note": "Flavors: Pistachio Cointreau, Lemongrass Gin, Banana Maotai, Rice Wine, Coffee Cognac."
+  }
+];
+
+const GRILL = [
+  {
+    "name": "The Josper",
+    "category": "Equipment",
+    "detail": "Combines a charcoal grill and an oven. Cooks in an enclosed environment with intense radiant heat, live-fire flavour, exceptional caramelization, and a distinctive charcoal aroma.",
+    "note": "The heart of Leo."
+  },
+  {
+    "name": "Australian Striploin",
+    "category": "Cuts",
+    "detail": "16oz Westholm Farms Australian wagyu.",
+    "flavour": "Heavy marbling, rich beef character.",
+    "note": "$85"
+  },
+  {
+    "name": "Bone-In AAA Prime Ribeye",
+    "category": "Cuts",
+    "detail": "24oz Ebony farms Australian AAA. (55oz Tomahawk also available).",
+    "flavour": "Meaty, bold beef flavour, heavily marbled.",
+    "note": "$130 (24oz) / $255 (55oz)"
+  },
+  {
+    "name": "Bone-In Ibérico Pork Chop",
+    "category": "Cuts",
+    "detail": "14oz Spanish pork.",
+    "flavour": "Richly marbled, exceptional sweetness and nuttiness.",
+    "note": "$65"
+  },
+  {
+    "name": "Canadian Prime Lamb Rack",
+    "category": "Cuts",
+    "detail": "Newmarket Lamb. Available Full or Half.",
+    "flavour": "Locally sourced, naturally tender, clean finish.",
+    "note": "$110 Full / $60 Half"
+  },
+  {
+    "name": "Demon Chimichurri",
+    "category": "Sauces",
+    "detail": "Fresh herbs, chili and acidity.",
+    "flavour": "Bright, spicy, herbaceous.",
+    "note": "Pairs with most cuts."
+  },
+  {
+    "name": "Green Peppercorn",
+    "category": "Sauces",
+    "detail": "Classic Au Poivre made with white, green and black peppercorns.",
+    "flavour": "Creamy, peppery, rich.",
+    "note": "Classic steak pairing."
+  },
+  {
+    "name": "Nduja Vinaigrette",
+    "category": "Sauces",
+    "detail": "Spicy, spreadable Calabrian salami based sauce. (Menu calls it Fermented Chili Jus).",
+    "flavour": "Spicy, funky, oily, rich.",
+    "note": "Only for the pork."
+  },
+  {
+    "name": "Doneness Guide",
+    "category": "Standards",
+    "detail": "Rare (cool red) · Medium Rare (warm red, recommended) · Medium (warm pink) · Medium Well (slight pink) · Well Done (fully cooked)",
+    "flavour": "-",
+    "note": "Every cut is tempered, salted simply, grilled over charcoal, and rested before serving."
+  }
+];
+
+const SEAFOOD_PREP = [
+  {
+    "name": "Indonesian White Pepper",
+    "category": "Sauce",
+    "detail": "White mushrooms, onion, garlic simmered with chicken stock and cream. Blended smooth, mounted with butter and white pepper.",
+    "flavour": "Peppery, creamy, savoury, aromatic.",
+    "texture": "Velvety, glossy.",
+    "pairings": "Lobster, Sea Bream, King Crab.",
+    "allergens": "Dairy",
+    "standards": "Never boil after butter is mounted. Aromatic, not harsh.",
+    "note": "Menu calls this 'Malaysian White Pepper'. Bible calls it Indonesian."
+  },
+  {
+    "name": "Singapore Chili",
+    "category": "Sauce",
+    "detail": "Aromatic veg, shrimp paste, dried shrimp, chili slowly cooked with tomato, lobster stock, and palm sugar.",
+    "flavour": "Sweet, tangy, umami, gentle heat.",
+    "texture": "Rich, glossy.",
+    "pairings": "Lobster, Dungeness Crab.",
+    "allergens": "Shellfish",
+    "standards": "Balance sweetness and heat. Do not overpower seafood. Serve piping hot.",
+    "note": "Created in Singapore in the 1950s."
+  },
+  {
+    "name": "Chinatown Style",
+    "category": "Sauce",
+    "detail": "Ginger, garlic, shallots, dried chili, Sichuan peppercorns simmered with chicken stock. Thickened, finished with Eggplant and scallions.",
+    "flavour": "Spicy, umami, numbing, buttery.",
+    "texture": "Silky, velvety, glossy.",
+    "pairings": "Lobster, King Crab, Dungeness Crab.",
+    "allergens": "Shellfish, Soy",
+    "standards": "Complements rather than overpowers.",
+    "note": "Despite the name, Lobster Sauce originated in Cantonese-American restaurants."
+  }
+];
+
+const DRINKS = [
+  // COCKTAILS
+  { "name": "Leo Smash", "price": 21, "category": "Cocktails", "full": "Tequila Blanco, Thai basil syrup, yuzu, fresh lime, pink peppercorn salt", "base": "Tequila" },
+  { "name": "Southeast Sour", "price": 21, "category": "Cocktails", "full": "Toki Whiskey, goji berry syrup, egg white, fresh lemon juice", "base": "Whiskey" },
+  { "name": "Starry Night", "price": 21, "category": "Cocktails", "full": "Pisco, pandan syrup, coconut water", "base": "Pisco" },
+  { "name": "Berries & Baiju", "price": 21, "category": "Cocktails", "full": "Baiju Fen Chiew Brown, fresh lemon juice, clarified strawberry syrup", "base": "Baijiu" },
+  { "name": "Sesame Street", "price": 21, "category": "Cocktails", "full": "Roasted peanut-infused whiskey, brandy, toasted black sesame, amaretto & cream foam", "base": "Whiskey" },
+  { "name": "Red Garden", "price": 21, "category": "Cocktails", "full": "Gin, elderflower liqueur, hibiscus cordial, orange bitters, edible red flower, orange zest", "base": "Gin" },
+  { "name": "Spirit of Sichuan", "price": 21, "category": "Cocktails", "full": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil", "base": "Sake/Prosecco" },
+  { "name": "Banana Bang", "price": 21, "category": "Cocktails", "full": "Banana peel palm sugar, cacao bitters, oleo saccharum infused whiskey", "base": "Whiskey" },
+  { "name": "Dai-Curry", "price": 21, "category": "Cocktails", "full": "Appleton Rum, curry syrup, fresh lime juice, whole milk", "base": "Rum" },
+  
+  // MOCKTAILS
+  { "name": "Iced Blueberry Tea", "price": 14, "category": "Mocktails", "full": "Blueberry white tea", "base": "NA" },
+  { "name": "Tongue Thai'd", "price": 14, "category": "Mocktails", "full": "Yuzu juice, Thai basil syrup, coconut water", "base": "NA" },
+  { "name": "Red Lotus", "price": 14, "category": "Mocktails", "full": "Hibiscus cordial, plum juice, clarified strawberry syrup, egg white", "base": "NA" },
+  { "name": "Summer's End", "price": 14, "category": "Mocktails", "full": "Clarified strawberry syrup, yuzu lime juice", "base": "NA" },
+  
+  // BEER
+  { "name": "Asahi on Tap", "price": 11, "category": "Beer", "full": "Japanese Lager", "base": "Beer" },
+  { "name": "Peroni on Tap", "price": 12, "category": "Beer", "full": "Italian Lager", "base": "Beer" },
+  { "name": "Asahi Zero", "price": 7, "category": "Beer", "full": "Non-alcoholic Japanese Lager", "base": "Beer (NA)" }
+];
+
+const FOOD_QUIZ = [
+  // Allergens
+  { "section": "Allergens", "q": "What are the allergens in the Hokkaido Scallop Ceviche?", "a": "Shellfish, Fish", "context": "It features scallops and Nuoc Cham (fish sauce)." },
+  { "section": "Allergens", "q": "What are the allergens in the Wagyu Carpaccio?", "a": "Egg, Soy, Gluten", "context": "Contains egg yolk, soy/ponzu, and rice chips." },
+  { "section": "Allergens", "q": "What are the allergens in the Caesar Salad?", "a": "Dairy, Egg, Fish, Peanut", "context": "Contains parmesan, dressing (egg/fish), and candied peanuts." },
+  { "section": "Allergens", "q": "What are the allergens in the Wagyu XO Fried Rice?", "a": "Shellfish, Soy, Gluten (May contain Egg)", "context": "XO sauce has dried seafood, soy is used, and egg floss is a component." },
+  { "section": "Allergens", "q": "What are the allergens in the Crab Cake?", "a": "Shellfish, Egg, Gluten", "context": "Crab, aioli (egg), and panko (gluten)." },
+  
+  // Standards
+  { "section": "Standards", "q": "What is the critical rule for the Hokkaido Scallop Ceviche?", "a": "Never allow the scallops to sit in the dressing.", "context": "They must be dressed à la minute and served on a chilled plate." },
+  { "section": "Standards", "q": "How is the Lobster Pao Fan served?", "a": "Broth is poured tableside.", "context": "To preserve the crispness of the rice cake and provide a show." },
+  { "section": "Standards", "q": "What is the standard for the Chicken Liver Parfait's temperature?", "a": "Serve slightly chilled, never ice cold.", "context": "Ice cold kills the flavor. It should be perfectly smooth." },
+  { "section": "Standards", "q": "What is the rule for dressing the Caesar Salad?", "a": "Do not overdress. Lettuce must be completely dry.", "context": "Add peanuts at pickup and serve immediately." },
+  { "section": "Standards", "q": "What is the standard for the Crab Cake mix?", "a": "Do not overmix. Maintain a crisp exterior.", "context": "Overmixing breaks down the crab texture." },
+
+  // Components
+  { "section": "Components", "q": "What are the components of the Chicken Liver Parfait?", "a": "Sous vide parfait, Asian pear, cured egg yolk, shokupan toast", "context": "Grated egg yolk at pickup." },
+  { "section": "Components", "q": "What are the components of the Lobster Pao Fan?", "a": "Butter-poached lobster, clear consommé, crispy rice cake, ginger, shiitake, garlic chips, scallion oil", "context": "Pao Fan means 'soaked rice'." },
+  { "section": "Components", "q": "What is in the Wagyu Carpaccio?", "a": "Hand-cut beef, ssamjang aioli, white kimchi, pickled shimeji, tamago togarashi rice chips, chives", "context": "Hand-cut daily." },
+  { "section": "Components", "q": "What is in the Wagyu XO Fried Rice?", "a": "Day-old jasmine rice, diced wagyu, house XO, har mi oil, scallions, egg floss, chives", "context": "Wok-fried over extremely high heat." },
+  { "section": "Components", "q": "What is in the Crab Cake?", "a": "Blue crab, snow crab, panko, Sichuan aioli, watercress, lime", "context": "Minimal filler." },
+  { "section": "Components", "q": "What is in the Grilled Mushrooms?", "a": "Cremini, king oyster, oyster mushrooms, shio koji, brown butter, lemon, chives", "context": "Shio koji is a Japanese fermented seasoning." },
+
+  // Pitch / Details
+  { "section": "Details", "q": "What does 'Pao Fan' mean?", "a": "Soaked rice", "context": "A traditional Chinese comfort dish." },
+  { "section": "Details", "q": "What is Shio Koji?", "a": "A Japanese fermented seasoning used as a marinade and tenderizer.", "context": "Used on the Grilled Mushrooms." },
+  { "section": "Details", "q": "What is Ssamjang?", "a": "A Korean fermented soybean and chili paste.", "context": "Used in the aioli for the Wagyu Carpaccio." },
+  { "section": "Details", "q": "What is Nuoc Cham?", "a": "A Vietnamese dipping sauce made with fish sauce and lime.", "context": "Used on the Scallop Ceviche." },
+  { "section": "Details", "q": "What is Har Mi oil?", "a": "Dried shrimp oil.", "context": "Used in the Wagyu XO Fried Rice." },
+  { "section": "Details", "q": "What is XO sauce?", "a": "A premium Hong Kong condiment featuring dried scallops, dried shrimp, and cured ham.", "context": "Used in the fried rice." },
+  { "section": "Details", "q": "What is the difference between the two types of crab in the Crab Cake?", "a": "Blue crab and Snow crab", "context": "Focus is on sweet crab meat with minimal filler." },
+
+  // Service
+  { "section": "Service", "q": "What are the 5 doneness levels for steaks?", "a": "Rare, Medium Rare, Medium, Medium Well, Well Done", "context": "Medium Rare is recommended for most cuts." },
+  { "section": "Service", "q": "Which steak sauce is ONLY for the pork?", "a": "Nduja Vinaigrette (Fermented Chili Jus)", "context": "Spicy, spreadable Calabrian salami sauce." },
+  { "section": "Service", "q": "What are the three sauces for the Land cuts?", "a": "Demon Chimichurri, Green Peppercorn, Nduja Vinaigrette", "context": "Green Peppercorn is a classic Au Poivre." },
+  { "section": "Service", "q": "How should you describe the Australian Striploin?", "a": "16oz Westholm Farms Australian wagyu with heavy marbling.", "context": "$85" },
+  { "section": "Service", "q": "How should you describe the Bone-In AAA Prime Ribeye?", "a": "24oz (or 55oz Tomahawk) Ebony farms Australian AAA. Meaty, bold, intensely flavourful.", "context": "$130 / $255" },
+  { "section": "Service", "q": "What is the Josper?", "a": "A charcoal oven/grill that combines intense radiant heat with live-fire flavour.", "context": "The heart of Leo." },
+  { "section": "Service", "q": "What are the three seafood sauce preparations?", "a": "Singapore Chili, Malaysian White Pepper, Chinatown Style", "context": "Available for Nova Scotia Lobster, BC Dungeness Crab, and Grilled Sea Bream." }
+];
+
+const DRINK_QUIZ = [
+  // Ingredients
+  { "section": "Cocktails", "q": "What is in the Leo Smash?", "a": "Tequila Blanco, Thai basil syrup, yuzu, fresh lime, pink peppercorn salt", "context": "$21" },
+  { "section": "Cocktails", "q": "What is in the Southeast Sour?", "a": "Toki Whiskey, goji berry syrup, egg white, fresh lemon juice", "context": "$21" },
+  { "section": "Cocktails", "q": "What is in the Starry Night?", "a": "Pisco, pandan syrup, coconut water", "context": "$21" },
+  { "section": "Cocktails", "q": "What is in Berries & Baiju?", "a": "Baiju Fen Chiew Brown, fresh lemon juice, clarified strawberry syrup", "context": "$21" },
+  { "section": "Cocktails", "q": "What is in the Sesame Street cocktail?", "a": "Roasted peanut-infused whiskey, brandy, toasted black sesame, amaretto & cream foam", "context": "$21 - Contains nuts!" },
+  { "section": "Cocktails", "q": "What is in the Red Garden?", "a": "Gin, elderflower liqueur, hibiscus cordial, orange bitters, edible red flower, orange zest", "context": "$21" },
+  { "section": "Cocktails", "q": "What is in the Spirit of Sichuan?", "a": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil", "context": "$21" },
+  { "section": "Cocktails", "q": "What is in the Banana Bang?", "a": "Banana peel palm sugar, cacao bitters, oleo saccharum infused whiskey", "context": "$21" },
+  { "section": "Cocktails", "q": "What is in the Dai-Curry?", "a": "Appleton Rum, curry syrup, fresh lime juice, whole milk", "context": "$21" },
+
+  // Mocktails
+  { "section": "Mocktails", "q": "What is in the Iced Blueberry Tea?", "a": "Blueberry white tea", "context": "$14" },
+  { "section": "Mocktails", "q": "What is in Tongue Thai'd?", "a": "Yuzu juice, Thai basil syrup, coconut water", "context": "$14" },
+  { "section": "Mocktails", "q": "What is in the Red Lotus?", "a": "Hibiscus cordial, plum juice, clarified strawberry syrup, egg white", "context": "$14" },
+  { "section": "Mocktails", "q": "What is in Summer's End?", "a": "Clarified strawberry syrup, yuzu lime juice", "context": "$14" },
+  
+  // Beer
+  { "section": "Beer", "q": "What beers are on tap?", "a": "Asahi ($11) and Peroni ($12)", "context": "Asahi is Japanese, Peroni is Italian." },
+  { "section": "Beer", "q": "What non-alcoholic beer do we serve?", "a": "Asahi Zero", "context": "$7" }
+];
+
+// DIAL LABELS for Wine (unused but keeping the structure)
+const DIAL_LABELS = {
+  Body: ["Very Light","Light","Medium","Full","Very Full"],
+  Acidity: ["Very Low","Low","Medium","High","Very High"],
+  Sweetness: ["Bone Dry","Dry","Off-Dry","Semi-Sweet","Sweet"],
+  Tannin: ["Very Soft","Soft","Medium","Firm","Very Firm"]
+};
+
+const SCREENS = ['home','menu-screen','grill-screen','seafood-screen','drinks-screen','foodq-screen','drinkq-screen'];
+const NAV_MAP = {
+  'home':'nav-home','menu-screen':'nav-menu',
+  'grill-screen':'nav-grill','seafood-screen':'nav-seafood','drinks-screen':'nav-drinks',
+  'foodq-screen':'nav-foodq','drinkq-screen':'nav-drinkq'
+};
+
+function showScreen(id) {
+  document.querySelectorAll('.deck-controls').forEach(el => {
+    el.style.display = id === 'home' ? 'none' : '';
+  });
+  SCREENS.forEach(s => {
+    const el = document.getElementById(s);
+    if (el) el.style.display = (s === id) ? 'block' : 'none';
+  });
+  Object.entries(NAV_MAP).forEach(([screen, btn]) => {
+    const el = document.getElementById(btn);
+    if (el) el.classList.toggle('active', screen === id);
+  });
+  try { document.documentElement.scrollTop = 0; } catch(e){}
+  try { document.body.scrollTop = 0; } catch(e){}
+}
+
+const states = {};
+
+function initDeck(id, items, sections) {
+  states[id] = { items, order: items.map((_,i)=>i), pos:0, flipped:false, section:'All', sections };
+}
+
+function filtered(id) {
+  const s = states[id];
+  return s.order.filter(i => {
+    const item = s.items[i];
+    if (s.section === 'All') return true;
+    return (item.category || item.section) === s.section;
+  });
+}
+
+function flip(id) {
+  states[id].flipped = !states[id].flipped;
+  const cardInner = document.getElementById(id+'-card');
+  cardInner.classList.toggle('flipped', states[id].flipped);
+  const btn = document.getElementById(id+'-flip');
+  if (btn) btn.textContent = states[id].flipped ? 'Hide' : 'Flip';
+  srShowButtons(id, states[id].flipped);
+  setTimeout(function() {
+    const front = document.getElementById(id+'-front');
+    const back  = document.getElementById(id+'-back');
+    if (!front || !back || !cardInner) return;
+    if (states[id].flipped) {
+      cardInner.style.height = back.scrollHeight + 'px';
+      setTimeout(function() {
+        const srRow = document.getElementById(id+'-sr-row');
+        if (srRow) {
+          const rect = srRow.getBoundingClientRect();
+          const scrollTarget = window.scrollY + rect.bottom - window.innerHeight + 80;
+          window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+        }
+      }, 60);
+    } else {
+      cardInner.style.height = front.scrollHeight + 'px';
+      cardInner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 520);
+}
+
+function next(id) {
+  const l = filtered(id);
+  states[id].flipped = false;
+  states[id].pos = (states[id].pos + 1) % l.length;
+  const cardInner = document.getElementById(id+'-card');
+  cardInner.classList.remove('flipped');
+  cardInner.style.height = '';
+  const btn = document.getElementById(id+'-flip');
+  if (btn) btn.textContent = 'Flip';
+  srShowButtons(id, false);
+  render(id);
+}
+
+function prev(id) {
+  const l = filtered(id);
+  states[id].flipped = false;
+  states[id].pos = (states[id].pos - 1 + l.length) % l.length;
+  const cardInner = document.getElementById(id+'-card');
+  cardInner.classList.remove('flipped');
+  cardInner.style.height = '';
+  const btn = document.getElementById(id+'-flip');
+  if (btn) btn.textContent = 'Flip';
+  srShowButtons(id, false);
+  render(id);
+}
+
+function shuffle(id) {
+  const a = [...states[id].order];
+  for (let i = a.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  states[id].order = a; states[id].pos = 0; states[id].flipped = false;
+  document.getElementById(id+'-card').classList.remove('flipped');
+  const btn = document.getElementById(id+'-flip');
+  if (btn) btn.textContent = 'Flip';
+  render(id);
+}
+
+function reset(id) {
+  states[id].order = states[id].items.map((_,i)=>i);
+  states[id].pos = 0; states[id].flipped = false; states[id].section = 'All';
+  document.getElementById(id+'-card').classList.remove('flipped');
+  const btn = document.getElementById(id+'-flip');
+  if (btn) btn.textContent = 'Flip';
+  buildCats(id); render(id);
+}
+
+function buildCats(id) {
+  const s = states[id];
+  const el = document.getElementById(id+'-cats');
+  if (!el) return;
+  el.innerHTML = '';
+  ['All', ...s.sections].forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (s.section === c ? ' active' : '');
+    btn.textContent = c;
+    btn.onclick = () => {
+      s.section = c; s.pos = 0; s.flipped = false;
+      document.getElementById(id+'-card').classList.remove('flipped');
+      const fb = document.getElementById(id+'-flip');
+      if (fb) fb.textContent = 'Flip';
+      buildCats(id); render(id);
+    };
+    el.appendChild(btn);
+  });
+}
+
+function render(id) {
+  if (id === 'menu') renderMenu();
+  else if (id === 'grill') renderGrill();
+  else if (id === 'seafood') renderSeafood();
+  else if (id === 'drinks') renderDrinks();
+  else if (id === 'foodq') renderQuiz('foodq', FOOD_QUIZ);
+  else if (id === 'drinkq') renderQuiz('drinkq', DRINK_QUIZ);
+  srInjectBadge(id);
+}
+
+function renderMenu() {
+  const id = 'menu'; const s = states[id];
+  const list = filtered(id);
+  if (!list.length) return;
+  if (s.pos >= list.length) s.pos = 0;
+  const d = DISHES[list[s.pos]];
+  document.getElementById('menu-prog').textContent = (s.pos+1) + ' / ' + list.length;
+
+  document.getElementById('menu-front').innerHTML = `
+    <div class="front-cat">${d.category}</div>
+    <div class="front-name">${d.name}</div>
+    <div class="front-price">${typeof d.price === 'number' ? '$'+d.price : d.price}</div>
+    <div class="tap-hint">Tap to reveal</div>`;
+
+  const comps = d.components ? d.components.map(c => `<div class="pitch-item"><span class="pitch-num">·</span><span class="pitch-word" style="font-size:15px">${c}</span></div>`).join('') : '';
+  
+  let backHtml = `
+    <div class="section-tag">${d.category}</div>
+    <div class="back-name">${d.name}</div>
+    <div class="info-block">
+      <div class="info-label">Menu Description</div>
+      <div class="info-text italic">${d.full}</div>
+    </div>`;
+    
+  if (comps) {
+    backHtml += `
+    <div class="info-block">
+      <div class="info-label">Components</div>
+      <div class="pitch-list">${comps}</div>
+    </div>`;
+  }
+  
+  if (d.flavour) {
+    backHtml += `
+    <div class="info-block">
+      <div class="info-label">Flavour Profile</div>
+      <div class="info-text">${d.flavour}</div>
+    </div>`;
+  }
+  
+  if (d.texture) {
+    backHtml += `
+    <div class="info-block">
+      <div class="info-label">Texture</div>
+      <div class="info-text">${d.texture}</div>
+    </div>`;
+  }
+
+  if (d.allergens) {
+    backHtml += `
+    <div class="info-block" style="border-left: 2px solid #b33a3a;">
+      <div class="info-label" style="color:#e07070">Allergens</div>
+      <div class="info-text">${d.allergens}</div>
+    </div>`;
+  }
+  
+  if (d.standards) {
+    backHtml += `
+    <div class="info-block" style="border-left: 2px solid #cc7a2a;">
+      <div class="info-label" style="color:#e8a060">Critical Standards</div>
+      <div class="info-text">${d.standards}</div>
+    </div>`;
+  }
+
+  if (d.note) {
+    backHtml += `<div class="note-line">※ ${d.note}</div>`;
+  }
+
+  document.getElementById('menu-back').innerHTML = backHtml;
+}
+
+function renderGrill() {
+  const id = 'grill'; const s = states[id];
+  const list = filtered(id);
+  if (!list.length) return;
+  if (s.pos >= list.length) s.pos = 0;
+  const g = GRILL[list[s.pos]];
+  document.getElementById('grill-prog').textContent = (s.pos+1) + ' / ' + list.length;
+
+  document.getElementById('grill-front').innerHTML = `
+    <div class="front-cat">${g.category}</div>
+    <div class="front-name">${g.name}</div>
+    <div class="tap-hint">Tap to reveal</div>`;
+
+  document.getElementById('grill-back').innerHTML = `
+    <div class="section-tag">${g.category}</div>
+    <div class="back-name">${g.name}</div>
+    <div class="info-block">
+      <div class="info-label">Details</div>
+      <div class="info-text">${g.detail}</div>
+    </div>
+    ${g.flavour !== '-' ? `
+    <div class="info-block">
+      <div class="info-label">Flavour Profile</div>
+      <div class="info-text">${g.flavour}</div>
+    </div>` : ''}
+    ${g.note ? `<div class="note-line">※ ${g.note}</div>` : ''}`;
+}
+
+function renderSeafood() {
+  const id = 'seafood'; const s = states[id];
+  const list = filtered(id);
+  if (!list.length) return;
+  if (s.pos >= list.length) s.pos = 0;
+  const w = SEAFOOD_PREP[list[s.pos]];
+  document.getElementById('seafood-prog').textContent = (s.pos+1) + ' / ' + list.length;
+
+  document.getElementById('seafood-front').innerHTML = `
+    <div class="front-cat">${w.category}</div>
+    <div class="front-name">${w.name}</div>
+    <div class="tap-hint">Tap to reveal</div>`;
+
+  document.getElementById('seafood-back').innerHTML = `
+    <div class="section-tag">${w.category}</div>
+    <div class="back-name">${w.name}</div>
+    <div class="info-block">
+      <div class="info-label">Preparation</div>
+      <div class="info-text">${w.detail}</div>
+    </div>
+    <div class="info-block">
+      <div class="info-label">Flavour Profile</div>
+      <div class="info-text">${w.flavour}</div>
+    </div>
+    <div class="info-block">
+      <div class="info-label">Texture</div>
+      <div class="info-text">${w.texture}</div>
+    </div>
+    <div class="info-block">
+      <div class="info-label">Best Pairings</div>
+      <div class="info-text">${w.pairings}</div>
+    </div>
+    <div class="info-block" style="border-left: 2px solid #b33a3a;">
+      <div class="info-label" style="color:#e07070">Allergens</div>
+      <div class="info-text">${w.allergens}</div>
+    </div>
+    <div class="info-block" style="border-left: 2px solid #cc7a2a;">
+      <div class="info-label" style="color:#e8a060">Critical Standards</div>
+      <div class="info-text">${w.standards}</div>
+    </div>
+    ${w.note ? `<div class="note-line">※ ${w.note}</div>` : ''}`;
+}
+
+function renderDrinks() {
+  const id = 'drinks'; const s = states[id];
+  const list = filtered(id);
+  if (!list.length) return;
+  if (s.pos >= list.length) s.pos = 0;
+  const c = DRINKS[list[s.pos]];
+  document.getElementById('drinks-prog').textContent = (s.pos+1) + ' / ' + list.length;
+
+  document.getElementById('drinks-front').innerHTML = `
+    <div class="front-cat">${c.category}</div>
+    <div class="front-name">${c.name}</div>
+    <div class="front-price">$${c.price}</div>
+    <div class="tap-hint">Tap to reveal</div>`;
+
+  document.getElementById('drinks-back').innerHTML = `
+    <div class="section-tag">${c.category}</div>
+    <div class="back-name">${c.name}</div>
+    <div class="info-block">
+      <div class="info-label">Ingredients</div>
+      <div class="info-text italic">${c.full}</div>
+    </div>
+    <div class="info-block">
+      <div class="info-label">Base Spirit</div>
+      <div class="info-text">${c.base}</div>
+    </div>
+    <div class="note-line">※ Price: $${c.price}</div>`;
+}
+
+function renderQuiz(id, data) {
+  const s = states[id];
+  const list = filtered(id);
+  if (!list.length) return;
+  if (s.pos >= list.length) s.pos = 0;
+  const c = data[list[s.pos]];
+  document.getElementById(id+'-prog').textContent = (s.pos+1) + ' / ' + list.length;
+
+  document.getElementById(id+'-front').innerHTML = `
+    <div class="front-cat">${c.section}</div>
+    <div class="quiz-q">${c.q}</div>
+    ${c.context ? `<div class="quiz-context">${c.context}</div>` : ''}
+    <div class="tap-hint" style="margin-top:auto">Tap to reveal</div>`;
+
+  document.getElementById(id+'-back').innerHTML = `
+    <div class="section-tag">Answer</div>
+    <div class="quiz-a">${c.a}</div>
+    ${c.context ? `<div class="quiz-context-back">${c.context}</div>` : ''}`;
+}
+
+// SPACED REPETITION
+const srWeights = {}; 
+const srSkipNext = {}; 
+const srQueue = {}; 
+
+function srInit(id, count) {
+  srWeights[id] = new Array(count).fill(1);
+  srSkipNext[id] = new Set();
+  srQueue[id] = Array.from({length: count}, (_, i) => i);
+}
+
+function srMark(id, result) {
+  const s = states[id];
+  const list = filtered(id);
+  if (!list.length) return;
+  const itemIdx = list[s.pos];
+  const q = srQueue[id];
+
+  if (result === 'wrong') {
+    srWeights[id][itemIdx] = 3;
+    srSkipNext[id].delete(itemIdx);
+    const insertAt = Math.min(2, q.length);
+    q.splice(insertAt, 0, itemIdx);
+  } else if (result === 'unsure') {
+    srWeights[id][itemIdx] = 2;
+    srSkipNext[id].delete(itemIdx);
+    const gap = Math.floor(Math.random() * 11) + 5;
+    const insertAt = Math.min(gap, q.length);
+    q.splice(insertAt, 0, itemIdx);
+  } else {
+    srSkipNext[id].add(itemIdx);
+    srWeights[id][itemIdx] = 1;
+  }
+
+  srUpdateProgress(id);
+  srNext(id);
+}
+
+function srNext(id) {
+  const s = states[id];
+  const cardInner = document.getElementById(id+'-card');
+  const btn = document.getElementById(id+'-flip');
+  const q = srQueue[id];
+
+  srShowButtons(id, false);
+  s.flipped = false;
+  cardInner.classList.remove('flipped');
+  cardInner.style.height = '';
+  if (btn) btn.textContent = 'Flip';
+
+  setTimeout(function() {
+    let pickedItemIdx;
+
+    while (q.length > 0) {
+      const candidate = q.shift();
+      if (!srSkipNext[id] || !srSkipNext[id].has(candidate)) {
+        const item = s.items[candidate];
+        if (s.section === 'All' || (item.category || item.section) === s.section) {
+          pickedItemIdx = candidate;
+          break;
+        }
+      }
+    }
+
+    if (pickedItemIdx === undefined) {
+      const regularList = filtered(id);
+      if (!regularList.length) return;
+      const refill = [...regularList].sort(() => Math.random() - 0.5);
+      srQueue[id].push(...refill);
+      pickedItemIdx = srQueue[id].shift();
+      if (pickedItemIdx === undefined) pickedItemIdx = regularList[0];
+    }
+
+    const regularList = filtered(id);
+    const posInRegular = regularList.indexOf(pickedItemIdx);
+    s.pos = posInRegular >= 0 ? posInRegular : 0;
+    render(id);
+  }, 520);
+}
+
+function srShowButtons(id, show) {
+  ['wrong','unsure','right'].forEach(k => {
+    const b = document.getElementById(id+'-sr-'+k);
+    if (b) b.style.display = show ? 'block' : 'none';
+  });
+}
+
+function srUpdateProgress(id) {
+  const weights = srWeights[id];
+  if (!weights) return;
+  const total = weights.length;
+  const mastered = [...srSkipNext[id]].length;
+  const pct = total > 0 ? Math.round(mastered / total * 100) : 0;
+  const bar = document.getElementById(id+'-sr-bar');
+  const stats = document.getElementById(id+'-sr-stats');
+  if (bar) bar.style.width = pct + '%';
+  if (stats && total > 0) {
+    const wrong = weights.filter(w => w === 3).length;
+    const unsure = weights.filter(w => w === 2).length;
+    stats.innerHTML =
+      (mastered ? `<span style="color:#70e090">✓ ${mastered}</span> &nbsp;` : '') +
+      (unsure   ? `<span style="color:#e8a060">~ ${unsure}</span> &nbsp;` : '') +
+      (wrong    ? `<span style="color:#e07070">✗ ${wrong}</span> &nbsp;` : '') +
+      `<span style="opacity:0.5">${total} cards</span>`;
+  }
+}
+
+function srGetBadge(id, itemIdx) {
+  if (!srWeights[id]) return '';
+  if (srSkipNext[id] && srSkipNext[id].has(itemIdx)) {
+    return '<span class="sr-badge right">✓ Mastered</span>';
+  }
+  const w = srWeights[id][itemIdx];
+  if (w === 3) return '<span class="sr-badge wrong">✗ Repeat</span>';
+  if (w === 2) return '<span class="sr-badge unsure">S = Unsure</span>';
+  return '';
+}
+
+function srInjectBadge(id) {
+  const s = states[id];
+  const list = filtered(id);
+  if (!list.length) return;
+  if (s.pos >= list.length) return;
+  const itemIdx = list[s.pos];
+  const badge = srGetBadge(id, itemIdx);
+  if (!badge) return;
+  const front = document.getElementById(id+'-front');
+  if (!front) return;
+  if (!front.querySelector('.sr-badge')) {
+    front.innerHTML += badge;
+  }
+}
+
+// INIT
+initDeck('menu', DISHES, ['Starters','Land','Sea','Sides','Desserts']);
+initDeck('grill', GRILL, ['Cuts','Sauces','Equipment','Standards']);
+initDeck('seafood', SEAFOOD_PREP, ['Sauce']);
+initDeck('drinks', DRINKS, ['Cocktails','Mocktails','Beer']);
+initDeck('foodq', FOOD_QUIZ, ['Allergens','Standards','Components','Details','Service']);
+initDeck('drinkq', DRINK_QUIZ, ['Cocktails','Mocktails','Beer']);
+
+srInit('menu', DISHES.length);
+srInit('grill', GRILL.length);
+srInit('seafood', SEAFOOD_PREP.length);
+srInit('drinks', DRINKS.length);
+srInit('foodq', FOOD_QUIZ.length);
+srInit('drinkq', DRINK_QUIZ.length);
+
+renderMenu(); renderGrill(); renderSeafood(); renderDrinks();
+renderQuiz('foodq', FOOD_QUIZ);
+renderQuiz('drinkq', DRINK_QUIZ);
+
+buildCats('menu'); buildCats('grill'); buildCats('seafood'); buildCats('drinks');
+buildCats('foodq'); buildCats('drinkq');
+
+srUpdateProgress('menu'); srUpdateProgress('grill'); srUpdateProgress('seafood'); srUpdateProgress('drinks');
+srUpdateProgress('foodq'); srUpdateProgress('drinkq');
+
+// Update counts dynamically
+document.getElementById('count-menu').textContent = DISHES.length + ' dishes';
+document.getElementById('count-grill').textContent = GRILL.length + ' cards';
+document.getElementById('count-seafood').textContent = SEAFOOD_PREP.length + ' sauces';
+document.getElementById('count-drinks').textContent = DRINKS.length + ' items';
+document.getElementById('count-foodq').textContent = FOOD_QUIZ.length + ' cards';
+document.getElementById('count-drinkq').textContent = DRINK_QUIZ.length + ' cards';
+
+// Keyboard shortcuts: Space = flip, A = wrong, S = unsure, D = right, Arrows = nav
+document.addEventListener('keydown', function(e) {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+  const deckMap = {
+    'menu-screen':     'menu',
+    'grill-screen':    'grill',
+    'seafood-screen':  'seafood',
+    'drinks-screen':   'drinks',
+    'foodq-screen':    'foodq',
+    'drinkq-screen':   'drinkq'
+  };
+
+  let activeDeck = null;
+  for (const [screenId, deckId] of Object.entries(deckMap)) {
+    const el = document.getElementById(screenId);
+    if (el && el.style.display === 'block') { activeDeck = deckId; break; }
+  }
+  if (!activeDeck) return;
+
+  if (e.code === 'Space') {
+    e.preventDefault();
+    const flipBtn = document.getElementById(activeDeck + '-flip');
+    if (flipBtn) flipBtn.click();
+    return;
+  }
+
+  if (e.code === 'ArrowLeft') {
+    e.preventDefault();
+    prev(activeDeck);
+    return;
+  }
+
+  if (e.code === 'ArrowRight') {
+    e.preventDefault();
+    next(activeDeck);
+    return;
+  }
+
+  const wrongBtn = document.getElementById(activeDeck + '-sr-wrong');
+  const srVisible = wrongBtn && wrongBtn.style.display === 'block';
+
+  if (srVisible) {
+    if (e.key === 'a' || e.key === 'A') {
+      document.getElementById(activeDeck + '-sr-wrong').click();
+    } else if (e.key === 's' || e.key === 'S') {
+      document.getElementById(activeDeck + '-sr-unsure').click();
+    } else if (e.key === 'd' || e.key === 'D') {
+      document.getElementById(activeDeck + '-sr-right').click();
+    }
+  }
+});
+</script>
+</body>
+</html>
