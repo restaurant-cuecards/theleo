@@ -317,7 +317,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
       <div class="h-card" onclick="showScreen('grill-screen')">
         <div class="h-icon">🔥</div>
         <div class="h-body">
-          <div class="h-top"><div class="h-name">Josper & Land</div><div class="h-count" id="count-grill">7 cards</div></div>
+          <div class="h-top"><div class="h-name">Josper & Land</div><div class="h-count" id="count-grill">9 cards</div></div>
           <div class="h-desc">Cuts, weights, doneness guide, and house sauces.</div>
           <div class="h-tags"><span class="h-tag">Cuts</span><span class="h-tag">Sauces</span><span class="h-tag">Josper</span></div>
         </div>
@@ -348,9 +348,9 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
       <div class="h-card quiz-card" onclick="showScreen('foodq-screen')">
         <div class="h-icon">🧠</div>
         <div class="h-body">
-          <div class="h-top"><div class="h-name">Food Quiz</div><div class="h-count" id="count-foodq">45 cards</div></div>
+          <div class="h-top"><div class="h-name">Food Quiz</div><div class="h-count" id="count-foodq">156 cards</div></div>
           <div class="h-desc">Components, definitions, allergens, critical standards, and service.</div>
-          <div class="h-tags"><span class="h-tag">Components</span><span class="h-tag">Allergens</span><span class="h-tag">Standards</span></div>
+          <div class="h-tags"><span class="h-tag">Allergens</span><span class="h-tag">Standards</span><span class="h-tag">Details</span><span class="h-tag">Service</span></div>
         </div>
         <div class="h-arrow">›</div>
       </div>
@@ -1022,45 +1022,98 @@ const DRINKS = [
 ];
 
 const FOOD_QUIZ = [
-  // Allergens
-  { "section": "Allergens", "q": "What are the allergens in the Hokkaido Scallop Ceviche?", "a": "Shellfish, Fish", "context": "It features scallops and Nuoc Cham (fish sauce)." },
-  { "section": "Allergens", "q": "What are the allergens in the Wagyu Carpaccio?", "a": "Egg, Soy, Gluten", "context": "Contains egg yolk, soy/ponzu, and rice chips." },
-  { "section": "Allergens", "q": "What are the allergens in the Caesar Salad?", "a": "Dairy, Egg, Fish, Peanut", "context": "Contains parmesan, dressing (egg/fish), and candied peanuts." },
-  { "section": "Allergens", "q": "What are the allergens in the Wagyu XO Fried Rice?", "a": "Shellfish, Soy, Gluten (May contain Egg)", "context": "XO sauce has dried seafood, soy is used, and egg floss is a component." },
+  // --- ALLERGENS ---
+  { "section": "Allergens", "q": "What are the allergens in the Bread Service?", "a": "Gluten, Dairy", "context": "Whipped tallow butter is dairy." },
+  { "section": "Allergens", "q": "What are the allergens in the Hokkaido Scallop Ceviche?", "a": "Shellfish, Fish", "context": "Scallops and Nuoc Cham (fish sauce)." },
+  { "section": "Allergens", "q": "What are the allergens in the Wagyu Carpaccio?", "a": "Egg, Soy, Gluten", "context": "Egg yolk, soy/ponzu, and rice chips." },
+  { "section": "Allergens", "q": "What are the allergens in the Chicken Liver Parfait?", "a": "Dairy, Egg, Gluten", "context": "Parfait (dairy/egg) and shokupan toast (gluten)." },
   { "section": "Allergens", "q": "What are the allergens in the Crab Cake?", "a": "Shellfish, Egg, Gluten", "context": "Crab, aioli (egg), and panko (gluten)." },
-  
-  // Standards
+  { "section": "Allergens", "q": "What are the allergens in the Caesar Salad?", "a": "Dairy, Egg, Fish, Peanut", "context": "Contains parmesan, dressing (egg/fish), and candied peanuts." },
+  { "section": "Allergens", "q": "What are the allergens in the Lobster Pao Fan Soup?", "a": "Shellfish, Fish", "context": "Lobster and fish stock elements." },
+  { "section": "Allergens", "q": "What are the allergens in the Wagyu XO Fried Rice?", "a": "Shellfish, Soy, Gluten (May contain Egg)", "context": "XO sauce has dried seafood, soy is used, and egg floss is a component." },
+  { "section": "Allergens", "q": "What are the allergens in the Grilled Miso Broccolini?", "a": "Dairy, Soy", "context": "Miso (soy) and brown butter (dairy)." },
+  { "section": "Allergens", "q": "What are the allergens in the Grilled Mushrooms?", "a": "Soy, Dairy", "context": "Shio koji (soy) and brown butter (dairy)." },
+  { "section": "Allergens", "q": "What are the allergens in the Truffle Fries?", "a": "Egg", "context": "Truffle aioli contains egg." },
+  { "section": "Allergens", "q": "What are the allergens in the Fried Bao?", "a": "Gluten", "context": "Chinese fried mantou." },
+  { "section": "Allergens", "q": "What are the allergens in the Baked Alaska?", "a": "Dairy, Egg, Gluten", "context": "Meringue, ice cream, cake base." },
+  { "section": "Allergens", "q": "What are the allergens in the Apple Tart?", "a": "Dairy, Gluten", "context": "Pastry and butter." },
+  { "section": "Allergens", "q": "What are the allergens in the Tiramisu?", "a": "Dairy, Egg, Gluten", "context": "Mascarpone, egg, ladyfingers." },
+  { "section": "Allergens", "q": "What are the allergens in the Mille Feuille?", "a": "Dairy, Gluten, Egg", "context": "Puff pastry and pastry cream." },
+  { "section": "Allergens", "q": "What are the allergens in the Alcohol Infused Ice Cream?", "a": "Dairy", "context": "Ice cream base." },
+  { "section": "Allergens", "q": "Which seafood sauces contain Dairy?", "a": "Indonesian White Pepper", "context": "It is mounted with butter and cream." },
+  { "section": "Allergens", "q": "Which seafood sauces contain Shellfish?", "a": "Singapore Chili, Chinatown Style", "context": "They use shrimp paste, dried shrimp, or shellfish stock." },
+
+  // --- CRITICAL STANDARDS ---
   { "section": "Standards", "q": "What is the critical rule for the Hokkaido Scallop Ceviche?", "a": "Never allow the scallops to sit in the dressing.", "context": "They must be dressed à la minute and served on a chilled plate." },
   { "section": "Standards", "q": "How is the Lobster Pao Fan served?", "a": "Broth is poured tableside.", "context": "To preserve the crispness of the rice cake and provide a show." },
   { "section": "Standards", "q": "What is the standard for the Chicken Liver Parfait's temperature?", "a": "Serve slightly chilled, never ice cold.", "context": "Ice cold kills the flavor. It should be perfectly smooth." },
   { "section": "Standards", "q": "What is the rule for dressing the Caesar Salad?", "a": "Do not overdress. Lettuce must be completely dry.", "context": "Add peanuts at pickup and serve immediately." },
   { "section": "Standards", "q": "What is the standard for the Crab Cake mix?", "a": "Do not overmix. Maintain a crisp exterior.", "context": "Overmixing breaks down the crab texture." },
+  { "section": "Standards", "q": "What is the rule for the Lobster Pao Fan consommé?", "a": "It must be perfectly clear.", "context": "Keep garnish restrained to showcase the consommé." },
+  { "section": "Standards", "q": "What is the standard for the Wagyu XO Fried Rice?", "a": "Wok-fried over extremely high heat for wok hei. Served piping hot.", "context": "Light, separate grains." },
+  { "section": "Standards", "q": "What is the standard for the Grilled Miso Broccolini?", "a": "Maintain vibrant green colour. Do not overcook.", "context": "Season lightly and serve immediately." },
+  { "section": "Standards", "q": "What is the standard for the Grilled Mushrooms?", "a": "Do not over-marinate. Finish with butter, chives, lemon just before service.", "context": "Maintain distinct mushroom texture." },
+  { "section": "Standards", "q": "What is the standard for the Indonesian White Pepper sauce?", "a": "Never boil after butter is mounted. Aromatic, not harsh.", "context": "Maintain a smooth glossy texture." },
+  { "section": "Standards", "q": "What is the standard for the Singapore Chili sauce?", "a": "Balance sweetness and heat. Do not overpower seafood. Serve piping hot.", "context": "Maintain a rich, glossy texture." },
+  { "section": "Standards", "q": "What is the standard for the Chinatown Style sauce?", "a": "Complements rather than overpowers.", "context": "Silky, velvety, glossy." },
 
-  // Components
+  // --- COMPONENTS ---
+  { "section": "Components", "q": "What are the components of the Hokkaido Scallop Ceviche?", "a": "Scallops, Nuoc Cham, compressed cucumber, breakfast radish, cucamelon, chili oil, micro herbs", "context": "Also lime leaf oil." },
+  { "section": "Components", "q": "What are the components of the Wagyu Carpaccio?", "a": "Hand-cut beef, ssamjang aioli, white kimchi, pickled shimeji, tamago togarashi rice chips, chives", "context": "Hand-cut daily." },
   { "section": "Components", "q": "What are the components of the Chicken Liver Parfait?", "a": "Sous vide parfait, Asian pear, cured egg yolk, shokupan toast", "context": "Grated egg yolk at pickup." },
+  { "section": "Components", "q": "What are the components of the Crab Cake?", "a": "Blue crab, snow crab, panko, Sichuan aioli, watercress, lime", "context": "Minimal filler." },
+  { "section": "Components", "q": "What are the components of the Caesar Salad?", "a": "Baby gem, Thai Caesar dressing, parmigiano reggiano, candied peanuts, Thai basil, micro coriander", "context": "Dressing uses fish sauce, tamarind, lime." },
   { "section": "Components", "q": "What are the components of the Lobster Pao Fan?", "a": "Butter-poached lobster, clear consommé, crispy rice cake, ginger, shiitake, garlic chips, scallion oil", "context": "Pao Fan means 'soaked rice'." },
-  { "section": "Components", "q": "What is in the Wagyu Carpaccio?", "a": "Hand-cut beef, ssamjang aioli, white kimchi, pickled shimeji, tamago togarashi rice chips, chives", "context": "Hand-cut daily." },
-  { "section": "Components", "q": "What is in the Wagyu XO Fried Rice?", "a": "Day-old jasmine rice, diced wagyu, house XO, har mi oil, scallions, egg floss, chives", "context": "Wok-fried over extremely high heat." },
-  { "section": "Components", "q": "What is in the Crab Cake?", "a": "Blue crab, snow crab, panko, Sichuan aioli, watercress, lime", "context": "Minimal filler." },
-  { "section": "Components", "q": "What is in the Grilled Mushrooms?", "a": "Cremini, king oyster, oyster mushrooms, shio koji, brown butter, lemon, chives", "context": "Shio koji is a Japanese fermented seasoning." },
+  { "section": "Components", "q": "What are the components of the Wagyu XO Fried Rice?", "a": "Day-old jasmine rice, diced wagyu, house XO, har mi oil, scallions, egg floss, chives", "context": "Wok-fried over extremely high heat." },
+  { "section": "Components", "q": "What are the components of the Grilled Mushrooms?", "a": "Cremini, king oyster, oyster mushrooms, shio koji, brown butter, lemon, chives", "context": "Shio koji is a Japanese fermented seasoning." },
+  { "section": "Components", "q": "What are the components of the Grilled Miso Broccolini?", "a": "Broccolini, miso, brown butter, seasonal garnish", "context": "Charcoal grilled." },
+  { "section": "Components", "q": "What is the base of the Indonesian White Pepper sauce?", "a": "White mushrooms, onion, garlic, chicken stock, cream, butter, white pepper", "context": "Blended smooth and mounted with butter." },
+  { "section": "Components", "q": "What is the base of the Singapore Chili sauce?", "a": "Aromatic veg, shrimp paste, dried shrimp, chili, tomato, lobster stock, palm sugar", "context": "Slowly cooked." },
+  { "section": "Components", "q": "What is the base of the Chinatown Style sauce?", "a": "Ginger, garlic, shallots, dried chili, Sichuan peppercorns, chicken stock, eggplant, scallions", "context": "Finished with eggplant and scallions." },
 
-  // Pitch / Details
+  // --- DETAILS & DEFINITIONS ---
   { "section": "Details", "q": "What does 'Pao Fan' mean?", "a": "Soaked rice", "context": "A traditional Chinese comfort dish." },
   { "section": "Details", "q": "What is Shio Koji?", "a": "A Japanese fermented seasoning used as a marinade and tenderizer.", "context": "Used on the Grilled Mushrooms." },
   { "section": "Details", "q": "What is Ssamjang?", "a": "A Korean fermented soybean and chili paste.", "context": "Used in the aioli for the Wagyu Carpaccio." },
   { "section": "Details", "q": "What is Nuoc Cham?", "a": "A Vietnamese dipping sauce made with fish sauce and lime.", "context": "Used on the Scallop Ceviche." },
   { "section": "Details", "q": "What is Har Mi oil?", "a": "Dried shrimp oil.", "context": "Used in the Wagyu XO Fried Rice." },
   { "section": "Details", "q": "What is XO sauce?", "a": "A premium Hong Kong condiment featuring dried scallops, dried shrimp, and cured ham.", "context": "Used in the fried rice." },
+  { "section": "Details", "q": "What is Tallow?", "a": "Rendered beef fat.", "context": "Used in the whipped butter for the Bread Service." },
+  { "section": "Details", "q": "What is Shokupan?", "a": "Japanese milk bread.", "context": "Served with the Chicken Liver Parfait." },
+  { "section": "Details", "q": "What is Mantou?", "a": "A steamed then fried Chinese bun.", "context": "The Fried Bao." },
+  { "section": "Details", "q": "What is Mille Feuille?", "a": "Literally 'a thousand leaves' — layered puff pastry.", "context": "Salted caramel orange dessert." },
+  { "section": "Details", "q": "What does the Caesar Salad dressing use instead of Worcestershire/lemon?", "a": "Fish sauce, tamarind, and lime", "context": "Creates a brighter, more aromatic dressing." },
   { "section": "Details", "q": "What is the difference between the two types of crab in the Crab Cake?", "a": "Blue crab and Snow crab", "context": "Focus is on sweet crab meat with minimal filler." },
 
-  // Service
+  // --- SERVICE & THEORY ---
   { "section": "Service", "q": "What are the 5 doneness levels for steaks?", "a": "Rare, Medium Rare, Medium, Medium Well, Well Done", "context": "Medium Rare is recommended for most cuts." },
   { "section": "Service", "q": "Which steak sauce is ONLY for the pork?", "a": "Nduja Vinaigrette (Fermented Chili Jus)", "context": "Spicy, spreadable Calabrian salami sauce." },
   { "section": "Service", "q": "What are the three sauces for the Land cuts?", "a": "Demon Chimichurri, Green Peppercorn, Nduja Vinaigrette", "context": "Green Peppercorn is a classic Au Poivre." },
   { "section": "Service", "q": "How should you describe the Australian Striploin?", "a": "16oz Westholm Farms Australian wagyu with heavy marbling.", "context": "$85" },
   { "section": "Service", "q": "How should you describe the Bone-In AAA Prime Ribeye?", "a": "24oz (or 55oz Tomahawk) Ebony farms Australian AAA. Meaty, bold, intensely flavourful.", "context": "$130 / $255" },
+  { "section": "Service", "q": "How should you describe the Bone-In Ibérico Pork Chop?", "a": "14oz richly marbled Spanish pork with exceptional sweetness and nuttiness.", "context": "$65" },
+  { "section": "Service", "q": "How should you describe the Canadian Prime Lamb Rack?", "a": "Newmarket Lamb. Locally sourced, naturally tender, clean finish.", "context": "$110 Full / $60 Half" },
   { "section": "Service", "q": "What is the Josper?", "a": "A charcoal oven/grill that combines intense radiant heat with live-fire flavour.", "context": "The heart of Leo." },
-  { "section": "Service", "q": "What are the three seafood sauce preparations?", "a": "Singapore Chili, Malaysian White Pepper, Chinatown Style", "context": "Available for Nova Scotia Lobster, BC Dungeness Crab, and Grilled Sea Bream." }
+  { "section": "Service", "q": "What are the three seafood sauce preparations?", "a": "Singapore Chili, Malaysian White Pepper, Chinatown Style", "context": "Available for Nova Scotia Lobster, BC Dungeness Crab, and Grilled Sea Bream." },
+  { "section": "Service", "q": "How is the Nova Scotia Lobster prepared?", "a": "Lightly dusted in cornstarch and fried until crisp.", "context": "Then paired with your choice of sauce." },
+  { "section": "Service", "q": "How is the BC Dungeness Crab prepared?", "a": "May be grilled or fried depending on the chosen sauce.", "context": "Market Price." },
+  { "section": "Service", "q": "How is the Grilled Sea Bream prepared?", "a": "Whole fish grilled in the Josper.", "context": "Cooked simply to preserve natural sweetness." },
+  { "section": "Service", "q": "Which sauce pairs best with Lobster, Sea Bream, and King Crab?", "a": "Indonesian White Pepper", "context": "Peppery, creamy, savoury, aromatic." },
+  { "section": "Service", "q": "Which sauce pairs best with Lobster and Dungeness Crab?", "a": "Singapore Chili", "context": "Sweet, tangy, umami, gentle heat." },
+  { "section": "Service", "q": "Which sauce pairs best with Lobster, King Crab, and Dungeness Crab?", "a": "Chinatown Style", "context": "Spicy, umami, numbing, buttery." },
+  { "section": "Service", "q": "What is the flavor profile of the Australian Striploin?", "a": "Heavy marbling, rich beef character", "context": "Westholm Farms." },
+  { "section": "Service", "q": "What is the flavor profile of the Bone-In AAA Prime Ribeye?", "a": "Meaty, bold beef flavour, heavily marbled", "context": "Ebony farms." },
+  { "section": "Service", "q": "What is the flavor profile of the Ibérico Pork Chop?", "a": "Richly marbled, exceptional sweetness, nuttiness", "context": "Spanish pork." },
+  { "section": "Service", "q": "What is the flavor profile of the Canadian Prime Lamb Rack?", "a": "Locally sourced, naturally tender, clean finish", "context": "Newmarket Lamb." },
+  { "section": "Service", "q": "What is the flavor profile of the Demon Chimichurri?", "a": "Bright, spicy, herbaceous", "context": "Fresh herbs, chili and acidity." },
+  { "section": "Service", "q": "What is the flavor profile of the Green Peppercorn sauce?", "a": "Creamy, peppery, rich", "context": "Classic Au Poivre." },
+  { "section": "Service", "q": "What is the flavor profile of the Nduja Vinaigrette?", "a": "Spicy, funky, oily, rich", "context": "Spreadable Calabrian salami." },
+  { "section": "Service", "q": "What is the flavor profile of the Indonesian White Pepper sauce?", "a": "Peppery, creamy, savoury, aromatic", "context": "Velvety, glossy texture." },
+  { "section": "Service", "q": "What is the flavor profile of the Singapore Chili sauce?", "a": "Sweet, tangy, umami, gentle heat", "context": "Rich, glossy texture." },
+  { "section": "Service", "q": "What is the flavor profile of the Chinatown Style sauce?", "a": "Spicy, umami, numbing, buttery", "context": "Silky, velvety, glossy texture." },
+  { "section": "Service", "q": "Where does the Chinatown Style sauce originate from?", "a": "Cantonese-American restaurants", "context": "Despite the name, it is not from mainland China." },
+  { "section": "Service", "q": "Where does the Singapore Chili sauce originate from?", "a": "Singapore in the 1950s", "context": "One of the country's national dishes." },
+  { "section": "Service", "q": "What is a common menu vs bible discrepancy for the White Pepper sauce?", "a": "Menu says 'Malaysian White Pepper', bible says 'Indonesian'.", "context": "Be aware of both terms." }
 ];
 
 const DRINK_QUIZ = [
@@ -1086,7 +1139,6 @@ const DRINK_QUIZ = [
   { "section": "Beer", "q": "What non-alcoholic beer do we serve?", "a": "Asahi Zero", "context": "$7" }
 ];
 
-// DIAL LABELS for Wine (unused but keeping the structure)
 const DIAL_LABELS = {
   Body: ["Very Light","Light","Medium","Full","Very Full"],
   Acidity: ["Very Low","Low","Medium","High","Very High"],
