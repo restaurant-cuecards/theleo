@@ -363,9 +363,9 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
       <div class="h-card quiz-card" onclick="showScreen('drinkq-screen')">
         <div class="h-icon">🍋</div>
         <div class="h-body">
-          <div class="h-top"><div class="h-name">Bar Quiz</div><div class="h-count" id="count-drinkq">20 cards</div></div>
-          <div class="h-desc">Ingredients, spirits, and prices for all drinks.</div>
-          <div class="h-tags"><span class="h-tag">Ingredients</span><span class="h-tag">Spirits</span><span class="h-tag">Price</span></div>
+          <div class="h-top"><div class="h-name">Bar Quiz</div><div class="h-count" id="count-drinkq">29 cards</div></div>
+          <div class="h-desc">Ingredients, spirits, flavor profiles, and classic comparisons.</div>
+          <div class="h-tags"><span class="h-tag">Ingredients</span><span class="h-tag">Style</span><span class="h-tag">Price</span></div>
         </div>
         <div class="h-arrow">›</div>
       </div>
@@ -1124,15 +1124,26 @@ const FOOD_QUIZ = [
 
 const DRINK_QUIZ = [
   // Ingredients
-  { "section": "Cocktails", "q": "What is in the Leo Smash?", "a": "Tequila Blanco, Thai basil syrup, yuzu, fresh lime, pink peppercorn salt", "context": "$21" },
-  { "section": "Cocktails", "q": "What is in the Southeast Sour?", "a": "Toki Whiskey, goji berry syrup, egg white, fresh lemon juice", "context": "$21" },
-  { "section": "Cocktails", "q": "What is in the Starry Night?", "a": "Pisco, pandan syrup, coconut water", "context": "$21" },
-  { "section": "Cocktails", "q": "What is in Berries & Baiju?", "a": "Baiju Fen Chiew Brown, fresh lemon juice, clarified strawberry syrup", "context": "$21" },
-  { "section": "Cocktails", "q": "What is in the Sesame Street cocktail?", "a": "Roasted peanut-infused whiskey, brandy, toasted black sesame, amaretto & cream foam", "context": "$21 - Contains nuts!" },
-  { "section": "Cocktails", "q": "What is in the Red Garden?", "a": "Gin, elderflower liqueur, hibiscus cordial, orange bitters, edible red flower, orange zest", "context": "$21" },
-  { "section": "Cocktails", "q": "What is in the Spirit of Sichuan?", "a": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil", "context": "$21" },
-  { "section": "Cocktails", "q": "What is in the Banana Bang?", "a": "Banana peel palm sugar, cacao bitters, oleo saccharum infused whiskey", "context": "$21" },
-  { "section": "Cocktails", "q": "What is in the Dai-Curry?", "a": "Appleton Rum, curry syrup, fresh lime juice, whole milk", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Leo Smash?", "a": "Tequila Blanco, Thai basil syrup, yuzu, fresh lime, pink peppercorn salt", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Southeast Sour?", "a": "Toki Whiskey, goji berry syrup, egg white, fresh lemon juice", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Starry Night?", "a": "Pisco, pandan syrup, coconut water", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in Berries & Baiju?", "a": "Baiju Fen Chiew Brown, fresh lemon juice, clarified strawberry syrup", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Sesame Street cocktail?", "a": "Roasted peanut-infused whiskey, brandy, toasted black sesame, amaretto & cream foam", "context": "$21 - Contains nuts!" },
+  { "section": "Ingredients", "q": "What is in the Red Garden?", "a": "Gin, elderflower liqueur, hibiscus cordial, orange bitters, edible red flower, orange zest", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Spirit of Sichuan?", "a": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Banana Bang?", "a": "Banana peel palm sugar, cacao bitters, oleo saccharum infused whiskey", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Dai-Curry?", "a": "Appleton Rum, curry syrup, fresh lime juice, whole milk", "context": "$21" },
+
+  // Style (New!)
+  { "section": "Style", "q": "How would you describe the Leo Smash to a guest?", "a": "A bright, refreshing twist on a Margarita with herbal Thai basil and a peppery finish.", "context": "Related to: Margarita. Sweetness: Balanced/Tart." },
+  { "section": "Style", "q": "How would you describe the Southeast Sour?", "a": "A silky, frothy whiskey sour with tart lemon and a subtle, fruity goji berry sweetness.", "context": "Related to: Whiskey Sour. Sweetness: Balanced." },
+  { "section": "Style", "q": "How would you describe the Starry Night?", "a": "Light, aromatic, and slightly tropical with a unique floral pandan note.", "context": "Related to: Pisco Sour. Sweetness: Lightly Sweet." },
+  { "section": "Style", "q": "How would you describe Berries & Baiju?", "a": "A bold, spirit-forward drink with a strong kick from the Baijiu, balanced by fresh strawberries and lemon.", "context": "Related to: Strawberry Sour. Sweetness: Tart/Boozy." },
+  { "section": "Style", "q": "How would you describe the Sesame Street?", "a": "A rich, dessert-like cocktail that tastes like a peanut butter and sesame treat.", "context": "Related to: Amaretto Sour/Peanut Punch. Sweetness: Sweet/Rich. (Nut allergy!)" },
+  { "section": "Style", "q": "How would you describe the Red Garden?", "a": "Floral, elegant, and refreshing with a beautiful red hue from hibiscus and elderflower.", "context": "Related to: Gin Fizz / French 75. Sweetness: Lightly Sweet." },
+  { "section": "Style", "q": "How would you describe the Spirit of Sichuan?", "a": "A sparkling, dry cocktail with a unique, tingling numbing sensation on the finish.", "context": "Related to: Aperol Spritz / Sake Spritz. Sweetness: Dry." },
+  { "section": "Style", "q": "How would you describe the Banana Bang?", "a": "Rich and spirit-forward with caramelized banana notes and a bitter chocolate finish.", "context": "Related to: Old Fashioned. Sweetness: Medium Sweet." },
+  { "section": "Style", "q": "How would you describe the Dai-Curry?", "a": "A creamy, clarified milk punch with a savory-sweet curry spice and lime acidity.", "context": "Related to: Milk Punch / Daiquiri. Sweetness: Balanced/Savory." },
 
   // Mocktails
   { "section": "Mocktails", "q": "What is in the Iced Blueberry Tea?", "a": "Blueberry white tea", "context": "$14" },
@@ -1625,7 +1636,7 @@ initDeck('grill', GRILL, ['Cuts','Sauces','Equipment','Standards']);
 initDeck('seafood', SEAFOOD_PREP, ['Sauce']);
 initDeck('drinks', DRINKS, ['Cocktails','Mocktails','Beer']);
 initDeck('foodq', FOOD_QUIZ, ['Allergens','Standards','Components','Details','Service']);
-initDeck('drinkq', DRINK_QUIZ, ['Cocktails','Mocktails','Beer']);
+initDeck('drinkq', DRINK_QUIZ, ['Ingredients','Style','Mocktails','Beer']);
 
 srInit('menu', DISHES.length);
 srInit('grill', GRILL.length);
