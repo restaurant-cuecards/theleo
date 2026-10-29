@@ -6,18 +6,19 @@
 <title>The Leo — Service Prep</title>
 <style>
 :root {
-  --bg: #1a1a1a;
-  --card-bg: #242424;
-  --ink: #e0e0e0;
-  --ink-soft: #8a8a8a;
-  --acc: #d95d39; /* Ember orange */
-  --acc-light: #f08c65;
-  --line: #3a3a3a;
-  --cocktail-bg: #14161a;
-  --cocktail-card: #1e2228;
-  --cocktail-acc: #4a8fb5;
-  --cocktail-line: #2f3a42;
-  --serif: 'Playfair Display', Georgia, serif;
+  --bg: #0a1128; /* Deep midnight blue from the ceiling */
+  --card-bg: #111c3a; /* Slightly lighter navy for cards */
+  --ink: #fdfbf7; /* Warm off-white */
+  --ink-soft: #8b9bb4; /* Muted slate for secondary text */
+  --acc: #d4af37; /* Metallic Gold/brass */
+  --acc-light: #f2d16b; /* Light gold for highlights */
+  --line: #23325a; /* Subtle borders */
+  --drink-bg: #070b1a; /* Even darker for the bar section */
+  --drink-card: #131c36;
+  --drink-acc: #c46b8a; /* Blush/pink from the barstools */
+  --drink-acc-s: #f0a3bc; /* Lighter blush */
+  --drink-line: #2a1f30;
+  --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, sans-serif;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -66,11 +67,11 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   display: flex; align-items: center; gap: 14px;
   cursor: pointer;
   border-left: 4px solid var(--acc);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: transform 0.12s, box-shadow 0.12s;
 }
-.h-card:active { transform: scale(0.98); }
-.h-card.cocktail-card { border-left-color: var(--cocktail-acc); }
+.h-card:active { transform: scale(0.98); box-shadow: 0 1px 6px rgba(0,0,0,0.3); }
+.h-card.drink-card { border-left-color: var(--drink-acc); }
 .h-card.quiz-card { border-left-color: #6b8e23; }
 .h-icon { font-size: 26px; width: 38px; text-align: center; flex-shrink: 0; }
 .h-body { flex: 1; min-width: 0; }
@@ -89,7 +90,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 /* DECK SCREENS */
 .deck-wrap { max-width: 600px; margin: 0 auto; padding: 24px 20px 100px; }
 .deck-screen { background: var(--bg); }
-.deck-screen.cocktail-theme { background: var(--cocktail-bg); }
+.deck-screen.drink-theme { background: var(--drink-bg); }
 
 .back-btn {
   background: none; border: none; cursor: pointer;
@@ -98,17 +99,17 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   letter-spacing: 0.04em;
 }
 .back-btn:hover { color: var(--ink); }
-.cocktail-theme .back-btn { color: #7a8f9e; }
-.cocktail-theme .back-btn:hover { color: var(--ink); }
+.drink-theme .back-btn { color: #7a8f9e; }
+.drink-theme .back-btn:hover { color: var(--ink); }
 
 .deck-eyebrow {
   font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--acc); margin-bottom: 6px;
 }
-.cocktail-theme .deck-eyebrow { color: var(--cocktail-acc); }
-.deck-title { font-family: var(--serif); font-size: 34px; font-weight: 400; }
+.drink-theme .deck-eyebrow { color: var(--drink-acc); }
+.deck-title { font-family: var(--serif); font-size: 34px; font-weight: 400; color: var(--ink); }
 .deck-divider { width: 32px; height: 2px; background: var(--acc); margin-top: 12px; margin-bottom: 20px; }
-.cocktail-theme .deck-divider { background: var(--cocktail-acc); }
+.drink-theme .deck-divider { background: var(--drink-acc); }
 
 /* filter pills */
 .cat-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
@@ -118,11 +119,12 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
   color: var(--ink-soft); cursor: pointer; transition: all 0.15s;
 }
-.cat-btn.active { background: var(--acc); border-color: var(--acc); color: #fff; }
-.cocktail-theme .cat-btn { border-color: var(--cocktail-line); color: #7a8f9e; }
-.cocktail-theme .cat-btn.active { background: var(--cocktail-acc); border-color: var(--cocktail-acc); color: #fff; }
+.cat-btn.active { background: var(--acc); border-color: var(--acc); color: #000; }
+.drink-theme .cat-btn { border-color: var(--drink-line); color: #7a8f9e; }
+.drink-theme .cat-btn.active { background: var(--drink-acc); border-color: var(--drink-acc); color: #fff; }
 
 .progress { font-size: 13px; color: var(--ink-soft); text-align: center; margin-bottom: 16px; }
+.drink-theme .progress { color: #7a8f9e; }
 
 /* CARD */
 .card-wrap { perspective: 1600px; cursor: pointer; margin-bottom: 20px; }
@@ -140,31 +142,33 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 }
 .card-front {
   background: var(--card-bg);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   display: flex; flex-direction: column;
   border: 1px solid var(--line);
 }
-.cocktail-theme .card-front {
-  background: var(--cocktail-card);
-  border-color: var(--cocktail-line);
+.drink-theme .card-front {
+  background: var(--drink-card);
+  border-color: var(--drink-line);
 }
 .card-back {
-  background: #111;
-  color: #eee;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  background: #050814;
+  color: var(--ink);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
   position: absolute; top: 0; left: 0; right: 0;
   transform: rotateY(180deg);
   display: flex; flex-direction: column;
-  border: 1px solid #333;
+  border: 1px solid #1a2542;
 }
-.cocktail-theme .card-back { background: #0d1014; border-color: var(--cocktail-line); }
+.drink-theme .card-back { background: #0a0f1e; border-color: var(--drink-line); }
 
 /* front face */
 .front-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); margin-bottom: 10px; font-weight: 600; }
-.cocktail-theme .card-front .front-cat { color: var(--cocktail-acc); }
-.front-name { font-family: var(--serif); font-size: 32px; font-weight: 400; flex: 1; display: flex; align-items: center; margin: 8px 0 16px; line-height: 1.1; }
-.front-price { font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 10px; letter-spacing: 0.05em; }
+.drink-theme .card-front .front-cat { color: var(--drink-acc-s); }
+.front-name { font-family: var(--serif); font-size: 32px; font-weight: 400; flex: 1; display: flex; align-items: center; margin: 8px 0 16px; line-height: 1.1; color: var(--ink); }
+.front-price { font-size: 24px; font-weight: 600; color: var(--acc); margin-bottom: 10px; letter-spacing: 0.05em; }
+.drink-theme .card-front .front-price { color: var(--drink-acc-s); }
 .tap-hint { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--line); margin-top: auto; }
+.drink-theme .card-front .tap-hint { color: var(--drink-line); }
 
 /* back face shared */
 .section-tag {
@@ -175,14 +179,14 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   border-radius: 4px; padding: 2px 7px;
   margin-bottom: 8px;
 }
-.back-name { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 18px; color: #fff; }
+.back-name { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 18px; color: var(--acc-light); }
 .back-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 16px 0; }
 
 /* menu back */
 .pitch-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
 .pitch-item { display: flex; align-items: baseline; gap: 12px; }
 .pitch-num { font-size: 10px; color: rgba(255,255,255,0.35); min-width: 16px; }
-.pitch-word { font-size: 18px; font-family: var(--serif); font-weight: 400; color: #fff; }
+.pitch-word { font-size: 18px; font-family: var(--serif); font-weight: 400; color: var(--ink); }
 
 .info-block {
   background: rgba(255,255,255,0.04);
@@ -191,13 +195,15 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   border: 1px solid rgba(255,255,255,0.05);
 }
 .info-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--acc-light); margin-bottom: 6px; font-weight: 600; }
+.drink-theme .info-label { color: var(--drink-acc-s); }
 .info-text { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.85); }
 .info-text.italic { font-style: italic; color: #fff; }
 .mise-line { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
 .note-line { font-size: 12px; color: rgba(255,255,255,0.45); font-style: italic; margin-top: 12px; border-left: 2px solid var(--acc); padding-left: 8px; }
+.drink-theme .note-line { border-left-color: var(--drink-acc); }
 
 /* quiz back */
-.quiz-q { font-family: var(--serif); font-size: 24px; font-weight: 400; flex: 1; display: flex; align-items: center; line-height: 1.4; margin: 8px 0 16px; color: #fff; }
+.quiz-q { font-family: var(--serif); font-size: 24px; font-weight: 400; flex: 1; display: flex; align-items: center; line-height: 1.4; margin: 8px 0 16px; color: var(--ink); }
 .quiz-context { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
 .quiz-a { font-family: var(--serif); font-size: 30px; font-weight: 400; flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--acc-light); margin: 20px 0; }
 .quiz-context-back { font-size: 12px; color: rgba(255,255,255,0.45); text-align: center; margin-top: 8px; }
@@ -219,11 +225,11 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 }
 .nav-btn:active { transform: scale(0.96); }
 .nav-btn.primary {
-  flex: 1; background: var(--acc); color: #fff; border-color: var(--acc);
+  flex: 1; background: var(--acc); color: #000; border-color: var(--acc);
   font-size: 15px; font-weight: 600;
 }
-.cocktail-theme .nav-btn { background: var(--cocktail-card); border-color: var(--cocktail-line); }
-.cocktail-theme .nav-btn.primary { background: var(--cocktail-acc); border-color: var(--cocktail-acc); }
+.drink-theme .nav-btn { background: var(--drink-card); border-color: var(--drink-line); }
+.drink-theme .nav-btn.primary { background: var(--drink-acc); border-color: var(--drink-acc); color: #fff;}
 
 .extra-row { display: flex; justify-content: center; gap: 24px; }
 .extra-btn {
@@ -274,7 +280,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 /* BOTTOM NAV */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0;
-  background: rgba(26,26,26,0.95); backdrop-filter: blur(10px);
+  background: rgba(10,17,40,0.95); backdrop-filter: blur(10px);
   border-top: 1px solid var(--line);
   display: flex; z-index: 100;
   padding-bottom: env(safe-area-inset-bottom, 0);
@@ -332,7 +338,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
         </div>
         <div class="h-arrow">›</div>
       </div>
-      <div class="h-card cocktail-card" onclick="showScreen('drinks-screen')">
+      <div class="h-card drink-card" onclick="showScreen('drinks-screen')">
         <div class="h-icon">🍸</div>
         <div class="h-body">
           <div class="h-top"><div class="h-name">Bar Menu</div><div class="h-count" id="count-drinks">18 items</div></div>
@@ -476,7 +482,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 </div>
 
 <!-- DRINKS SCREEN -->
-<div id="drinks-screen" class="screen deck-screen cocktail-theme">
+<div id="drinks-screen" class="screen deck-screen drink-theme">
   <div class="deck-wrap">
     <button class="back-btn" onclick="showScreen('home')">← Back</button>
     <div class="deck-eyebrow">Bar Program</div>
@@ -548,7 +554,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 </div>
 
 <!-- DRINK QUIZ SCREEN -->
-<div id="drinkq-screen" class="screen deck-screen cocktail-theme">
+<div id="drinkq-screen" class="screen deck-screen drink-theme">
   <div class="deck-wrap">
     <button class="back-btn" onclick="showScreen('home')">← Back</button>
     <div class="deck-eyebrow">Quick Quiz</div>
