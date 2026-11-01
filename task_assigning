@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>The Leo - Operations</title>
+<style>
+:root {
+  --bg: #0a1128; /* Midnight blue */
+  --card-bg: #111c3a; /* Navy */
+  --ink: #fdfbf7; /* Off-white */
+  --ink-soft: #8b9bb4;
+  --acc: #d4af37; /* Gold */
+  --acc-dark: #b89222;
+  --danger: #c46b8a; /* Blush/Pink for 86/Urgent */
+  --success: #4a8fb5;
+  --line: #23325a;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; user-select: none; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; display: flex; overflow: hidden; }
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px; background: #070b1a; border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; height: 100vh; padding: 24px 0;
+}
+.logo { font-family: var(--serif); font-size: 32px; font-weight: 400; color: var(--acc); text-align: center; margin-bottom: 8px; }
+.logo-sub { text-align: center; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 40px; }
+
+.nav-item {
+  padding: 16px 24px; font-size: 16px; font-weight: 500; color: var(--ink-soft);
+  cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s;
+  border-left: 4px solid transparent;
+}
+.nav-item:hover { background: rgba(255,255,255,0.03); color: var(--ink); }
+.nav-item.active { color: var(--acc); border-left-color: var(--acc); background: rgba(212, 175, 55, 0.05); }
+.nav-item svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+.spacer { flex: 1; }
+.role-switch { padding: 24px; border-top: 1px solid var(--line); }
+.btn-role { width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; border: 2px solid var(--line); background: transparent; color: var(--ink); transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
+.btn-role.manager { border-color: var(--acc); color: var(--acc); }
+
+/* MAIN CONTENT */
+.main-content { flex: 1; height: 100vh; overflow-y: auto; padding: 40px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+.header h1 { font-family: var(--serif); font-size: 36px; font-weight: 400; }
+.header .date { font-size: 14px; color: var(--ink-soft); }
+
+/* VIEWS */
+.view { display: none; animation: fadeIn 0.3s ease; }
+.view.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* CARDS & LAYOUT */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.card { background: var(--card-bg); border-radius: 16px; padding: 24px; border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.card-title { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acc); font-weight: 600; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+
+/* 86 BOARD & SPECIALS */
+.list-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 18px; }
+.list-item:last-child { border-bottom: none; }
+.item-sub { font-size: 13px; color: var(--ink-soft); display: block; margin-top: 4px; }
+.badge-danger { background: rgba(196, 107, 138, 0.2); color: var(--danger); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.btn-add { background: var(--acc); color: #000; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+
+/* CHECKLISTS & TASKS */
+.task-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px; background: rgba(255,255,255,0.02); border-radius: 12px; margin-bottom: 12px; cursor: pointer; transition: background 0.2s; }
+.task-item:hover { background: rgba(255,255,255,0.05); }
+.task-checkbox { width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--ink-soft); display: flex; justify-content: center; align-items: center; flex-shrink: 0; transition: all 0.2s; margin-top: 2px; }
+.task-item.completed .task-checkbox { background: var(--acc); border-color: var(--acc); }
+.task-item.completed .task-checkbox svg { display: block; stroke: #000; }
+.task-checkbox svg { display: none; width: 18px; height: 18px; stroke-width: 3; }
+.task-text { font-size: 18px; transition: color 0.2s; }
+.task-item.completed .task-text { color: var(--ink-soft); text-decoration: line-through; }
+.task-assignee { font-size: 12px; color: var(--acc); margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+
+/* MANAGER OVERLAY */
+.manager-only { display: none; }
+body.is-manager .manager-only { display: flex; }
+
+/* MODAL */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 100; backdrop-filter: blur(4px); }
+.modal-overlay.active { display: flex; }
+.modal { background: var(--card-bg); border: 1px solid var(--line); border-radius: 20px; padding: 32px; width: 400px; }
+.modal h2 { font-family: var(--serif); font-size: 24px; margin-bottom: 20px; color: var(--acc); }
+.modal input, .modal select { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.2); color: var(--ink); font-size: 16px; margin-bottom: 16px; font-family: var(--sans); }
+.modal input:focus, .modal select:focus { outline: none; border-color: var(--acc); }
+.modal-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 8px; }
+.btn-cancel { background: transparent; border: 1px solid var(--line); color: var(--ink); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.btn-save { background: var(--acc); border: none; color: #000; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+
+/* TABLET LANDSCAPE SPECIFIC */
+@media (max-width: 1024px) {
+  .sidebar { width: 200px; }
+  .main-content { padding: 24px; }
+  .grid-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo">The Leo</div>
+  <div class="logo-sub">Staff Ops</div>
+
+  <div class="nav-item active" onclick="switchTab('dashboard', this)">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+    Dashboard
+  </div>
+  <div class="nav-item" onclick="switchTab('checklists', this)">
+    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    Checklists
+  </div>
+  <div class="nav-item" onclick="switchTab('tasks', this)">
+    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    Staff Tasks
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="role-switch">
+    <button class="btn-role" id="role-btn" onclick="toggleRole()">
+      Staff Mode
+    </button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+  <div class="header">
+    <h1 id="page-title">Shift Dashboard</h1>
+    <div class="date" id="current-date"></div>
+  </div>
+
+  <!-- DASHBOARD VIEW -->
+  <div id="dashboard" class="view active">
+    <div class="grid-2">
+      <!-- 86 Board -->
+      <div class="card">
+        <div class="card-title">
+          86 Board (Out of Stock)
+          <button class="btn-add manager-only" onclick="openModal('86')">+ Add</button>
+        </div>
+        <div id="board-86-list"></div>
+      </div>
+
+      <!-- Specials -->
+      <div class="card">
+        <div class="card-title">
+          Today's Specials
+          <button class="btn-add manager-only" onclick="openModal('special')">+ Add</button>
+        </div>
+        <div id="specials-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLISTS VIEW -->
+  <div id="checklists" class="view">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Opening Checklist</div>
+        <div id="opening-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Closing Checklist</div>
+        <div id="closing-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TASKS VIEW -->
+  <div id="tasks" class="view">
+    <div class="card" style="max-width: 800px; margin: 0 auto;">
+      <div class="card-title">
+        Side Duties & Assignments
+        <button class="btn-add manager-only" onclick="openModal('task')">+ Assign Task</button>
+      </div>
+      <div id="tasks-list"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h2 id="modal-title">Add Item</h2>
+    <input type="text" id="modal-input-1" placeholder="Item name...">
+    <input type="text" id="modal-input-2" placeholder="Details (optional)...">
+    
+    <div id="assignee-container" style="display: none;">
+      <select id="modal-assignee">
+        <option value="">Unassigned</option>
+        <option value="Sarah (Server)">Sarah (Server)</option>
+        <option value="Mike (Bar)">Mike (Bar)</option>
+        <option value="Alex (Host)">Alex (Host)</option>
+      </select>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveModal()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// --- INITIAL DATA (Mock Database) ---
+const defaultData = {
+  eightySix: [
+    { id: 1, name: "Oysters", detail: "Ran out at 7pm", time: "7:15 PM" },
+    { id: 2, name: "Tuna Crudo", detail: "No tuna delivery", time: "5:00 PM" }
+  ],
+  specials: [
+    { id: 1, name: "Halibut Special", detail: "Tuscan kale, chickpeas, saffron aioli" },
+    { id: 2, name: "32oz Porterhouse", detail: "For 2 people, 25oz meat" }
+  ],
+  opening: [
+    { id: 1, text: "Fill 8 water jugs with ice", completed: true },
+    { id: 2, text: "Set tables with gold cutlery", completed: false },
+    { id: 3, text: "Check candle levels (min 30%)", completed: false },
+    { id: 4, text: "Wipe down menus", completed: false }
+  ],
+  closing: [
+    { id: 5, text: "Empty all trash and recycling", completed: false },
+    { id: 6, text: "Wipe down espresso machine", completed: false },
+    { id: 7, text: "Count cash drawer", completed: false }
+  ],
+  tasks: [
+    { id: 1, text: "Polish all wine glasses", assignee: "Sarah (Server)", completed: false },
+    { id: 2, text: "Restock bar fridge", assignee: "Mike (Bar)", completed: false },
+    { id: 3, text: "Roll cutlery for tomorrow", assignee: "Alex (Host)", completed: false }
+  ]
+};
+
+// Initialize state from LocalStorage or default
+let appData = JSON.parse(localStorage.getItem('leoOpsData')) || JSON.parse(JSON.stringify(defaultData));
+let isManager = false;
+let currentModalType = '';
+
+// --- RENDER FUNCTIONS ---
+function render() {
+  // 86 Board
+  const list86 = document.getElementById('board-86-list');
+  list86.innerHTML = appData.eightySix.map(item => `
+    <div class="list-item">
+      <div>
+        <strong>${item.name}</strong>
+        <span class="item-sub">${item.detail}</span>
+      </div>
+      <span class="badge-danger">${item.time}</span>
+    </div>
+  `).join('') || '<div style="color:var(--ink-soft); font-style:italic;">Nothing currently 86\'d</div>';
+
+  // Specials
+  const specialsList = document.getElementById('specials-list');
+  specialsList.innerHTML = appData.specials.map(item => `
+    <div class="list-item">
+      <div>
+        <strong>${item.name}</strong>
+        <span class="item-sub">${item.detail}</span>
+      </div>
+    </div>
+  `).join('');
+
+  // Checklists
+  const renderChecklist = (listId, dataArray) => {
+    const el = document.getElementById(listId);
+    el.innerHTML = dataArray.map(item => `
+      <div class="task-item ${item.completed ? 'completed' : ''}" onclick="toggleChecklist(${item.id}, '${listId}')">
+        <div class="task-checkbox">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="task-text">${item.text}</div>
+      </div>
+    `).join('');
+  };
+
+  renderChecklist('opening-list', appData.opening);
+  renderChecklist('closing-list', appData.closing);
+
+  // Tasks
+  const tasksList = document.getElementById('tasks-list');
+  tasksList.innerHTML = appData.tasks.map(item => `
+    <div class="task-item ${item.completed ? 'completed' : ''}" onclick="toggleTask(${item.id})">
+      <div class="task-checkbox">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="task-text">
+        ${item.text}
+        ${item.assignee ? `<div class="task-assignee">Assigned to: ${item.assignee}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  // Save to LocalStorage so it persists on refresh
+  localStorage.setItem('leoOpsData', JSON.stringify(appData));
+}
+
+// --- ACTIONS ---
+function toggleChecklist(id, listId) {
+  const list = listId === 'opening-list' ? appData.opening : appData.closing;
+  const item = list.find(i => i.id === id);
+  if (item) item.completed = !item.completed;
+  render();
+}
+
+function toggleTask(id) {
+  const item = appData.tasks.find(i => i.id === id);
+  if (item) item.completed = !item.completed;
+  render();
+}
+
+function toggleRole() {
+  isManager = !isManager;
+  const btn = document.getElementById('role-btn');
+  if (isManager) {
+    document.body.classList.add('is-manager');
+    btn.textContent = 'Manager Mode';
+    btn.classList.add('manager');
+  } else {
+    document.body.classList.remove('is-manager');
+    btn.textContent = 'Staff Mode';
+    btn.classList.remove('manager');
+  }
+}
+
+function switchTab(tabId, el) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  el.classList.add('active');
+  
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+
+  const titles = { dashboard: 'Shift Dashboard', checklists: 'Daily Checklists', tasks: 'Staff Assignments' };
+  document.getElementById('page-title').textContent = titles[tabId];
+}
+
+// --- MODAL LOGIC ---
+function openModal(type) {
+  currentModalType = type;
+  const modal = document.getElementById('modal');
+  const title = document.getElementById('modal-title');
+  const input1 = document.getElementById('modal-input-1');
+  const input2 = document.getElementById('modal-input-2');
+  const assigneeBox = document.getElementById('assignee-container');
+
+  input1.value = '';
+  input2.value = '';
+  
+  if (type === '86') {
+    title.textContent = "Mark Item 86'd";
+    input1.placeholder = "Item Name (e.g., Oysters)";
+    input2.placeholder = "Reason (e.g., Ran out)";
+    assigneeBox.style.display = 'none';
+  } else if (type === 'special') {
+    title.textContent = "Add Special";
+    input1.placeholder = "Special Name";
+    input2.placeholder = "Description";
+    assigneeBox.style.display = 'none';
+  } else if (type === 'task') {
+    title.textContent = "Assign Task";
+    input1.placeholder = "Task Description";
+    input2.style.display = 'none';
+    assigneeBox.style.display = 'block';
+  }
+
+  modal.classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  document.getElementById('modal-input-2').style.display = 'block'; // reset
+}
+
+function saveModal() {
+  const val1 = document.getElementById('modal-input-1').value;
+  const val2 = document.getElementById('modal-input-2').value;
+  const assignee = document.getElementById('modal-assignee').value;
+  
+  if (!val1) return; // Basic validation
+
+  const now = new Date();
+  const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+  if (currentModalType === '86') {
+    appData.eightySix.push({ id: Date.now(), name: val1, detail: val2 || "Out of stock", time: timeString });
+  } else if (currentModalType === 'special') {
+    appData.specials.push({ id: Date.now(), name: val1, detail: val2 });
+  } else if (currentModalType === 'task') {
+    appData.tasks.push({ id: Date.now(), text: val1, assignee: assignee, completed: false });
+  }
+
+  closeModal();
+  render();
+}
+
+// --- SETUP ---
+function setDate() {
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', options);
+}
+
+setDate();
+render();
+</script>
+</body>
+</html>
