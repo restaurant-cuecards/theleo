@@ -14,14 +14,14 @@
   --acc-light: #d4af37;
   --line: #d4c4a0;
   
-  /* Bar Dark Theme */
-  --drink-bg: #0a1128;
-  --drink-card: #111c3a;
-  --drink-ink: #fdfbf7;
-  --drink-ink-soft: #8b9bb4;
-  --drink-acc: #d4af37; 
-  --drink-acc-s: #f0a3bc;
-  --drink-line: #23325a;
+  /* Bar/Wine Dark Theme */
+  --dark-bg: #0a1128;
+  --dark-card: #111c3a;
+  --dark-ink: #fdfbf7;
+  --dark-ink-soft: #8b9bb4;
+  --dark-acc: #d4af37; 
+  --dark-acc-s: #f0a3bc;
+  --dark-line: #23325a;
   
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, sans-serif;
@@ -75,7 +75,8 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   transition: transform 0.12s, box-shadow 0.12s;
 }
 .h-card:active { transform: scale(0.98); box-shadow: 0 1px 6px rgba(0,0,0,0.07); }
-.h-card.drink-card { border-left-color: var(--drink-card); }
+.h-card.dark-card { border-left-color: var(--dark-bg); }
+.h-card.wine-card { border-left-color: #8b1a1a; }
 .h-card.quiz-card { border-left-color: #4a6e2a; }
 .h-icon { font-size: 26px; width: 38px; text-align: center; flex-shrink: 0; }
 .h-body { flex: 1; min-width: 0; }
@@ -94,7 +95,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 /* DECK SCREENS */
 .deck-wrap { max-width: 600px; margin: 0 auto; padding: 24px 20px 100px; }
 .deck-screen { background: var(--bg); }
-.deck-screen.drink-theme { background: var(--drink-bg); color: var(--drink-ink); }
+.deck-screen.dark-theme { background: var(--dark-bg); color: var(--dark-ink); }
 
 .back-btn {
   background: none; border: none; cursor: pointer;
@@ -103,18 +104,18 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   letter-spacing: 0.04em;
 }
 .back-btn:hover { color: var(--ink); }
-.drink-theme .back-btn { color: var(--drink-ink-soft); }
-.drink-theme .back-btn:hover { color: var(--drink-ink); }
+.dark-theme .back-btn { color: var(--dark-ink-soft); }
+.dark-theme .back-btn:hover { color: var(--dark-ink); }
 
 .deck-eyebrow {
   font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--ink-soft); margin-bottom: 6px;
 }
-.drink-theme .deck-eyebrow { color: var(--drink-acc-s); }
+.dark-theme .deck-eyebrow { color: var(--dark-acc-s); }
 .deck-title { font-family: var(--serif); font-size: 34px; font-weight: 400; color: var(--ink); }
-.drink-theme .deck-title { color: var(--drink-ink); }
+.dark-theme .deck-title { color: var(--dark-ink); }
 .deck-divider { width: 32px; height: 2px; background: var(--acc); margin-top: 12px; margin-bottom: 20px; }
-.drink-theme .deck-divider { background: var(--drink-acc); }
+.dark-theme .deck-divider { background: var(--dark-acc); }
 
 /* filter pills */
 .cat-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
@@ -125,11 +126,11 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   color: var(--ink-soft); cursor: pointer; transition: all 0.15s;
 }
 .cat-btn.active { background: var(--ink); border-color: var(--ink); color: #f5ecd7; }
-.drink-theme .cat-btn { border-color: var(--drink-line); color: var(--drink-ink-soft); }
-.drink-theme .cat-btn.active { background: var(--drink-acc); border-color: var(--drink-acc); color: #000; }
+.dark-theme .cat-btn { border-color: var(--dark-line); color: var(--dark-ink-soft); }
+.dark-theme .cat-btn.active { background: var(--dark-acc); border-color: var(--dark-acc); color: #000; }
 
 .progress { font-size: 13px; color: var(--ink-soft); text-align: center; margin-bottom: 16px; }
-.drink-theme .progress { color: var(--drink-ink-soft); }
+.dark-theme .progress { color: var(--dark-ink-soft); }
 
 /* CARD */
 .card-wrap { perspective: 1600px; cursor: pointer; margin-bottom: 20px; }
@@ -150,10 +151,10 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   box-shadow: 0 4px 24px rgba(0,0,0,0.1);
   display: flex; flex-direction: column;
 }
-.drink-theme .card-front {
-  background: var(--drink-card);
+.dark-theme .card-front {
+  background: var(--dark-card);
   box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  color: var(--drink-ink);
+  color: var(--dark-ink);
 }
 .card-back {
   background: #2a1f14;
@@ -163,17 +164,17 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   transform: rotateY(180deg);
   display: flex; flex-direction: column;
 }
-.drink-theme .card-back { background: #050814; color: var(--drink-ink); border: 1px solid var(--drink-line); }
+.dark-theme .card-back { background: #050814; color: var(--dark-ink); border: 1px solid var(--dark-line); }
 
 /* front face */
 .front-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); margin-bottom: 10px; font-weight: 600;}
-.drink-theme .card-front .front-cat { color: var(--drink-acc-s); }
+.dark-theme .card-front .front-cat { color: var(--dark-acc-s); }
 .front-name { font-family: var(--serif); font-size: 32px; font-weight: 400; flex: 1; display: flex; align-items: center; margin: 8px 0 16px; line-height: 1.1; color: var(--ink);}
-.drink-theme .card-front .front-name { color: var(--drink-ink); }
+.dark-theme .card-front .front-name { color: var(--dark-ink); }
 .front-price { font-size: 24px; font-weight: 600; color: var(--acc); margin-bottom: 10px; letter-spacing: 0.05em;}
-.drink-theme .card-front .front-price { color: var(--drink-acc-s); }
+.dark-theme .card-front .front-price { color: var(--dark-acc-s); }
 .tap-hint { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--line); margin-top: auto; }
-.drink-theme .card-front .tap-hint { color: var(--drink-line); }
+.dark-theme .card-front .tap-hint { color: var(--dark-line); }
 
 /* back face shared */
 .section-tag {
@@ -206,9 +207,9 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 
 /* quiz back */
 .quiz-q { font-family: var(--serif); font-size: 24px; font-weight: 400; flex: 1; display: flex; align-items: center; line-height: 1.4; margin: 8px 0 16px; color: var(--ink); }
-.drink-theme .quiz-q { color: var(--drink-ink); }
+.dark-theme .quiz-q { color: var(--dark-ink); }
 .quiz-context { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
-.drink-theme .quiz-context { color: var(--drink-ink-soft); }
+.dark-theme .quiz-context { color: var(--dark-ink-soft); }
 .quiz-a { font-family: var(--serif); font-size: 30px; font-weight: 400; flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--acc-light); margin: 20px 0;}
 .quiz-context-back { font-size: 12px; color: rgba(255,255,255,0.45); text-align: center; margin-top: 8px; }
 
@@ -232,8 +233,8 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   flex: 1; background: var(--acc); color: #fff; border-color: var(--acc);
   font-size: 15px; font-weight: 600;
 }
-.drink-theme .nav-btn { background: var(--drink-card); border-color: var(--drink-line); color: var(--drink-ink-soft); }
-.drink-theme .nav-btn.primary { background: var(--drink-acc); border-color: var(--drink-acc); color: #000; }
+.dark-theme .nav-btn { background: var(--dark-card); border-color: var(--dark-line); color: var(--dark-ink-soft); }
+.dark-theme .nav-btn.primary { background: var(--dark-acc); border-color: var(--dark-acc); color: #000; }
 
 .extra-row { display: flex; justify-content: center; gap: 24px; }
 .extra-btn {
@@ -242,7 +243,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   color: var(--ink-soft); display: flex; align-items: center; gap: 6px;
   padding: 6px 0;
 }
-.drink-theme .extra-btn { color: var(--drink-ink-soft); }
+.dark-theme .extra-btn { color: var(--dark-ink-soft); }
 
 /* SPACED REPETITION */
 .sr-row {
@@ -268,15 +269,15 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 .sr-badge.wrong  { background: rgba(179,58,58,0.15); color: #b33a3a; }
 .sr-badge.unsure { background: rgba(204,122,42,0.15); color: #cc7a2a; }
 .sr-badge.right  { background: rgba(46,140,78,0.15); color: #2e8c4e; }
-.drink-theme .sr-badge.wrong  { background: rgba(179,58,58,0.25); color: #e07070; }
-.drink-theme .sr-badge.unsure { background: rgba(204,122,42,0.25); color: #e8a060; }
-.drink-theme .sr-badge.right  { background: rgba(46,140,78,0.25); color: #70e090; }
+.dark-theme .sr-badge.wrong  { background: rgba(179,58,58,0.25); color: #e07070; }
+.dark-theme .sr-badge.unsure { background: rgba(204,122,42,0.25); color: #e8a060; }
+.dark-theme .sr-badge.right  { background: rgba(46,140,78,0.25); color: #70e090; }
 
 .sr-progress-bar-wrap {
   height: 4px; background: rgba(0,0,0,0.08);
   border-radius: 4px; margin-bottom: 14px; overflow: hidden;
 }
-.drink-theme .sr-progress-bar-wrap { background: rgba(255,255,255,0.08); }
+.dark-theme .sr-progress-bar-wrap { background: rgba(255,255,255,0.08); }
 .sr-progress-bar {
   height: 100%; background: #2e8c4e;
   border-radius: 4px; transition: width 0.4s ease;
@@ -285,7 +286,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   text-align: center; font-size: 11px; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px;
 }
-.drink-theme .sr-stats { color: var(--drink-ink-soft); }
+.dark-theme .sr-stats { color: var(--dark-ink-soft); }
 
 /* BOTTOM NAV */
 .bottom-nav {
@@ -342,18 +343,27 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
       <div class="h-card" onclick="showScreen('seafood-screen')">
         <div class="h-icon">🦞</div>
         <div class="h-body">
-          <div class="h-top"><div class="h-name">Seafood Prep</div><div class="h-count" id="count-seafood">3 cards</div></div>
-          <div class="h-desc">The three signature sauce preparations for lobster and crab.</div>
-          <div class="h-tags"><span class="h-tag">Singapore</span><span class="h-tag">White Pepper</span><span class="h-tag">Chinatown</span></div>
+          <div class="h-top"><div class="h-name">Seafood Prep</div><div class="h-count" id="count-seafood">4 cards</div></div>
+          <div class="h-desc">The signature sauce preparations for lobster and crab.</div>
+          <div class="h-tags"><span class="h-tag">Singapore</span><span class="h-tag">White Pepper</span><span class="h-tag">Chinatown</span><span class="h-tag">Sichuan Mala</span></div>
         </div>
         <div class="h-arrow">›</div>
       </div>
-      <div class="h-card drink-card" onclick="showScreen('drinks-screen')">
+      <div class="h-card dark-card" onclick="showScreen('drinks-screen')">
         <div class="h-icon">🍸</div>
         <div class="h-body">
           <div class="h-top"><div class="h-name">Bar Menu</div><div class="h-count" id="count-drinks">18 items</div></div>
           <div class="h-desc">Signature cocktails, mocktails, and beer.</div>
           <div class="h-tags"><span class="h-tag">Cocktails</span><span class="h-tag">Mocktails</span><span class="h-tag">Beer</span></div>
+        </div>
+        <div class="h-arrow">›</div>
+      </div>
+      <div class="h-card wine-card" onclick="showScreen('wine-screen')">
+        <div class="h-icon">🍷</div>
+        <div class="h-body">
+          <div class="h-top"><div class="h-name">Wine List</div><div class="h-count" id="count-wine">20 wines</div></div>
+          <div class="h-desc">Tasting notes and pairings for every bottle.</div>
+          <div class="h-tags"><span class="h-tag">Red</span><span class="h-tag">White</span><span class="h-tag">Sparkling</span></div>
         </div>
         <div class="h-arrow">›</div>
       </div>
@@ -365,8 +375,8 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
         <div class="h-icon">🧠</div>
         <div class="h-body">
           <div class="h-top"><div class="h-name">Food Quiz</div><div class="h-count" id="count-foodq">156 cards</div></div>
-          <div class="h-desc">Components, definitions, allergens, critical standards, and service.</div>
-          <div class="h-tags"><span class="h-tag">Allergens</span><span class="h-tag">Standards</span><span class="h-tag">Details</span><span class="h-tag">Service</span></div>
+          <div class="h-desc">Pitch lines, components, details, standards, and allergens.</div>
+          <div class="h-tags"><span class="h-tag">Pitch</span><span class="h-tag">Components</span><span class="h-tag">Allergens</span></div>
         </div>
         <div class="h-arrow">›</div>
       </div>
@@ -376,6 +386,15 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
           <div class="h-top"><div class="h-name">Bar Quiz</div><div class="h-count" id="count-drinkq">29 cards</div></div>
           <div class="h-desc">Ingredients, spirits, flavor profiles, and classic comparisons.</div>
           <div class="h-tags"><span class="h-tag">Ingredients</span><span class="h-tag">Style</span><span class="h-tag">Price</span></div>
+        </div>
+        <div class="h-arrow">›</div>
+      </div>
+      <div class="h-card quiz-card" onclick="showScreen('wineq-screen')">
+        <div class="h-icon">⭐</div>
+        <div class="h-body">
+          <div class="h-top"><div class="h-name">Wine Quiz</div><div class="h-count" id="count-wineq">39 cards</div></div>
+          <div class="h-desc">Regions, grapes, prices, pairings, and tasting notes.</div>
+          <div class="h-tags"><span class="h-tag">Grape</span><span class="h-tag">Pairing</span><span class="h-tag">Notes</span></div>
         </div>
         <div class="h-arrow">›</div>
       </div>
@@ -492,7 +511,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 </div>
 
 <!-- DRINKS SCREEN -->
-<div id="drinks-screen" class="screen deck-screen drink-theme">
+<div id="drinks-screen" class="screen deck-screen dark-theme">
   <div class="deck-wrap">
     <button class="back-btn" onclick="showScreen('home')">← Back</button>
     <div class="deck-eyebrow">Bar Program</div>
@@ -522,6 +541,42 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
         <button class="sr-btn sr-wrong"  id="drinks-sr-wrong"  onclick="srMark('drinks','wrong')">A = Incorrect</button>
         <button class="sr-btn sr-unsure" id="drinks-sr-unsure" onclick="srMark('drinks','unsure')">S = Unsure</button>
         <button class="sr-btn sr-right"  id="drinks-sr-right"  onclick="srMark('drinks','right')">D = Correct</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WINE SCREEN -->
+<div id="wine-screen" class="screen deck-screen dark-theme">
+  <div class="deck-wrap">
+    <button class="back-btn" onclick="showScreen('home')">← Back</button>
+    <div class="deck-eyebrow">Reference</div>
+    <div class="deck-title">Wine List</div>
+    <div class="deck-divider"></div>
+    <div class="cat-row" id="wine-cats"></div>
+    <div class="progress" id="wine-prog"></div>
+    <div class="sr-stats" id="wine-sr-stats"></div>
+    <div class="sr-progress-bar-wrap"><div class="sr-progress-bar" id="wine-sr-bar" style="width:0%"></div></div>
+    <div class="card-wrap" onclick="flip('wine')">
+      <div class="card-inner" id="wine-card">
+        <div class="card-face card-front" id="wine-front"></div>
+        <div class="card-face card-back" id="wine-back"></div>
+      </div>
+    </div>
+    <div class="deck-controls">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="prev('wine')">←</button>
+        <button class="nav-btn primary" id="wine-flip" onclick="flip('wine')">Flip</button>
+        <button class="nav-btn" onclick="next('wine')">→</button>
+      </div>
+      <div class="extra-row">
+        <button class="extra-btn" onclick="shuffle('wine')">⇄ Shuffle</button>
+        <button class="extra-btn" onclick="reset('wine')">↺ Reset</button>
+      </div>
+      <div class="sr-row" id="wine-sr-row">
+        <button class="sr-btn sr-wrong"  id="wine-sr-wrong"  onclick="srMark('wine','wrong')">A = Incorrect</button>
+        <button class="sr-btn sr-unsure" id="wine-sr-unsure" onclick="srMark('wine','unsure')">S = Unsure</button>
+        <button class="sr-btn sr-right"  id="wine-sr-right"  onclick="srMark('wine','right')">D = Correct</button>
       </div>
     </div>
   </div>
@@ -564,7 +619,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 </div>
 
 <!-- DRINK QUIZ SCREEN -->
-<div id="drinkq-screen" class="screen deck-screen drink-theme">
+<div id="drinkq-screen" class="screen deck-screen dark-theme">
   <div class="deck-wrap">
     <button class="back-btn" onclick="showScreen('home')">← Back</button>
     <div class="deck-eyebrow">Quick Quiz</div>
@@ -599,6 +654,42 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   </div>
 </div>
 
+<!-- WINE QUIZ SCREEN -->
+<div id="wineq-screen" class="screen deck-screen dark-theme">
+  <div class="deck-wrap">
+    <button class="back-btn" onclick="showScreen('home')">← Back</button>
+    <div class="deck-eyebrow">Quick Quiz</div>
+    <div class="deck-title">Wine Quiz</div>
+    <div class="deck-divider"></div>
+    <div class="cat-row" id="wineq-cats"></div>
+    <div class="progress" id="wineq-prog"></div>
+    <div class="sr-stats" id="wineq-sr-stats"></div>
+    <div class="sr-progress-bar-wrap"><div class="sr-progress-bar" id="wineq-sr-bar" style="width:0%"></div></div>
+    <div class="card-wrap" onclick="flip('wineq')">
+      <div class="card-inner" id="wineq-card">
+        <div class="card-face card-front" id="wineq-front"></div>
+        <div class="card-face card-back" id="wineq-back"></div>
+      </div>
+    </div>
+    <div class="deck-controls">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="prev('wineq')">←</button>
+        <button class="nav-btn primary" id="wineq-flip" onclick="flip('wineq')">Flip</button>
+        <button class="nav-btn" onclick="next('wineq')">→</button>
+      </div>
+      <div class="extra-row">
+        <button class="extra-btn" onclick="shuffle('wineq')">⇄ Shuffle</button>
+        <button class="extra-btn" onclick="reset('wineq')">↺ Reset</button>
+      </div>
+      <div class="sr-row" id="wineq-sr-row">
+        <button class="sr-btn sr-wrong"  id="wineq-sr-wrong"  onclick="srMark('wineq','wrong')">A = Incorrect</button>
+        <button class="sr-btn sr-unsure" id="wineq-sr-unsure" onclick="srMark('wineq','unsure')">S = Unsure</button>
+        <button class="sr-btn sr-right"  id="wineq-sr-right"  onclick="srMark('wineq','right')">D = Correct</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <button class="nav-item active" id="nav-home" onclick="showScreen('home')">
@@ -621,6 +712,10 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M8 22h8M12 16v6M2 2l10 10 10-10H2z"/></svg>
     Bar
   </button>
+  <button class="nav-item" id="nav-wine" onclick="showScreen('wine-screen')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M8 22h8M12 11v11M7 2l1 9a4 4 0 008 0l1-9H7z"/></svg>
+    Wine
+  </button>
   <button class="nav-item" id="nav-foodq" onclick="showScreen('foodq-screen')">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
     Food Q
@@ -628,6 +723,10 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   <button class="nav-item" id="nav-drinkq" onclick="showScreen('drinkq-screen')">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
     Bar Q
+  </button>
+  <button class="nav-item" id="nav-wineq" onclick="showScreen('wineq-screen')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+    Wine Q
   </button>
 </nav>
 
@@ -638,8 +737,8 @@ const DISHES = [
     "name": "Bread Service",
     "price": 12,
     "category": "Starters",
-    "full": "Whipped tallow butter",
-    "components": ["Bread", "Whipped tallow butter"],
+    "full": "Warm, buttery enriched bread, served with whipped tallow butter",
+    "components": ["Enriched bread", "Whipped tallow butter"],
     "flavour": "Rich, warm, savoury",
     "allergens": "Gluten, Dairy",
     "note": "Tallow is rendered beef fat. This is a premium, savoury butter alternative."
@@ -648,7 +747,7 @@ const DISHES = [
     "name": "Hokkaido Scallop Ceviche",
     "price": 24,
     "category": "Starters",
-    "full": "Nuoc Cham, compressed baby cucumber, breakfast radish, lime leaf oil and chili oil",
+    "full": "Lemongrass, fish sauce, cucamelon, cilantro",
     "components": ["Hokkaido scallops", "Nuoc Cham dressing", "Compressed baby cucumber", "Breakfast radish", "Cucamelon", "Chili oil", "Micro herbs"],
     "flavour": "Fresh, bright, umami, light citrus, gentle heat",
     "texture": "Silky, crisp, juicy, delicate",
@@ -660,7 +759,7 @@ const DISHES = [
     "name": "Wagyu Carpaccio",
     "price": 28,
     "category": "Starters",
-    "full": "Ssamjang aioli, pickled shimeji mushrooms, puffed rice pearls",
+    "full": "Ssamjang aioli, pickled mushrooms, crispy rice",
     "components": ["Hand-cut beef tenderloin", "Ssamjang aioli", "White kimchi", "Pickled shimeji mushrooms", "Tamago togarashi rice chips", "Fresh chives"],
     "flavour": "Rich, umami, mild heat, tangy, savoury",
     "texture": "Tender, creamy, crunchy",
@@ -672,8 +771,8 @@ const DISHES = [
     "name": "Chicken Liver Parfait",
     "price": 22,
     "category": "Starters",
-    "full": "Asian pear, cured egg yolk, shokupan toast",
-    "components": ["Sous vide chicken liver parfait", "Asian pear", "Cured egg yolk", "Toasted shokupan (brioche)"],
+    "full": "Asian pear, cured egg yolk, toasted brioche",
+    "components": ["Sous vide chicken liver parfait", "Asian pear", "Cured egg yolk", "Toasted brioche"],
     "flavour": "Rich, savoury, buttery, slightly sweet",
     "texture": "Silky, creamy, crisp",
     "allergens": "Dairy, Egg, Gluten",
@@ -682,9 +781,9 @@ const DISHES = [
   },
   {
     "name": "Crab Cake",
-    "price": 39,
+    "price": 32,
     "category": "Starters",
-    "full": "Sichuan aioli, dressed watercress",
+    "full": "Blue crab and snow crab cake with panko, Sichuan aioli, dressed watercress salad",
     "components": ["Blue crab", "Snow crab", "Panko", "Sichuan aioli", "Watercress salad", "Lime"],
     "flavour": "Sweet, savoury, mild heat, citrus",
     "texture": "Crisp, tender, creamy",
@@ -693,10 +792,10 @@ const DISHES = [
     "note": "Minimal filler. Pan-fried then finished in oven."
   },
   {
-    "name": "Caesar Salad",
+    "name": "The Leo Caesar",
     "price": 20,
     "category": "Starters",
-    "full": "Thai basil, lime, parmigiano reggiano, candied peanuts",
+    "full": "Thai Caesar dressing, Parmigiano Reggiano, Thai basil, candied peanuts, lime",
     "components": ["Baby gem lettuce", "Thai Caesar dressing", "Parmigiano Reggiano", "Candied peanuts", "Thai basil", "Micro coriander"],
     "flavour": "Fresh, savoury, tangy, nutty, umami",
     "texture": "Crisp, creamy, crunchy",
@@ -708,17 +807,17 @@ const DISHES = [
     "name": "Typhoon Shelter Eggplant",
     "price": 16,
     "category": "Starters",
-    "full": "Dashi glaze, typhoon shelter crumbs",
-    "components": ["Eggplant", "Dashi glaze", "Typhoon shelter crumbs"],
+    "full": "Grilled Chinese eggplant with dashi glaze, Typhoon Shelter crumb, scallions",
+    "components": ["Chinese eggplant", "Dashi glaze", "Typhoon shelter crumbs", "Scallions"],
     "flavour": "Savory, umami, slight heat",
     "allergens": "Gluten, Shellfish (likely in crumbs - confirm)",
     "note": "Typhoon shelter style originates from Hong Kong, usually featuring garlic, chili, and dried shrimp. Confirm exact crumb spec with kitchen."
   },
   {
     "name": "Lobster Pao Fan Soup",
-    "price": 19,
+    "price": 26,
     "category": "Starters",
-    "full": "Lobster meat, lobster stock, crispy rice",
+    "full": "Butter-poached Nova Scotia lobster, crispy rice, lobster consommé, ginger, garlic chives",
     "components": ["Butter-poached Nova Scotia lobster", "Crystal-clear lobster consommé", "Crispy compressed jasmine rice cake", "Ginger julienne", "Shiitake mushroom", "Crispy garlic chips", "Scallion oil"],
     "flavour": "Sweet, delicate, deep umami, aromatic, refined",
     "texture": "Crispy, tender, silky, broth-soaked",
@@ -730,7 +829,7 @@ const DISHES = [
   // LAND
   {
     "name": "Australian Striploin",
-    "price": 85,
+    "price": 90,
     "category": "Land",
     "full": "16oz Westholm Farms Australian wagyu Striploin",
     "components": ["16oz Wagyu Striploin", "Choice of sauce"],
@@ -740,13 +839,13 @@ const DISHES = [
   },
   {
     "name": "Bone-In AAA Prime Ribeye",
-    "price": 130,
+    "price": 135,
     "category": "Land",
     "full": "24oz or 55oz Ebony farms Australian AAA",
     "components": ["Bone-in Ribeye", "Choice of sauce"],
     "flavour": "Heavily marbled, juicy, intensely flavourful",
     "allergens": "None (sauce dependent)",
-    "note": "24oz is $130. 55oz Tomahawk is $255 (designed for sharing). Josper grilled."
+    "note": "24oz is $135. 55oz Tomahawk is $270 (designed for sharing). Josper grilled."
   },
   {
     "name": "Bone-In Ibérico Pork Chop",
@@ -760,13 +859,13 @@ const DISHES = [
   },
   {
     "name": "Canadian Prime Lamb Rack",
-    "price": 110,
+    "price": 130,
     "category": "Land",
     "full": "Newmarket Lamb Chops (Full or Half)",
     "components": ["Lamb Rack", "Choice of sauce"],
     "flavour": "Locally sourced, naturally tender, clean finish",
     "allergens": "None (sauce dependent)",
-    "note": "Full rack is $110, Half is $60. Josper grilled."
+    "note": "Full rack is $130, Half is $70. Josper grilled."
   },
 
   // SEA
@@ -778,7 +877,7 @@ const DISHES = [
     "components": ["Lobster", "Choice of preparation"],
     "flavour": "Sweet, rich",
     "allergens": "Shellfish",
-    "note": "Lightly dusted in cornstarch and fried until crisp. Choice of Singapore Chili, Malaysian White Pepper, or Chinatown Style sauce."
+    "note": "Lightly dusted in cornstarch and fried until crisp. Choice of Singapore Chili, Malaysian White Pepper, Sichuan Mala, or Chinatown Style sauce."
   },
   {
     "name": "BC Dungeness Crab",
@@ -788,7 +887,7 @@ const DISHES = [
     "components": ["Crab", "Choice of preparation"],
     "flavour": "Sweet, delicate",
     "allergens": "Shellfish",
-    "note": "May be grilled or fried depending on sauce. Choice of Singapore Chili, Malaysian White Pepper, or Chinatown Style sauce."
+    "note": "May be grilled or fried depending on sauce. Choice of Singapore Chili, Malaysian White Pepper, Sichuan Mala, or Chinatown Style sauce."
   },
   {
     "name": "Grilled Sea Bream",
@@ -798,7 +897,7 @@ const DISHES = [
     "components": ["Sea Bream", "Choice of preparation"],
     "flavour": "Moist flesh, crisp skin",
     "allergens": "Fish",
-    "note": "Cooked simply to preserve natural sweetness. Choice of Singapore Chili, Malaysian White Pepper, or Chinatown Style sauce."
+    "note": "Cooked simply to preserve natural sweetness. Choice of Singapore Chili, Malaysian White Pepper, Sichuan Mala, or Chinatown Style sauce."
   },
 
   // SIDES
@@ -806,7 +905,7 @@ const DISHES = [
     "name": "Wagyu XO Fried Rice",
     "price": 22,
     "category": "Sides",
-    "full": "Wagyu beef, harmee, egg",
+    "full": "Wok-fried rice with wagyu beef, house XO, har mi oil and scallions",
     "components": ["Day-old jasmine rice", "Diced wagyu beef", "House XO sauce", "Har Mi oil", "Scallions", "Egg Floss", "Fresh chives"],
     "flavour": "Deep umami, smoky, savoury, rich, aromatic",
     "texture": "Light, separate grains, tender beef, slight crisp",
@@ -818,7 +917,7 @@ const DISHES = [
     "name": "Grilled Miso Broccolini",
     "price": 16,
     "category": "Sides",
-    "full": "Miso, brown butter",
+    "full": "Grilled broccolini, miso, brown butter",
     "components": ["Broccolini", "Miso", "Brown butter", "Seasonal garnish"],
     "flavour": "Fresh, smoky, green, umami",
     "texture": "Tender, crisp",
@@ -830,7 +929,7 @@ const DISHES = [
     "name": "Grilled Mushrooms",
     "price": 16,
     "category": "Sides",
-    "full": "Shio koji marinade, chives",
+    "full": "Grilled cremini, king oyster and oyster mushrooms, shio koji and brown butter",
     "components": ["Cremini mushrooms", "King oyster mushrooms", "Oyster mushrooms", "Shio koji", "Brown butter", "Lemon", "Fresh chives"],
     "flavour": "Earthy, smoky, umami, buttery",
     "texture": "Juicy, meaty, charred",
@@ -839,12 +938,12 @@ const DISHES = [
     "note": "Shio koji is a Japanese fermented seasoning."
   },
   {
-    "name": "Truffle Fries",
-    "price": 16,
+    "name": "Hand-Cut Fries",
+    "price": 14,
     "category": "Sides",
-    "full": "Truffle oil and truffle aioli",
-    "components": ["Fries", "Truffle oil", "Truffle aioli"],
-    "flavour": "Earthy, rich, savoury",
+    "full": "Crispy hand-cut fries, served with yuzu aioli",
+    "components": ["Hand-cut fries", "Yuzu aioli"],
+    "flavour": "Crispy, salty, citrus",
     "allergens": "Egg (aioli)",
     "note": "Confirm spec with kitchen."
   },
@@ -891,16 +990,6 @@ const DISHES = [
     "note": "Contains caffeine."
   },
   {
-    "name": "Mille Feuille",
-    "price": 16,
-    "category": "Desserts",
-    "full": "Salted caramel orange",
-    "components": ["Puff pastry", "Pastry cream", "Salted caramel", "Orange"],
-    "flavour": "Sweet, salty, citrus, buttery",
-    "allergens": "Dairy, Gluten, Egg",
-    "note": "Literally 'a thousand leaves' — layered puff pastry."
-  },
-  {
     "name": "Alcohol Infused Ice Cream",
     "price": 16,
     "category": "Desserts",
@@ -908,7 +997,7 @@ const DISHES = [
     "components": ["Ice cream base", "Alcohol infusion"],
     "flavour": "Varies",
     "allergens": "Dairy",
-    "note": "Flavors: Pistachio Cointreau, Lemongrass Gin, Banana Maotai, Rice Wine, Coffee Cognac."
+    "note": "Flavors: Pistachio Cointreau, Lemongrass Whisky, Banana Maotai, Makgeolli, Coffee Cognac."
   }
 ];
 
@@ -924,14 +1013,14 @@ const GRILL = [
     "category": "Cuts",
     "detail": "16oz Westholm Farms Australian wagyu.",
     "flavour": "Heavy marbling, rich beef character.",
-    "note": "$85"
+    "note": "$90"
   },
   {
     "name": "Bone-In AAA Prime Ribeye",
     "category": "Cuts",
     "detail": "24oz Ebony farms Australian AAA. (55oz Tomahawk also available).",
     "flavour": "Meaty, bold beef flavour, heavily marbled.",
-    "note": "$130 (24oz) / $255 (55oz)"
+    "note": "$135 (24oz) / $270 (55oz)"
   },
   {
     "name": "Bone-In Ibérico Pork Chop",
@@ -945,7 +1034,7 @@ const GRILL = [
     "category": "Cuts",
     "detail": "Newmarket Lamb. Available Full or Half.",
     "flavour": "Locally sourced, naturally tender, clean finish.",
-    "note": "$110 Full / $60 Half"
+    "note": "$130 Full / $70 Half"
   },
   {
     "name": "Demon Chimichurri",
@@ -964,7 +1053,7 @@ const GRILL = [
   {
     "name": "Nduja Vinaigrette",
     "category": "Sauces",
-    "detail": "Spicy, spreadable Calabrian salami based sauce. (Menu calls it Fermented Chili Jus).",
+    "detail": "Spicy, spreadable Calabrian salami based sauce.",
     "flavour": "Spicy, funky, oily, rich.",
     "note": "Only for the pork."
   },
@@ -1010,75 +1099,191 @@ const SEAFOOD_PREP = [
     "allergens": "Shellfish, Soy",
     "standards": "Complements rather than overpowers.",
     "note": "Despite the name, Lobster Sauce originated in Cantonese-American restaurants."
+  },
+  {
+    "name": "Sichuan Mala",
+    "category": "Sauce",
+    "detail": "A numbing and spicy sauce featuring Sichuan peppercorns and chili oil.",
+    "flavour": "Numbing, spicy, rich.",
+    "texture": "Oily, glossy.",
+    "pairings": "Lobster, Dungeness Crab.",
+    "allergens": "Shellfish, Soy",
+    "standards": "Balanced heat.",
+    "note": "New addition to the menu per photo."
   }
 ];
 
 const DRINKS = [
   // COCKTAILS
-  { "name": "Leo Smash", "price": 21, "category": "Cocktails", "full": "Tequila Blanco, Thai basil syrup, yuzu, fresh lime, pink peppercorn salt", "base": "Tequila" },
-  { "name": "Southeast Sour", "price": 21, "category": "Cocktails", "full": "Toki Whiskey, goji berry syrup, egg white, fresh lemon juice", "base": "Whiskey" },
-  { "name": "Starry Night", "price": 21, "category": "Cocktails", "full": "Pisco, pandan syrup, coconut water", "base": "Pisco" },
-  { "name": "Berries & Baiju", "price": 21, "category": "Cocktails", "full": "Baiju Fen Chiew Brown, fresh lemon juice, clarified strawberry syrup", "base": "Baijiu" },
-  { "name": "Sesame Street", "price": 21, "category": "Cocktails", "full": "Roasted peanut-infused whiskey, brandy, toasted black sesame, amaretto & cream foam", "base": "Whiskey" },
-  { "name": "Red Garden", "price": 21, "category": "Cocktails", "full": "Gin, elderflower liqueur, hibiscus cordial, orange bitters, edible red flower, orange zest", "base": "Gin" },
-  { "name": "Spirit of Sichuan", "price": 21, "category": "Cocktails", "full": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil", "base": "Sake/Prosecco" },
-  { "name": "Banana Bang", "price": 21, "category": "Cocktails", "full": "Banana peel palm sugar, cacao bitters, oleo saccharum infused whiskey", "base": "Whiskey" },
-  { "name": "Dai-Curry", "price": 21, "category": "Cocktails", "full": "Appleton Rum, curry syrup, fresh lime juice, whole milk", "base": "Rum" },
+  { "name": "Leo Smash", "price": 21, "category": "Cocktails", "full": "Tequila Blanco, Thai basil, yuzu, fresh lime juice, pink peppercorn salt [2oz]", "base": "Tequila" },
+  { "name": "Southeast Sour", "price": 21, "category": "Cocktails", "full": "Toki whiskey, goji berry, egg white, fresh lemon juice [2oz]", "base": "Whiskey" },
+  { "name": "Starry Night", "price": 21, "category": "Cocktails", "full": "Pisco, pandan, coconut water [1.5oz]", "base": "Pisco" },
+  { "name": "Berries & Baiju", "price": 21, "category": "Cocktails", "full": "Baijiu Fen Chiew Brown, fresh lemon juice, clarified strawberry [1.5oz]", "base": "Baijiu" },
+  { "name": "Sesame Street", "price": 23, "category": "Cocktails", "full": "Roasted peanut-infused whisky, brandy, toasted black sesame, amaretto & cream foam [2oz]", "base": "Whiskey" },
+  { "name": "Red Garden", "price": 21, "category": "Cocktails", "full": "Gin, elderflower liqueur, hibiscus cordial, orange bitters, edible red flower, orange zest [2oz]", "base": "Gin" },
+  { "name": "Spirit of Sichuan", "price": 18, "category": "Cocktails", "full": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil, edible pink flower [2.5oz]", "base": "Sake/Prosecco" },
+  { "name": "Banana Bang", "price": 21, "category": "Cocktails", "full": "Banana peel palm sugar, cacao bitters, oleo saccharum-infused whisky, brown sugar coated banana [2oz]", "base": "Whiskey" },
+  { "name": "Dai-Curry", "price": 21, "category": "Cocktails", "full": "Appleton Rum, Japanese curry, fresh lime juice, clarified milk [2oz]", "base": "Rum" },
   
   // MOCKTAILS
   { "name": "Iced Blueberry Tea", "price": 14, "category": "Mocktails", "full": "Blueberry white tea", "base": "NA" },
-  { "name": "Tongue Thai'd", "price": 14, "category": "Mocktails", "full": "Yuzu juice, Thai basil syrup, coconut water", "base": "NA" },
-  { "name": "Red Lotus", "price": 14, "category": "Mocktails", "full": "Hibiscus cordial, plum juice, clarified strawberry syrup, egg white", "base": "NA" },
-  { "name": "Summer's End", "price": 14, "category": "Mocktails", "full": "Clarified strawberry syrup, yuzu lime juice", "base": "NA" },
+  { "name": "Tongue Thai'd", "price": 14, "category": "Mocktails", "full": "Yuzu juice, Thai basil, coconut water", "base": "NA" },
+  { "name": "Red Lotus", "price": 14, "category": "Mocktails", "full": "Hibiscus cordial, plum juice, clarified strawberry, egg white", "base": "NA" },
+  { "name": "Summer's End", "price": 14, "category": "Mocktails", "full": "Clarified strawberry, yuzu lime juice", "base": "NA" },
   
-  // BEER
-  { "name": "Asahi on Tap", "price": 11, "category": "Beer", "full": "Japanese Lager", "base": "Beer" },
-  { "name": "Peroni on Tap", "price": 12, "category": "Beer", "full": "Italian Lager", "base": "Beer" },
-  { "name": "Asahi Zero", "price": 7, "category": "Beer", "full": "Non-alcoholic Japanese Lager", "base": "Beer (NA)" }
+  // BEER & MORE
+  { "name": "Asahi on Tap", "price": 11, "category": "Beer & More", "full": "Japanese Lager", "base": "Beer" },
+  { "name": "Peroni on Tap", "price": 12, "category": "Beer & More", "full": "Italian Lager", "base": "Beer" },
+  { "name": "Asahi Zero", "price": 8, "category": "Beer & More", "full": "Non-alcoholic Japanese Lager", "base": "Beer (NA)" },
+  { "name": "Sparkling Water", "price": 8, "category": "Beer & More", "full": "Sparkling Water", "base": "NA" },
+  { "name": "Natural Spring Water", "price": 7, "category": "Beer & More", "full": "Natural Spring Water", "base": "NA" },
+  { "name": "Enshi Yu Lu Tea", "price": 5, "category": "Beer & More", "full": "Tea", "base": "NA" },
+  { "name": "Coffee", "price": 6, "category": "Beer & More", "full": "Hot or iced", "base": "NA" }
+];
+
+const WINES = [
+  // SPARKLING
+  { 
+    "name": "A.J. Adam Spätburgunder Rosé", "price": 80, "category": "Sparkling", "full": "Germany, 2022", 
+    "profile": "Dry, delicate red berries, brioche, and a crisp mineral finish.",
+    "pairing": "Tuna Crudo, Oysters, or as a refreshing aperitif."
+  },
+  { 
+    "name": "Griesel & Compagnie Blanc de Blancs Brut", "price": 95, "category": "Sparkling", "full": "Germany, 2022", 
+    "profile": "100% Chardonnay. Crisp green apple, citrus, and a chalky minerality.",
+    "pairing": "Oysters, Fried Bao, or light seafood starters."
+  },
+  { 
+    "name": "Antica Vigna Prosecco Extra Dry", "price": 65, "category": "Sparkling", "full": "Italy", "note": "[5OZ] 16",
+    "profile": "Green apple, pear, and white floral notes with a slightly off-dry finish.",
+    "pairing": "Spicy Harissa Prawns, appetizers, or celebrations."
+  },
+  
+  // RED
+  { 
+    "name": "Château Fleur Haut Gaussens Bordeaux Supérieur", "price": 30, "category": "Red", "full": "Bordeaux, France, 2019", "note": "[5OZ] 22 [8OZ] 30",
+    "profile": "Merlot dominant. Dark fruit, cedar, medium body, and smooth tannins.",
+    "pairing": "Lamb Rack, Duck, or the Ibérico Pork Chop."
+  },
+  { 
+    "name": "Château l'Eden", "price": 90, "category": "Red", "full": "Bordeaux, France, 2018", "note": "[5OZ] 30 [8OZ] 40",
+    "profile": "Ripe plum, dark chocolate, and a smooth, velvety texture.",
+    "pairing": "Australian Striploin or Bone-In Prime Ribeye."
+  },
+  { 
+    "name": "Château Larruau", "price": 155, "category": "Red", "full": "Bordeaux, France, 2019", 
+    "profile": "Dark cherry, tobacco, and structured tannins. Classic Bordeaux.",
+    "pairing": "Bone-In Prime Ribeye or the 55oz Tomahawk."
+  },
+  { 
+    "name": "Château Canon Croix Canon", "price": 185, "category": "Red", "full": "Bordeaux, France, 2018", 
+    "profile": "Lush fruit, earthy undertones, and elegant, refined tannins.",
+    "pairing": "Duck, Lamb Rack, or rich mushroom dishes."
+  },
+  { 
+    "name": "Gerard Julien Côte de Nuits-Villages", "price": 125, "category": "Red", "full": "Burgundy, France, 2022", 
+    "profile": "Pinot Noir. Red cherry, earthy forest floor, light tannins.",
+    "pairing": "Duck, Salmon, or Chicken Liver Parfait."
+  },
+  { 
+    "name": "Patrice Rion Nuits-Saint-Georges 1er Cru Clos des Argillières", "price": 245, "category": "Red", "full": "Burgundy, France, 2014", 
+    "profile": "Aged Pinot Noir. Mushroom, dark cherry, complex earthy notes.",
+    "pairing": "Duck, Lamb Rack, or Mushroom dishes."
+  },
+  { 
+    "name": "Pierre Girardin Pommard 1er Cru Les Grands Épenots", "price": 300, "category": "Red", "full": "Burgundy, France, 2023", 
+    "profile": "Structured Pinot Noir. Dark fruit, firm tannins, but elegant.",
+    "pairing": "Bone-In Prime Ribeye or Duck."
+  },
+  { 
+    "name": "Grotta del Ninfeo Amarone della Valpolicella", "price": 135, "category": "Red", "full": "Italy, 2020", 
+    "profile": "Corvina blend. Dried fruit, rich, high alcohol, full-bodied.",
+    "pairing": "Bone-In Prime Ribeye or 55oz Tomahawk."
+  },
+  { 
+    "name": "Salvano Barbaresco Riserva", "price": 175, "category": "Red", "full": "Italy, 2018", 
+    "profile": "Nebbiolo. Tar, roses, red cherry, and high tannins.",
+    "pairing": "Lamb Rack or Bone-In Prime Ribeye."
+  },
+  { 
+    "name": "Cascina Adelaide Barolo Riserva Per Elen", "price": 260, "category": "Red", "full": "Italy, 2015", 
+    "profile": "Nebbiolo. Intense tar and roses, powerful tannins, long finish.",
+    "pairing": "The richest cuts of beef (Ribeye, Tomahawk)."
+  },
+
+  // WHITE
+  { 
+    "name": "Joseph Castan La Bourgade Chardonnay", "price": 20, "category": "White", "full": "France, 2025", "note": "[5OZ] 16 [8OZ] 20",
+    "profile": "Crisp, green apple, pear, and a clean finish.",
+    "pairing": "Chicken, seafood, or soft cheeses."
+  },
+  { 
+    "name": "The Grange of Prince Edward County Estate Series Chardonnay", "price": 80, "category": "White", "full": "Canada, 2025", "note": "[5OZ] 25 [8OZ] 30",
+    "profile": "Cool climate Chardonnay. Mineral-driven, crisp green apple, citrus.",
+    "pairing": "Grilled Sea Bream, Scallops, or Lobster."
+  },
+  { 
+    "name": "Gautheron d'Anost Bouzeron Les Loueres Aligoté", "price": 110, "category": "White", "full": "France, 2023", 
+    "profile": "Crisp, high acid, citrus, and a distinct mineral edge.",
+    "pairing": "Oysters, Tuna Crudo, or light seafood."
+  },
+  { 
+    "name": "Clement Lavallée Chablis Chante Merle", "price": 120, "category": "White", "full": "France, 2021", 
+    "profile": "Unoaked Chardonnay. Steely, oyster shell, green apple, flinty.",
+    "pairing": "Oysters, Grilled Sea Bream, or Lobster."
+  },
+  { 
+    "name": "Armand Heitz Meursault", "price": 230, "category": "White", "full": "France, 2023", 
+    "profile": "Oaked Chardonnay. Rich, hazelnut, butter, golden apple, long finish.",
+    "pairing": "Lobster Pao Fan, Crab Cake, or rich seafood."
+  },
+
+  // RIESLING
+  { 
+    "name": "Schloss Lieser SL Riesling Feinherb", "price": 90, "category": "Riesling", "full": "Germany, 2023", 
+    "profile": "Off-dry. Slate, green apple, lime, and subtle petrol notes.",
+    "pairing": "Spicy dishes like Harissa Prawns or Thai Curry."
+  },
+  { 
+    "name": "Plan B O.D Riesling", "price": 80, "category": "Riesling", "full": "Australia, 2023", 
+    "profile": "Bone dry. Lime, high acid, and distinct mineral notes.",
+    "pairing": "The Leo Caesar, Spicy Harissa Prawns, or Thai food."
+  }
 ];
 
 const FOOD_QUIZ = [
-  // --- ALLERGENS ---
-  { "section": "Allergens", "q": "What are the allergens in the Bread Service?", "a": "Gluten, Dairy", "context": "Whipped tallow butter is dairy." },
-  { "section": "Allergens", "q": "What are the allergens in the Hokkaido Scallop Ceviche?", "a": "Shellfish, Fish", "context": "Scallops and Nuoc Cham (fish sauce)." },
-  { "section": "Allergens", "q": "What are the allergens in the Wagyu Carpaccio?", "a": "Egg, Soy, Gluten", "context": "Egg yolk, soy/ponzu, and rice chips." },
-  { "section": "Allergens", "q": "What are the allergens in the Chicken Liver Parfait?", "a": "Dairy, Egg, Gluten", "context": "Parfait (dairy/egg) and shokupan toast (gluten)." },
-  { "section": "Allergens", "q": "What are the allergens in the Crab Cake?", "a": "Shellfish, Egg, Gluten", "context": "Crab, aioli (egg), and panko (gluten)." },
-  { "section": "Allergens", "q": "What are the allergens in the Caesar Salad?", "a": "Dairy, Egg, Fish, Peanut", "context": "Contains parmesan, dressing (egg/fish), and candied peanuts." },
-  { "section": "Allergens", "q": "What are the allergens in the Lobster Pao Fan Soup?", "a": "Shellfish, Fish", "context": "Lobster and fish stock elements." },
-  { "section": "Allergens", "q": "What are the allergens in the Wagyu XO Fried Rice?", "a": "Shellfish, Soy, Gluten (May contain Egg)", "context": "XO sauce has dried seafood, soy is used, and egg floss is a component." },
-  { "section": "Allergens", "q": "What are the allergens in the Grilled Miso Broccolini?", "a": "Dairy, Soy", "context": "Miso (soy) and brown butter (dairy)." },
-  { "section": "Allergens", "q": "What are the allergens in the Grilled Mushrooms?", "a": "Soy, Dairy", "context": "Shio koji (soy) and brown butter (dairy)." },
-  { "section": "Allergens", "q": "What are the allergens in the Truffle Fries?", "a": "Egg", "context": "Truffle aioli contains egg." },
-  { "section": "Allergens", "q": "What are the allergens in the Fried Bao?", "a": "Gluten", "context": "Chinese fried mantou." },
-  { "section": "Allergens", "q": "What are the allergens in the Baked Alaska?", "a": "Dairy, Egg, Gluten", "context": "Meringue, ice cream, cake base." },
-  { "section": "Allergens", "q": "What are the allergens in the Apple Tart?", "a": "Dairy, Gluten", "context": "Pastry and butter." },
-  { "section": "Allergens", "q": "What are the allergens in the Tiramisu?", "a": "Dairy, Egg, Gluten", "context": "Mascarpone, egg, ladyfingers." },
-  { "section": "Allergens", "q": "What are the allergens in the Mille Feuille?", "a": "Dairy, Gluten, Egg", "context": "Puff pastry and pastry cream." },
-  { "section": "Allergens", "q": "What are the allergens in the Alcohol Infused Ice Cream?", "a": "Dairy", "context": "Ice cream base." },
-  { "section": "Allergens", "q": "Which seafood sauces contain Dairy?", "a": "Indonesian White Pepper", "context": "It is mounted with butter and cream." },
-  { "section": "Allergens", "q": "Which seafood sauces contain Shellfish?", "a": "Singapore Chili, Chinatown Style", "context": "They use shrimp paste, dried shrimp, or shellfish stock." },
-
-  // --- CRITICAL STANDARDS ---
-  { "section": "Standards", "q": "What is the critical rule for the Hokkaido Scallop Ceviche?", "a": "Never allow the scallops to sit in the dressing.", "context": "They must be dressed à la minute and served on a chilled plate." },
-  { "section": "Standards", "q": "How is the Lobster Pao Fan served?", "a": "Broth is poured tableside.", "context": "To preserve the crispness of the rice cake and provide a show." },
-  { "section": "Standards", "q": "What is the standard for the Chicken Liver Parfait's temperature?", "a": "Serve slightly chilled, never ice cold.", "context": "Ice cold kills the flavor. It should be perfectly smooth." },
-  { "section": "Standards", "q": "What is the rule for dressing the Caesar Salad?", "a": "Do not overdress. Lettuce must be completely dry.", "context": "Add peanuts at pickup and serve immediately." },
-  { "section": "Standards", "q": "What is the standard for the Crab Cake mix?", "a": "Do not overmix. Maintain a crisp exterior.", "context": "Overmixing breaks down the crab texture." },
-  { "section": "Standards", "q": "What is the rule for the Lobster Pao Fan consommé?", "a": "It must be perfectly clear.", "context": "Keep garnish restrained to showcase the consommé." },
-  { "section": "Standards", "q": "What is the standard for the Wagyu XO Fried Rice?", "a": "Wok-fried over extremely high heat for wok hei. Served piping hot.", "context": "Light, separate grains." },
-  { "section": "Standards", "q": "What is the standard for the Grilled Miso Broccolini?", "a": "Maintain vibrant green colour. Do not overcook.", "context": "Season lightly and serve immediately." },
-  { "section": "Standards", "q": "What is the standard for the Grilled Mushrooms?", "a": "Do not over-marinate. Finish with butter, chives, lemon just before service.", "context": "Maintain distinct mushroom texture." },
-  { "section": "Standards", "q": "What is the standard for the Indonesian White Pepper sauce?", "a": "Never boil after butter is mounted. Aromatic, not harsh.", "context": "Maintain a smooth glossy texture." },
-  { "section": "Standards", "q": "What is the standard for the Singapore Chili sauce?", "a": "Balance sweetness and heat. Do not overpower seafood. Serve piping hot.", "context": "Maintain a rich, glossy texture." },
-  { "section": "Standards", "q": "What is the standard for the Chinatown Style sauce?", "a": "Complements rather than overpowers.", "context": "Silky, velvety, glossy." },
+  // --- TOP 3 PITCH ---
+  { "section": "Pitch", "q": "Top 3 components: Bread Service?", "a": "Enriched bread · Whipped tallow butter", "context": "Premium savory butter." },
+  { "section": "Pitch", "q": "Top 3 components: Hokkaido Scallop Ceviche?", "a": "Hokkaido scallops · Nuoc Cham · compressed baby cucumber", "context": "Vietnamese inspiration, dressed to order." },
+  { "section": "Pitch", "q": "Top 3 components: Wagyu Carpaccio?", "a": "Hand-cut beef · Ssamjang aioli · pickled mushrooms", "context": "Korean-inspired flavors." },
+  { "section": "Pitch", "q": "Top 3 components: Chicken Liver Parfait?", "a": "Chicken liver parfait · Asian pear · toasted brioche", "context": "Silky texture balanced with sweet pear." },
+  { "section": "Pitch", "q": "Top 3 components: Crab Cake?", "a": "Blue crab · Snow crab · Sichuan aioli", "context": "Minimal filler, sweet crab focus." },
+  { "section": "Pitch", "q": "Top 3 components: The Leo Caesar?", "a": "Baby gem · Thai Caesar dressing · Parmigiano", "context": "Fish sauce and lime make it bright." },
+  { "section": "Pitch", "q": "Top 3 components: Typhoon Shelter Eggplant?", "a": "Chinese eggplant · dashi glaze · Typhoon Shelter crumb", "context": "HK style with garlic, chili, dried shrimp." },
+  { "section": "Pitch", "q": "Top 3 components: Lobster Pao Fan?", "a": "Butter-poached lobster · lobster consommé · crispy rice", "context": "Signature dish, broth poured tableside." },
+  { "section": "Pitch", "q": "Top 3 components: Wagyu XO Fried Rice?", "a": "Wagyu beef · house XO · har mi oil", "context": "Extremely high wok heat for 'wok hei'." },
+  { "section": "Pitch", "q": "Top 3 components: Grilled Miso Broccolini?", "a": "Broccolini · miso · brown butter", "context": "Charcoal grilled, bright green." },
+  { "section": "Pitch", "q": "Top 3 components: Grilled Mushrooms?", "a": "Mixed mushrooms · shio koji · brown butter", "context": "Juicy, meaty, Japanese fermented marinade." },
+  { "section": "Pitch", "q": "Top 3 components: Hand-Cut Fries?", "a": "Hand-cut fries · yuzu aioli", "context": "Crispy and citrusy." },
+  { "section": "Pitch", "q": "Top 3 components: Fried Bao?", "a": "Mantou (Chinese fried bun)", "context": "Perfect for mopping up sauces." },
+  { "section": "Pitch", "q": "Top 3 components: Australian Striploin?", "a": "16oz Wagyu Striploin · choice of sauce", "context": "Heavy marbling, rich beef character." },
+  { "section": "Pitch", "q": "Top 3 components: Bone-In AAA Prime Ribeye?", "a": "Bone-in Ribeye · choice of sauce", "context": "Meaty, bold, heavily marbled." },
+  { "section": "Pitch", "q": "Top 3 components: Bone-In Iberico Pork Chop?", "a": "14oz Iberico Pork Chop · choice of sauce", "context": "Spanish pork, sweet and nutty." },
+  { "section": "Pitch", "q": "Top 3 components: Canadian Prime Lamb Rack?", "a": "Lamb Rack · choice of sauce", "context": "Locally sourced, tender." },
+  { "section": "Pitch", "q": "Top 3 components: Nova Scotia Lobster?", "a": "Nova Scotia Lobster · choice of sauce", "context": "Fried crisp." },
+  { "section": "Pitch", "q": "Top 3 components: BC Dungeness Crab?", "a": "Dungeness Crab · choice of sauce", "context": "Grilled or fried." },
+  { "section": "Pitch", "q": "Top 3 components: Grilled Sea Bream?", "a": "Whole Sea Bream · choice of sauce", "context": "Josper grilled." },
+  { "section": "Pitch", "q": "Top 3 components: Baked Alaska?", "a": "Meringue · ice cream · chocolate passion fruit", "context": "Torched tableside." },
+  { "section": "Pitch", "q": "Top 3 components: Apple Tart?", "a": "Apples · pastry", "context": "Warm and buttery." },
+  { "section": "Pitch", "q": "Top 3 components: Tiramisu?", "a": "Mascarpone · coffee · ladyfingers", "context": "Contains caffeine." },
+  { "section": "Pitch", "q": "Top 3 components: Alcohol Infused Ice Cream?", "a": "Ice cream base · alcohol infusion", "context": "Various flavors." },
 
   // --- COMPONENTS ---
   { "section": "Components", "q": "What are the components of the Hokkaido Scallop Ceviche?", "a": "Scallops, Nuoc Cham, compressed cucumber, breakfast radish, cucamelon, chili oil, micro herbs", "context": "Also lime leaf oil." },
   { "section": "Components", "q": "What are the components of the Wagyu Carpaccio?", "a": "Hand-cut beef, ssamjang aioli, white kimchi, pickled shimeji, tamago togarashi rice chips, chives", "context": "Hand-cut daily." },
-  { "section": "Components", "q": "What are the components of the Chicken Liver Parfait?", "a": "Sous vide parfait, Asian pear, cured egg yolk, shokupan toast", "context": "Grated egg yolk at pickup." },
+  { "section": "Components", "q": "What are the components of the Chicken Liver Parfait?", "a": "Sous vide parfait, Asian pear, cured egg yolk, toasted brioche", "context": "Grated egg yolk at pickup." },
   { "section": "Components", "q": "What are the components of the Crab Cake?", "a": "Blue crab, snow crab, panko, Sichuan aioli, watercress, lime", "context": "Minimal filler." },
-  { "section": "Components", "q": "What are the components of the Caesar Salad?", "a": "Baby gem, Thai Caesar dressing, parmigiano reggiano, candied peanuts, Thai basil, micro coriander", "context": "Dressing uses fish sauce, tamarind, lime." },
+  { "section": "Components", "q": "What are the components of The Leo Caesar?", "a": "Baby gem, Thai Caesar dressing, Parmigiano Reggiano, candied peanuts, Thai basil, micro coriander", "context": "Dressing uses fish sauce, tamarind, lime." },
   { "section": "Components", "q": "What are the components of the Lobster Pao Fan?", "a": "Butter-poached lobster, clear consommé, crispy rice cake, ginger, shiitake, garlic chips, scallion oil", "context": "Pao Fan means 'soaked rice'." },
   { "section": "Components", "q": "What are the components of the Wagyu XO Fried Rice?", "a": "Day-old jasmine rice, diced wagyu, house XO, har mi oil, scallions, egg floss, chives", "context": "Wok-fried over extremely high heat." },
   { "section": "Components", "q": "What are the components of the Grilled Mushrooms?", "a": "Cremini, king oyster, oyster mushrooms, shio koji, brown butter, lemon, chives", "context": "Shio koji is a Japanese fermented seasoning." },
@@ -1095,54 +1300,71 @@ const FOOD_QUIZ = [
   { "section": "Details", "q": "What is Har Mi oil?", "a": "Dried shrimp oil.", "context": "Used in the Wagyu XO Fried Rice." },
   { "section": "Details", "q": "What is XO sauce?", "a": "A premium Hong Kong condiment featuring dried scallops, dried shrimp, and cured ham.", "context": "Used in the fried rice." },
   { "section": "Details", "q": "What is Tallow?", "a": "Rendered beef fat.", "context": "Used in the whipped butter for the Bread Service." },
-  { "section": "Details", "q": "What is Shokupan?", "a": "Japanese milk bread.", "context": "Served with the Chicken Liver Parfait." },
   { "section": "Details", "q": "What is Mantou?", "a": "A steamed then fried Chinese bun.", "context": "The Fried Bao." },
-  { "section": "Details", "q": "What is Mille Feuille?", "a": "Literally 'a thousand leaves' — layered puff pastry.", "context": "Salted caramel orange dessert." },
   { "section": "Details", "q": "What does the Caesar Salad dressing use instead of Worcestershire/lemon?", "a": "Fish sauce, tamarind, and lime", "context": "Creates a brighter, more aromatic dressing." },
   { "section": "Details", "q": "What is the difference between the two types of crab in the Crab Cake?", "a": "Blue crab and Snow crab", "context": "Focus is on sweet crab meat with minimal filler." },
 
   // --- SERVICE & THEORY ---
   { "section": "Service", "q": "What are the 5 doneness levels for steaks?", "a": "Rare, Medium Rare, Medium, Medium Well, Well Done", "context": "Medium Rare is recommended for most cuts." },
-  { "section": "Service", "q": "Which steak sauce is ONLY for the pork?", "a": "Nduja Vinaigrette (Fermented Chili Jus)", "context": "Spicy, spreadable Calabrian salami sauce." },
-  { "section": "Service", "q": "What are the three sauces for the Land cuts?", "a": "Demon Chimichurri, Green Peppercorn, Nduja Vinaigrette", "context": "Green Peppercorn is a classic Au Poivre." },
-  { "section": "Service", "q": "How should you describe the Australian Striploin?", "a": "16oz Westholm Farms Australian wagyu with heavy marbling.", "context": "$85" },
-  { "section": "Service", "q": "How should you describe the Bone-In AAA Prime Ribeye?", "a": "24oz (or 55oz Tomahawk) Ebony farms Australian AAA. Meaty, bold, intensely flavourful.", "context": "$130 / $255" },
-  { "section": "Service", "q": "How should you describe the Bone-In Ibérico Pork Chop?", "a": "14oz richly marbled Spanish pork with exceptional sweetness and nuttiness.", "context": "$65" },
-  { "section": "Service", "q": "How should you describe the Canadian Prime Lamb Rack?", "a": "Newmarket Lamb. Locally sourced, naturally tender, clean finish.", "context": "$110 Full / $60 Half" },
+  { "section": "Service", "q": "Which steak sauce is ONLY for the pork?", "a": "Nduja Vinaigrette", "context": "Spicy, spreadable Calabrian salami sauce." },
+  { "section": "Service", "q": "What are the three sauces for the Land cuts?", "a": "Demon Chimichurri, Green Peppercorn, Nduja Vinaigrette", "context": "Additional sauce is +$4." },
+  { "section": "Service", "q": "How should you describe the Australian Striploin?", "a": "16oz Westholm Farms Australian wagyu with heavy marbling.", "context": "$90" },
+  { "section": "Service", "q": "How should you describe the Bone-In AAA Prime Ribeye?", "a": "24oz (or 55oz Tomahawk) Ebony farms Australian AAA. Meaty, bold, intensely flavourful.", "context": "$135 / $270" },
+  { "section": "Service", "q": "How should you describe the Canadian Prime Lamb Rack?", "a": "Newmarket Lamb. Locally sourced, naturally tender, clean finish.", "context": "$130 Full / $70 Half" },
   { "section": "Service", "q": "What is the Josper?", "a": "A charcoal oven/grill that combines intense radiant heat with live-fire flavour.", "context": "The heart of Leo." },
-  { "section": "Service", "q": "What are the three seafood sauce preparations?", "a": "Singapore Chili, Malaysian White Pepper, Chinatown Style", "context": "Available for Nova Scotia Lobster, BC Dungeness Crab, and Grilled Sea Bream." },
+  { "section": "Service", "q": "What are the four seafood sauce preparations?", "a": "Singapore Chili, Malaysian White Pepper, Sichuan Mala, Chinatown Style", "context": "Available for Lobster, Crab, and Sea Bream." },
   { "section": "Service", "q": "How is the Nova Scotia Lobster prepared?", "a": "Lightly dusted in cornstarch and fried until crisp.", "context": "Then paired with your choice of sauce." },
-  { "section": "Service", "q": "How is the BC Dungeness Crab prepared?", "a": "May be grilled or fried depending on the chosen sauce.", "context": "Market Price." },
   { "section": "Service", "q": "How is the Grilled Sea Bream prepared?", "a": "Whole fish grilled in the Josper.", "context": "Cooked simply to preserve natural sweetness." },
   { "section": "Service", "q": "Which sauce pairs best with Lobster, Sea Bream, and King Crab?", "a": "Indonesian White Pepper", "context": "Peppery, creamy, savoury, aromatic." },
   { "section": "Service", "q": "Which sauce pairs best with Lobster and Dungeness Crab?", "a": "Singapore Chili", "context": "Sweet, tangy, umami, gentle heat." },
   { "section": "Service", "q": "Which sauce pairs best with Lobster, King Crab, and Dungeness Crab?", "a": "Chinatown Style", "context": "Spicy, umami, numbing, buttery." },
-  { "section": "Service", "q": "What is the flavor profile of the Australian Striploin?", "a": "Heavy marbling, rich beef character", "context": "Westholm Farms." },
-  { "section": "Service", "q": "What is the flavor profile of the Bone-In AAA Prime Ribeye?", "a": "Meaty, bold beef flavour, heavily marbled", "context": "Ebony farms." },
-  { "section": "Service", "q": "What is the flavor profile of the Ibérico Pork Chop?", "a": "Richly marbled, exceptional sweetness, nuttiness", "context": "Spanish pork." },
-  { "section": "Service", "q": "What is the flavor profile of the Canadian Prime Lamb Rack?", "a": "Locally sourced, naturally tender, clean finish", "context": "Newmarket Lamb." },
-  { "section": "Service", "q": "What is the flavor profile of the Demon Chimichurri?", "a": "Bright, spicy, herbaceous", "context": "Fresh herbs, chili and acidity." },
-  { "section": "Service", "q": "What is the flavor profile of the Green Peppercorn sauce?", "a": "Creamy, peppery, rich", "context": "Classic Au Poivre." },
-  { "section": "Service", "q": "What is the flavor profile of the Nduja Vinaigrette?", "a": "Spicy, funky, oily, rich", "context": "Spreadable Calabrian salami." },
-  { "section": "Service", "q": "What is the flavor profile of the Indonesian White Pepper sauce?", "a": "Peppery, creamy, savoury, aromatic", "context": "Velvety, glossy texture." },
-  { "section": "Service", "q": "What is the flavor profile of the Singapore Chili sauce?", "a": "Sweet, tangy, umami, gentle heat", "context": "Rich, glossy texture." },
-  { "section": "Service", "q": "What is the flavor profile of the Chinatown Style sauce?", "a": "Spicy, umami, numbing, buttery", "context": "Silky, velvety, glossy texture." },
-  { "section": "Service", "q": "Where does the Chinatown Style sauce originate from?", "a": "Cantonese-American restaurants", "context": "Despite the name, it is not from mainland China." },
-  { "section": "Service", "q": "Where does the Singapore Chili sauce originate from?", "a": "Singapore in the 1950s", "context": "One of the country's national dishes." },
-  { "section": "Service", "q": "What is a common menu vs bible discrepancy for the White Pepper sauce?", "a": "Menu says 'Malaysian White Pepper', bible says 'Indonesian'.", "context": "Be aware of both terms." }
+
+  // --- CRITICAL STANDARDS ---
+  { "section": "Standards", "q": "What is the critical rule for the Hokkaido Scallop Ceviche?", "a": "Never allow the scallops to sit in the dressing.", "context": "They must be dressed à la minute and served on a chilled plate." },
+  { "section": "Standards", "q": "How is the Lobster Pao Fan served?", "a": "Broth is poured tableside.", "context": "To preserve the crispness of the rice cake and provide a show." },
+  { "section": "Standards", "q": "What is the standard for the Chicken Liver Parfait's temperature?", "a": "Serve slightly chilled, never ice cold.", "context": "Ice cold kills the flavor. It should be perfectly smooth." },
+  { "section": "Standards", "q": "What is the rule for dressing the Caesar Salad?", "a": "Do not overdress. Lettuce must be completely dry.", "context": "Add peanuts at pickup and serve immediately." },
+  { "section": "Standards", "q": "What is the standard for the Crab Cake mix?", "a": "Do not overmix. Maintain a crisp exterior.", "context": "Overmixing breaks down the crab texture." },
+  { "section": "Standards", "q": "What is the rule for the Lobster Pao Fan consommé?", "a": "It must be perfectly clear.", "context": "Keep garnish restrained to showcase the consommé." },
+  { "section": "Standards", "q": "What is the standard for the Wagyu XO Fried Rice?", "a": "Wok-fried over extremely high heat for wok hei. Served piping hot.", "context": "Light, separate grains." },
+  { "section": "Standards", "q": "What is the standard for the Grilled Miso Broccolini?", "a": "Maintain vibrant green colour. Do not overcook.", "context": "Season lightly and serve immediately." },
+  { "section": "Standards", "q": "What is the standard for the Grilled Mushrooms?", "a": "Do not over-marinate. Finish with butter, chives, lemon just before service.", "context": "Maintain distinct mushroom texture." },
+  { "section": "Standards", "q": "What is the standard for the Indonesian White Pepper sauce?", "a": "Never boil after butter is mounted. Aromatic, not harsh.", "context": "Maintain a smooth glossy texture." },
+  { "section": "Standards", "q": "What is the standard for the Singapore Chili sauce?", "a": "Balance sweetness and heat. Do not overpower seafood. Serve piping hot.", "context": "Maintain a rich, glossy texture." },
+  { "section": "Standards", "q": "What is the standard for the Chinatown Style sauce?", "a": "Complements rather than overpowers.", "context": "Silky, velvety, glossy." },
+
+  // --- ALLERGENS ---
+  { "section": "Allergens", "q": "What are the allergens in the Bread Service?", "a": "Gluten, Dairy", "context": "Whipped tallow butter is dairy." },
+  { "section": "Allergens", "q": "What are the allergens in the Hokkaido Scallop Ceviche?", "a": "Shellfish, Fish", "context": "Scallops and Nuoc Cham (fish sauce)." },
+  { "section": "Allergens", "q": "What are the allergens in the Wagyu Carpaccio?", "a": "Egg, Soy, Gluten", "context": "Egg yolk, soy/ponzu, and rice chips." },
+  { "section": "Allergens", "q": "What are the allergens in the Chicken Liver Parfait?", "a": "Dairy, Egg, Gluten", "context": "Parfait (dairy/egg) and toasted brioche (gluten)." },
+  { "section": "Allergens", "q": "What are the allergens in the Crab Cake?", "a": "Shellfish, Egg, Gluten", "context": "Crab, aioli (egg), and panko (gluten)." },
+  { "section": "Allergens", "q": "What are the allergens in The Leo Caesar?", "a": "Dairy, Egg, Fish, Peanut", "context": "Contains parmesan, dressing (egg/fish), and candied peanuts." },
+  { "section": "Allergens", "q": "What are the allergens in the Lobster Pao Fan Soup?", "a": "Shellfish, Fish", "context": "Lobster and fish stock elements." },
+  { "section": "Allergens", "q": "What are the allergens in the Wagyu XO Fried Rice?", "a": "Shellfish, Soy, Gluten (May contain Egg)", "context": "XO sauce has dried seafood, soy is used, and egg floss is a component." },
+  { "section": "Allergens", "q": "What are the allergens in the Grilled Miso Broccolini?", "a": "Dairy, Soy", "context": "Miso (soy) and brown butter (dairy)." },
+  { "section": "Allergens", "q": "What are the allergens in the Grilled Mushrooms?", "a": "Soy, Dairy", "context": "Shio koji (soy) and brown butter (dairy)." },
+  { "section": "Allergens", "q": "What are the allergens in the Hand-Cut Fries?", "a": "Egg", "context": "Yuzu aioli contains egg." },
+  { "section": "Allergens", "q": "What are the allergens in the Fried Bao?", "a": "Gluten", "context": "Chinese fried mantou." },
+  { "section": "Allergens", "q": "What are the allergens in the Baked Alaska?", "a": "Dairy, Egg, Gluten", "context": "Meringue, ice cream, cake base." },
+  { "section": "Allergens", "q": "What are the allergens in the Apple Tart?", "a": "Dairy, Gluten", "context": "Pastry and butter." },
+  { "section": "Allergens", "q": "What are the allergens in the Tiramisu?", "a": "Dairy, Egg, Gluten", "context": "Mascarpone, egg, ladyfingers." },
+  { "section": "Allergens", "q": "What are the allergens in the Alcohol Infused Ice Cream?", "a": "Dairy", "context": "Ice cream base." },
+  { "section": "Allergens", "q": "Which seafood sauces contain Dairy?", "a": "Indonesian White Pepper", "context": "It is mounted with butter and cream." },
+  { "section": "Allergens", "q": "Which seafood sauces contain Shellfish?", "a": "Singapore Chili, Chinatown Style", "context": "They use shrimp paste, dried shrimp, or shellfish stock." }
 ];
 
 const DRINK_QUIZ = [
   // Ingredients
-  { "section": "Ingredients", "q": "What is in the Leo Smash?", "a": "Tequila Blanco, Thai basil syrup, yuzu, fresh lime, pink peppercorn salt", "context": "$21" },
-  { "section": "Ingredients", "q": "What is in the Southeast Sour?", "a": "Toki Whiskey, goji berry syrup, egg white, fresh lemon juice", "context": "$21" },
-  { "section": "Ingredients", "q": "What is in the Starry Night?", "a": "Pisco, pandan syrup, coconut water", "context": "$21" },
-  { "section": "Ingredients", "q": "What is in Berries & Baiju?", "a": "Baiju Fen Chiew Brown, fresh lemon juice, clarified strawberry syrup", "context": "$21" },
-  { "section": "Ingredients", "q": "What is in the Sesame Street cocktail?", "a": "Roasted peanut-infused whiskey, brandy, toasted black sesame, amaretto & cream foam", "context": "$21 - Contains nuts!" },
+  { "section": "Ingredients", "q": "What is in the Leo Smash?", "a": "Tequila Blanco, Thai basil, yuzu, fresh lime juice, pink peppercorn salt", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Southeast Sour?", "a": "Toki whiskey, goji berry, egg white, fresh lemon juice", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Starry Night?", "a": "Pisco, pandan, coconut water", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in Berries & Baiju?", "a": "Baijiu Fen Chiew Brown, fresh lemon juice, clarified strawberry", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Sesame Street cocktail?", "a": "Roasted peanut-infused whisky, brandy, toasted black sesame, amaretto & cream foam", "context": "$23 - Contains nuts!" },
   { "section": "Ingredients", "q": "What is in the Red Garden?", "a": "Gin, elderflower liqueur, hibiscus cordial, orange bitters, edible red flower, orange zest", "context": "$21" },
-  { "section": "Ingredients", "q": "What is in the Spirit of Sichuan?", "a": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil", "context": "$21" },
-  { "section": "Ingredients", "q": "What is in the Banana Bang?", "a": "Banana peel palm sugar, cacao bitters, oleo saccharum infused whiskey", "context": "$21" },
-  { "section": "Ingredients", "q": "What is in the Dai-Curry?", "a": "Appleton Rum, curry syrup, fresh lime juice, whole milk", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Spirit of Sichuan?", "a": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil, edible pink flower", "context": "$18" },
+  { "section": "Ingredients", "q": "What is in the Banana Bang?", "a": "Banana peel palm sugar, cacao bitters, oleo saccharum-infused whisky, brown sugar coated banana", "context": "$21" },
+  { "section": "Ingredients", "q": "What is in the Dai-Curry?", "a": "Appleton Rum, Japanese curry, fresh lime juice, clarified milk", "context": "$21" },
 
   // Style
   { "section": "Style", "q": "How would you describe the Leo Smash to a guest?", "a": "A bright, refreshing twist on a Margarita with herbal Thai basil and a peppery finish.", "context": "Related to: Margarita. Sweetness: Balanced/Tart." },
@@ -1155,15 +1377,51 @@ const DRINK_QUIZ = [
   { "section": "Style", "q": "How would you describe the Banana Bang?", "a": "Rich and spirit-forward with caramelized banana notes and a bitter chocolate finish.", "context": "Related to: Old Fashioned. Sweetness: Medium Sweet." },
   { "section": "Style", "q": "How would you describe the Dai-Curry?", "a": "A creamy, clarified milk punch with a savory-sweet curry spice and lime acidity.", "context": "Related to: Milk Punch / Daiquiri. Sweetness: Balanced/Savory." },
 
-  // Mocktails
-  { "section": "Mocktails", "q": "What is in the Iced Blueberry Tea?", "a": "Blueberry white tea", "context": "$14" },
-  { "section": "Mocktails", "q": "What is in Tongue Thai'd?", "a": "Yuzu juice, Thai basil syrup, coconut water", "context": "$14" },
-  { "section": "Mocktails", "q": "What is in the Red Lotus?", "a": "Hibiscus cordial, plum juice, clarified strawberry syrup, egg white", "context": "$14" },
-  { "section": "Mocktails", "q": "What is in Summer's End?", "a": "Clarified strawberry syrup, yuzu lime juice", "context": "$14" },
+  // Mocktails & More
+  { "section": "Mocktails & More", "q": "What is in the Iced Blueberry Tea?", "a": "Blueberry white tea", "context": "$14" },
+  { "section": "Mocktails & More", "q": "What is in Tongue Thai'd?", "a": "Yuzu juice, Thai basil, coconut water", "context": "$14" },
+  { "section": "Mocktails & More", "q": "What is in the Red Lotus?", "a": "Hibiscus cordial, plum juice, clarified strawberry, egg white", "context": "$14" },
+  { "section": "Mocktails & More", "q": "What is in Summer's End?", "a": "Clarified strawberry, yuzu lime juice", "context": "$14" },
+  { "section": "Mocktails & More", "q": "What beers are on tap?", "a": "Asahi ($11) and Peroni ($12)", "context": "Asahi is Japanese, Peroni is Italian." },
+  { "section": "Mocktails & More", "q": "What non-alcoholic beer do we serve?", "a": "Asahi Zero", "context": "$8" },
+  { "section": "Mocktails & More", "q": "What is the price of sparkling water?", "a": "$8", "context": "" },
+  { "section": "Mocktails & More", "q": "What is the price of natural spring water?", "a": "$7", "context": "" },
+  { "section": "Mocktails & More", "q": "What tea do we serve?", "a": "Enshi Yu Lu Tea", "context": "$5" },
+  { "section": "Mocktails & More", "q": "What is the price of coffee?", "a": "$6", "context": "Hot or iced" }
+];
+
+const WINE_QUIZ = [
+  // --- REGION & GRAPE ---
+  { "section": "Region", "q": "What region is the A.J. Adam Spätburgunder Rosé from?", "a": "Germany", "context": "2022 · Sparkling · $80" },
+  { "section": "Region", "q": "What region is the Château l'Eden from?", "a": "Bordeaux, France", "context": "2018 · Red · $90" },
+  { "section": "Region", "q": "What region is the Armand Heitz Meursault from?", "a": "France", "context": "2023 · White · $230" },
+  { "section": "Grape", "q": "What grape is used in the A.J. Adam Spätburgunder Rosé?", "a": "Pinot Noir (Spätburgunder)", "context": "Germany, 2022" },
+  { "section": "Grape", "q": "What grape is used in the Griesel & Compagnie Blanc de Blancs?", "a": "Chardonnay", "context": "Germany, 2022" },
+  { "section": "Grape", "q": "What grape is used in the Salvano Barbaresco Riserva?", "a": "Nebbiolo", "context": "Italy, 2018" },
+  { "section": "Grape", "q": "What grape is used in the Clement Lavallée Chablis?", "a": "Chardonnay", "context": "France, 2021" },
   
-  // Beer
-  { "section": "Beer", "q": "What beers are on tap?", "a": "Asahi ($11) and Peroni ($12)", "context": "Asahi is Japanese, Peroni is Italian." },
-  { "section": "Beer", "q": "What non-alcoholic beer do we serve?", "a": "Asahi Zero", "context": "$7" }
+  // --- PROFILES ---
+  { "section": "Profiles", "q": "What is the tasting profile of the Château Fleur Haut Gaussens Bordeaux?", "a": "Dark fruit, cedar, medium body, smooth tannins.", "context": "Bordeaux, 2019 · $30" },
+  { "section": "Profiles", "q": "What is the tasting profile of the Grotta del Ninfeo Amarone?", "a": "Dried fruit, rich, high alcohol, full-bodied.", "context": "Italy, 2020 · $135" },
+  { "section": "Profiles", "q": "What is the tasting profile of the Patrice Rion Nuits-Saint-Georges 1er Cru?", "a": "Aged Pinot Noir. Mushroom, dark cherry, complex earthy notes.", "context": "Burgundy, 2014 · $245" },
+  { "section": "Profiles", "q": "What is the tasting profile of the Armand Heitz Meursault?", "a": "Oaked Chardonnay. Rich, hazelnut, butter, golden apple, long finish.", "context": "France, 2023 · $230" },
+  { "section": "Profiles", "q": "What is the tasting profile of the Schloss Lieser Riesling Feinherb?", "a": "Off-dry. Slate, green apple, lime, and subtle petrol notes.", "context": "Germany, 2023 · $90" },
+
+  // --- PAIRINGS ---
+  { "section": "Pairings", "q": "What pairs with the Château Fleur Haut Gaussens Bordeaux?", "a": "Lamb Rack, Duck, or the Ibérico Pork Chop.", "context": "Bordeaux, 2019" },
+  { "section": "Pairings", "q": "What pairs with the Château l'Eden?", "a": "Australian Striploin or Bone-In Prime Ribeye.", "context": "Bordeaux, 2018" },
+  { "section": "Pairings", "q": "What pairs with the Cascina Adelaide Barolo Riserva?", "a": "The richest cuts of beef (Ribeye, Tomahawk).", "context": "Italy, 2015" },
+  { "section": "Pairings", "q": "What pairs with the Clement Lavallée Chablis?", "a": "Oysters, Grilled Sea Bream, or Lobster.", "context": "France, 2021" },
+  { "section": "Pairings", "q": "What pairs with the Armand Heitz Meursault?", "a": "Lobster Pao Fan, Crab Cake, or rich seafood.", "context": "France, 2023" },
+  { "section": "Pairings", "q": "What pairs with the Plan B O.D Riesling?", "a": "The Leo Caesar, Spicy Harissa Prawns, or Thai food.", "context": "Australia, 2023" },
+
+  // --- PRICES ---
+  { "section": "Prices", "q": "How much is the Griesel & Compagnie Blanc de Blancs Brut?", "a": "$95", "context": "Sparkling, Germany" },
+  { "section": "Prices", "q": "How much is the Antica Vigna Prosecco Extra Dry?", "a": "$65", "context": "Sparkling, Italy" },
+  { "section": "Prices", "q": "How much is the Château Canon Croix Canon?", "a": "$185", "context": "Red, Bordeaux" },
+  { "section": "Prices", "q": "How much is the Pierre Girardin Pommard 1er Cru?", "a": "$300", "context": "Red, Burgundy" },
+  { "section": "Prices", "q": "How much is the Joseph Castan La Bourgade Chardonnay?", "a": "$20", "context": "White, France" },
+  { "section": "Prices", "q": "How much is the Schloss Lieser SL Riesling Feinherb?", "a": "$90", "context": "Riesling, Germany" }
 ];
 
 const DIAL_LABELS = {
@@ -1173,11 +1431,11 @@ const DIAL_LABELS = {
   Tannin: ["Very Soft","Soft","Medium","Firm","Very Firm"]
 };
 
-const SCREENS = ['home','menu-screen','grill-screen','seafood-screen','drinks-screen','foodq-screen','drinkq-screen'];
+const SCREENS = ['home','menu-screen','grill-screen','seafood-screen','drinks-screen','wine-screen','foodq-screen','drinkq-screen','wineq-screen'];
 const NAV_MAP = {
   'home':'nav-home','menu-screen':'nav-menu',
-  'grill-screen':'nav-grill','seafood-screen':'nav-seafood','drinks-screen':'nav-drinks',
-  'foodq-screen':'nav-foodq','drinkq-screen':'nav-drinkq'
+  'grill-screen':'nav-grill','seafood-screen':'nav-seafood','drinks-screen':'nav-drinks','wine-screen':'nav-wine',
+  'foodq-screen':'nav-foodq','drinkq-screen':'nav-drinkq','wineq-screen':'nav-wineq'
 };
 
 function showScreen(id) {
@@ -1312,8 +1570,10 @@ function render(id) {
   else if (id === 'grill') renderGrill();
   else if (id === 'seafood') renderSeafood();
   else if (id === 'drinks') renderDrinks();
+  else if (id === 'wine') renderWine();
   else if (id === 'foodq') renderQuiz('foodq', FOOD_QUIZ);
   else if (id === 'drinkq') renderQuiz('drinkq', DRINK_QUIZ);
+  else if (id === 'wineq') renderQuiz('wineq', WINE_QUIZ);
   srInjectBadge(id);
 }
 
@@ -1487,6 +1747,41 @@ function renderDrinks() {
     <div class="note-line">※ Price: $${c.price}</div>`;
 }
 
+function renderWine() {
+  const id = 'wine'; const s = states[id];
+  const list = filtered(id);
+  if (!list.length) return;
+  if (s.pos >= list.length) s.pos = 0;
+  const w = WINES[list[s.pos]];
+  document.getElementById('wine-prog').textContent = (s.pos+1) + ' / ' + list.length;
+
+  document.getElementById('wine-front').innerHTML = `
+    <div class="front-cat">${w.category}</div>
+    <div class="front-name">${w.name}</div>
+    <div class="tap-hint">Tap to reveal</div>`;
+
+  document.getElementById('wine-back').innerHTML = `
+    <div class="section-tag">${w.category}</div>
+    <div class="back-name">${w.name}</div>
+    <div class="info-block">
+      <div class="info-label">Region & Vintage</div>
+      <div class="info-text">${w.full}</div>
+    </div>
+    <div class="info-block">
+      <div class="info-label">Price</div>
+      <div class="info-text">$${w.price}</div>
+    </div>
+    <div class="info-block" style="border-left: 2px solid #c46b8a;">
+      <div class="info-label" style="color:#f0a3bc">Tasting Notes</div>
+      <div class="info-text">${w.profile}</div>
+    </div>
+    <div class="info-block" style="border-left: 2px solid #4a8fb5;">
+      <div class="info-label" style="color:#6ab0d6">Food Pairing</div>
+      <div class="info-text">${w.pairing}</div>
+    </div>
+    ${w.note ? `<div class="note-line">※ ${w.note}</div>` : ''}`;
+}
+
 function renderQuiz(id, data) {
   const s = states[id];
   const list = filtered(id);
@@ -1644,34 +1939,43 @@ function srInjectBadge(id) {
 initDeck('menu', DISHES, ['Starters','Land','Sea','Sides','Desserts']);
 initDeck('grill', GRILL, ['Cuts','Sauces','Equipment','Standards']);
 initDeck('seafood', SEAFOOD_PREP, ['Sauce']);
-initDeck('drinks', DRINKS, ['Cocktails','Mocktails','Beer']);
-initDeck('foodq', FOOD_QUIZ, ['Allergens','Standards','Components','Details','Service']);
-initDeck('drinkq', DRINK_QUIZ, ['Ingredients','Style','Mocktails','Beer']);
+initDeck('drinks', DRINKS, ['Cocktails','Mocktails','Beer & More']);
+initDeck('wine', WINES, ['Sparkling','Red','White','Riesling']);
+
+// Note the section order change here for FOOD_QUIZ
+initDeck('foodq', FOOD_QUIZ, ['Pitch','Components','Details','Service','Standards','Allergens']);
+initDeck('drinkq', DRINK_QUIZ, ['Ingredients','Style','Mocktails & More']);
+initDeck('wineq', WINE_QUIZ, ['Region','Grape','Profiles','Pairings','Prices']);
 
 srInit('menu', DISHES.length);
 srInit('grill', GRILL.length);
 srInit('seafood', SEAFOOD_PREP.length);
 srInit('drinks', DRINKS.length);
+srInit('wine', WINES.length);
 srInit('foodq', FOOD_QUIZ.length);
 srInit('drinkq', DRINK_QUIZ.length);
+srInit('wineq', WINE_QUIZ.length);
 
-renderMenu(); renderGrill(); renderSeafood(); renderDrinks();
+renderMenu(); renderGrill(); renderSeafood(); renderDrinks(); renderWine();
 renderQuiz('foodq', FOOD_QUIZ);
 renderQuiz('drinkq', DRINK_QUIZ);
+renderQuiz('wineq', WINE_QUIZ);
 
-buildCats('menu'); buildCats('grill'); buildCats('seafood'); buildCats('drinks');
-buildCats('foodq'); buildCats('drinkq');
+buildCats('menu'); buildCats('grill'); buildCats('seafood'); buildCats('drinks'); buildCats('wine');
+buildCats('foodq'); buildCats('drinkq'); buildCats('wineq');
 
-srUpdateProgress('menu'); srUpdateProgress('grill'); srUpdateProgress('seafood'); srUpdateProgress('drinks');
-srUpdateProgress('foodq'); srUpdateProgress('drinkq');
+srUpdateProgress('menu'); srUpdateProgress('grill'); srUpdateProgress('seafood'); srUpdateProgress('drinks'); srUpdateProgress('wine');
+srUpdateProgress('foodq'); srUpdateProgress('drinkq'); srUpdateProgress('wineq');
 
 // Update counts dynamically
 document.getElementById('count-menu').textContent = DISHES.length + ' dishes';
 document.getElementById('count-grill').textContent = GRILL.length + ' cards';
 document.getElementById('count-seafood').textContent = SEAFOOD_PREP.length + ' sauces';
 document.getElementById('count-drinks').textContent = DRINKS.length + ' items';
+document.getElementById('count-wine').textContent = WINES.length + ' wines';
 document.getElementById('count-foodq').textContent = FOOD_QUIZ.length + ' cards';
 document.getElementById('count-drinkq').textContent = DRINK_QUIZ.length + ' cards';
+document.getElementById('count-wineq').textContent = WINE_QUIZ.length + ' cards';
 
 // Keyboard shortcuts: Space = flip, A = wrong, S = unsure, D = right, Arrows = nav
 document.addEventListener('keydown', function(e) {
@@ -1682,8 +1986,10 @@ document.addEventListener('keydown', function(e) {
     'grill-screen':    'grill',
     'seafood-screen':  'seafood',
     'drinks-screen':   'drinks',
+    'wine-screen':     'wine',
     'foodq-screen':    'foodq',
-    'drinkq-screen':   'drinkq'
+    'drinkq-screen':   'drinkq',
+    'wineq-screen':    'wineq'
   };
 
   let activeDeck = null;
