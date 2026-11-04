@@ -14,7 +14,7 @@
   --acc-light: #d4af37;
   --line: #d4c4a0;
   
-  /* Bar/Wine Dark Theme */
+  /* Bar/Wine Dark Theme (Always applied to those specific decks) */
   --dark-bg: #0a1128;
   --dark-card: #111c3a;
   --dark-ink: #fdfbf7;
@@ -26,8 +26,33 @@
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, sans-serif;
 }
+
+/* GLOBAL DARK MODE OVERRIDES */
+body.dark-mode {
+  --bg: #0a1128;
+  --card-bg: #111c3a;
+  --ink: #fdfbf7;
+  --ink-soft: #8b9bb4;
+  --acc: #d4af37;
+  --acc-light: #f0a3bc;
+  --line: #23325a;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; overflow-x: hidden; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+  position: fixed; top: 20px; right: 20px; z-index: 1000;
+  background: var(--card-bg); border: 1px solid var(--line);
+  border-radius: 50%; width: 44px; height: 44px;
+  display: flex; justify-content: center; align-items: center;
+  cursor: pointer; color: var(--ink);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.2s;
+}
+.theme-toggle:active { transform: scale(0.9); }
+.theme-toggle svg { width: 20px; height: 20px; stroke: var(--ink); }
 
 /* SCREENS */
 .screen { display: none; min-height: 100vh; padding-bottom: 80px; }
@@ -75,7 +100,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   transition: transform 0.12s, box-shadow 0.12s;
 }
 .h-card:active { transform: scale(0.98); box-shadow: 0 1px 6px rgba(0,0,0,0.07); }
-.h-card.dark-card { border-left-color: var(--dark-bg); }
+.h-card.dark-card { border-left-color: var(--dark-card); }
 .h-card.wine-card { border-left-color: #8b1a1a; }
 .h-card.quiz-card { border-left-color: #4a6e2a; }
 .h-icon { font-size: 26px; width: 38px; text-align: center; flex-shrink: 0; }
@@ -125,9 +150,10 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
   color: var(--ink-soft); cursor: pointer; transition: all 0.15s;
 }
-.cat-btn.active { background: var(--ink); border-color: var(--ink); color: #f5ecd7; }
+.cat-btn.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
 .dark-theme .cat-btn { border-color: var(--dark-line); color: var(--dark-ink-soft); }
 .dark-theme .cat-btn.active { background: var(--dark-acc); border-color: var(--dark-acc); color: #000; }
+body.dark-mode .cat-btn.active { color: #000; }
 
 .progress { font-size: 13px; color: var(--ink-soft); text-align: center; margin-bottom: 16px; }
 .dark-theme .progress { color: var(--dark-ink-soft); }
@@ -233,6 +259,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   flex: 1; background: var(--acc); color: #fff; border-color: var(--acc);
   font-size: 15px; font-weight: 600;
 }
+body.dark-mode .nav-btn.primary { color: #000; }
 .dark-theme .nav-btn { background: var(--dark-card); border-color: var(--dark-line); color: var(--dark-ink-soft); }
 .dark-theme .nav-btn.primary { background: var(--dark-acc); border-color: var(--dark-acc); color: #000; }
 
@@ -296,6 +323,10 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
   display: flex; z-index: 100;
   padding-bottom: env(safe-area-inset-bottom, 0);
   overflow-x: auto;
+  transition: background 0.3s;
+}
+body.dark-mode .bottom-nav {
+  background: rgba(10,17,40,0.95);
 }
 .nav-item {
   flex: 1; display: flex; flex-direction: column;
@@ -311,6 +342,11 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 </style>
 </head>
 <body>
+
+<!-- THEME TOGGLE -->
+<button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()">
+  <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+</button>
 
 <!-- HOME -->
 <div id="home" class="screen" style="display:block;">
@@ -731,6 +767,33 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 </nav>
 
 <script>
+// THEME TOGGLE LOGIC
+function toggleTheme() {
+  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+  localStorage.setItem('leoTheme', isDark ? 'dark' : 'light');
+  updateThemeIcon(isDark);
+}
+
+function updateThemeIcon(isDark) {
+  const icon = document.getElementById('theme-icon');
+  if (isDark) {
+    // Sun icon
+    icon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+  } else {
+    // Moon icon
+    icon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+  }
+}
+
+// Check for saved preference on load
+if (localStorage.getItem('leoTheme') === 'dark') {
+  document.body.classList.add('dark-mode');
+  updateThemeIcon(true);
+} else {
+  updateThemeIcon(false);
+}
+
 const DISHES = [
   // STARTERS
   {
