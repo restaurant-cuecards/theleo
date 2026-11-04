@@ -1204,29 +1204,30 @@ const DRINKS = [
   { "name": "Coffee", "price": 6, "category": "Beer & More", "full": "Hot or iced", "base": "NA" }
 ];
 
+// Pairings must reference only items present in DISHES. No dish, no pairing claim.
 const WINES = [
   // SPARKLING
   { 
     "name": "A.J. Adam Spätburgunder Rosé", "price": 80, "category": "Sparkling", "full": "Germany, 2022", 
     "profile": "Dry, delicate red berries, brioche, and a crisp mineral finish.",
-    "pairing": "Tuna Crudo, Oysters, or as a refreshing aperitif."
+    "pairing": "Hokkaido Scallop Ceviche, Crab Cake, or as a refreshing aperitif."
   },
   { 
     "name": "Griesel & Compagnie Blanc de Blancs Brut", "price": 95, "category": "Sparkling", "full": "Germany, 2022", 
     "profile": "100% Chardonnay. Crisp green apple, citrus, and a chalky minerality.",
-    "pairing": "Oysters, Fried Bao, or light seafood starters."
+    "pairing": "Hokkaido Scallop Ceviche, Crab Cake, or Fried Bao."
   },
   { 
     "name": "Antica Vigna Prosecco Extra Dry", "price": 65, "category": "Sparkling", "full": "Italy", "note": "[5OZ] 16",
     "profile": "Green apple, pear, and white floral notes with a slightly off-dry finish.",
-    "pairing": "Spicy Harissa Prawns, appetizers, or celebrations."
+    "pairing": "Bread Service, Fried Bao, or as an aperitif."
   },
   
   // RED
   { 
     "name": "Château Fleur Haut Gaussens Bordeaux Supérieur", "price": 30, "category": "Red", "full": "Bordeaux, France, 2019", "note": "[5OZ] 22 [8OZ] 30",
     "profile": "Merlot dominant. Dark fruit, cedar, medium body, and smooth tannins.",
-    "pairing": "Lamb Rack, Duck, or the Ibérico Pork Chop."
+    "pairing": "Canadian Prime Lamb Rack, Bone-In Ibérico Pork Chop, or Grilled Mushrooms."
   },
   { 
     "name": "Château l'Eden", "price": 90, "category": "Red", "full": "Bordeaux, France, 2018", "note": "[5OZ] 30 [8OZ] 40",
@@ -1241,22 +1242,22 @@ const WINES = [
   { 
     "name": "Château Canon Croix Canon", "price": 185, "category": "Red", "full": "Bordeaux, France, 2018", 
     "profile": "Lush fruit, earthy undertones, and elegant, refined tannins.",
-    "pairing": "Duck, Lamb Rack, or rich mushroom dishes."
+    "pairing": "Canadian Prime Lamb Rack, Grilled Mushrooms, or Chicken Liver Parfait."
   },
   { 
     "name": "Gerard Julien Côte de Nuits-Villages", "price": 125, "category": "Red", "full": "Burgundy, France, 2022", 
     "profile": "Pinot Noir. Red cherry, earthy forest floor, light tannins.",
-    "pairing": "Duck, Salmon, or Chicken Liver Parfait."
+    "pairing": "Chicken Liver Parfait, Grilled Mushrooms, or Grilled Sea Bream."
   },
   { 
     "name": "Patrice Rion Nuits-Saint-Georges 1er Cru Clos des Argillières", "price": 245, "category": "Red", "full": "Burgundy, France, 2014", 
     "profile": "Aged Pinot Noir. Mushroom, dark cherry, complex earthy notes.",
-    "pairing": "Duck, Lamb Rack, or Mushroom dishes."
+    "pairing": "Canadian Prime Lamb Rack, Grilled Mushrooms, or Bone-In Ibérico Pork Chop."
   },
   { 
     "name": "Pierre Girardin Pommard 1er Cru Les Grands Épenots", "price": 300, "category": "Red", "full": "Burgundy, France, 2023", 
     "profile": "Structured Pinot Noir. Dark fruit, firm tannins, but elegant.",
-    "pairing": "Bone-In Prime Ribeye or Duck."
+    "pairing": "Bone-In AAA Prime Ribeye or Canadian Prime Lamb Rack."
   },
   { 
     "name": "Grotta del Ninfeo Amarone della Valpolicella", "price": 135, "category": "Red", "full": "Italy, 2020", 
@@ -1278,7 +1279,7 @@ const WINES = [
   { 
     "name": "Joseph Castan La Bourgade Chardonnay", "price": 20, "category": "White", "full": "France, 2025", "note": "[5OZ] 16 [8OZ] 20",
     "profile": "Crisp, green apple, pear, and a clean finish.",
-    "pairing": "Chicken, seafood, or soft cheeses."
+    "pairing": "Hokkaido Scallop Ceviche, Grilled Sea Bream, or The Leo Caesar."
   },
   { 
     "name": "The Grange of Prince Edward County Estate Series Chardonnay", "price": 80, "category": "White", "full": "Canada, 2025", "note": "[5OZ] 25 [8OZ] 30",
@@ -1288,12 +1289,12 @@ const WINES = [
   { 
     "name": "Gautheron d'Anost Bouzeron Les Loueres Aligoté", "price": 110, "category": "White", "full": "France, 2023", 
     "profile": "Crisp, high acid, citrus, and a distinct mineral edge.",
-    "pairing": "Oysters, Tuna Crudo, or light seafood."
+    "pairing": "Hokkaido Scallop Ceviche, The Leo Caesar, or Grilled Sea Bream."
   },
   { 
     "name": "Clement Lavallée Chablis Chante Merle", "price": 120, "category": "White", "full": "France, 2021", 
     "profile": "Unoaked Chardonnay. Steely, oyster shell, green apple, flinty.",
-    "pairing": "Oysters, Grilled Sea Bream, or Lobster."
+    "pairing": "Grilled Sea Bream, Nova Scotia Lobster, or Hokkaido Scallop Ceviche."
   },
   { 
     "name": "Armand Heitz Meursault", "price": 230, "category": "White", "full": "France, 2023", 
@@ -1305,12 +1306,12 @@ const WINES = [
   { 
     "name": "Schloss Lieser SL Riesling Feinherb", "price": 90, "category": "Riesling", "full": "Germany, 2023", 
     "profile": "Off-dry. Slate, green apple, lime, and subtle petrol notes.",
-    "pairing": "Spicy dishes like Harissa Prawns or Thai Curry."
+    "pairing": "Typhoon Shelter Eggplant, Chinatown Style Lobster, or Sichuan Mala Crab."
   },
   { 
     "name": "Plan B O.D Riesling", "price": 80, "category": "Riesling", "full": "Australia, 2023", 
     "profile": "Bone dry. Lime, high acid, and distinct mineral notes.",
-    "pairing": "The Leo Caesar, Spicy Harissa Prawns, or Thai food."
+    "pairing": "The Leo Caesar, Typhoon Shelter Eggplant, or Singapore Chili Lobster."
   }
 ];
 
@@ -1471,12 +1472,12 @@ const WINE_QUIZ = [
   { "section": "Profiles", "q": "What is the tasting profile of the Schloss Lieser Riesling Feinherb?", "a": "Off-dry. Slate, green apple, lime, and subtle petrol notes.", "context": "Germany, 2023 · $90" },
 
   // --- PAIRINGS ---
-  { "section": "Pairings", "q": "What pairs with the Château Fleur Haut Gaussens Bordeaux?", "a": "Lamb Rack, Duck, or the Ibérico Pork Chop.", "context": "Bordeaux, 2019" },
+  { "section": "Pairings", "q": "What pairs with the Château Fleur Haut Gaussens Bordeaux?", "a": "Canadian Prime Lamb Rack, Bone-In Ibérico Pork Chop, or Grilled Mushrooms.", "context": "Bordeaux, 2019" },
   { "section": "Pairings", "q": "What pairs with the Château l'Eden?", "a": "Australian Striploin or Bone-In Prime Ribeye.", "context": "Bordeaux, 2018" },
   { "section": "Pairings", "q": "What pairs with the Cascina Adelaide Barolo Riserva?", "a": "The richest cuts of beef (Ribeye, Tomahawk).", "context": "Italy, 2015" },
-  { "section": "Pairings", "q": "What pairs with the Clement Lavallée Chablis?", "a": "Oysters, Grilled Sea Bream, or Lobster.", "context": "France, 2021" },
+  { "section": "Pairings", "q": "What pairs with the Clement Lavallée Chablis?", "a": "Grilled Sea Bream, Nova Scotia Lobster, or Hokkaido Scallop Ceviche.", "context": "France, 2021" },
   { "section": "Pairings", "q": "What pairs with the Armand Heitz Meursault?", "a": "Lobster Pao Fan, Crab Cake, or rich seafood.", "context": "France, 2023" },
-  { "section": "Pairings", "q": "What pairs with the Plan B O.D Riesling?", "a": "The Leo Caesar, Spicy Harissa Prawns, or Thai food.", "context": "Australia, 2023" },
+  { "section": "Pairings", "q": "What pairs with the Plan B O.D Riesling?", "a": "The Leo Caesar, Typhoon Shelter Eggplant, or Singapore Chili Lobster.", "context": "Australia, 2023" },
 
   // --- PRICES ---
   { "section": "Prices", "q": "How much is the Griesel & Compagnie Blanc de Blancs Brut?", "a": "$95", "context": "Sparkling, Germany" },
