@@ -6,28 +6,24 @@
 <title>The Leo — Service Prep</title>
 <style>
 :root {
-  --bg: #ede5d8; /* Cream */
-  --card-bg: #f5ecd7; /* Lighter cream */
-  --ink: #2a1f14; /* Dark ink */
+  --bg: #ede5d8;
+  --card-bg: #f5ecd7;
+  --ink: #2a1f14;
   --ink-soft: #6b5d46;
-  --acc: #b89222; /* Rich Gold */
+  --acc: #b89222;
   --acc-light: #d4af37;
   --line: #d4c4a0;
-  
-  /* Bar/Wine Dark Theme (Always applied to those specific decks) */
   --dark-bg: #0a1128;
   --dark-card: #111c3a;
   --dark-ink: #fdfbf7;
   --dark-ink-soft: #8b9bb4;
-  --dark-acc: #d4af37; 
+  --dark-acc: #d4af37;
   --dark-acc-s: #f0a3bc;
   --dark-line: #23325a;
-  
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, sans-serif;
 }
 
-/* GLOBAL DARK MODE OVERRIDES */
 body.dark-mode {
   --bg: #0a1128;
   --card-bg: #111c3a;
@@ -41,7 +37,6 @@ body.dark-mode {
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
 
-/* THEME TOGGLE BUTTON */
 .theme-toggle {
   position: fixed; top: 20px; right: 20px; z-index: 1000;
   background: var(--card-bg); border: 1px solid var(--line);
@@ -54,10 +49,8 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 .theme-toggle:active { transform: scale(0.9); }
 .theme-toggle svg { width: 20px; height: 20px; stroke: var(--ink); }
 
-/* SCREENS */
 .screen { display: none; min-height: 100vh; padding-bottom: 80px; }
 
-/* HOME */
 #home {
   background: var(--bg);
   padding: 52px 24px 90px;
@@ -117,7 +110,6 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 }
 .h-arrow { color: var(--line); font-size: 20px; flex-shrink: 0; }
 
-/* DECK SCREENS */
 .deck-wrap { max-width: 600px; margin: 0 auto; padding: 24px 20px 100px; }
 .deck-screen { background: var(--bg); }
 .deck-screen.dark-theme { background: var(--dark-bg); color: var(--dark-ink); }
@@ -142,7 +134,6 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-h
 .deck-divider { width: 32px; height: 2px; background: var(--acc); margin-top: 12px; margin-bottom: 20px; }
 .dark-theme .deck-divider { background: var(--dark-acc); }
 
-/* filter pills */
 .cat-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .cat-btn {
   background: none; border: 1.5px solid var(--line);
@@ -158,7 +149,6 @@ body.dark-mode .cat-btn.active { color: #000; }
 .progress { font-size: 13px; color: var(--ink-soft); text-align: center; margin-bottom: 16px; }
 .dark-theme .progress { color: var(--dark-ink-soft); }
 
-/* CARD */
 .card-wrap { perspective: 1600px; cursor: pointer; margin-bottom: 20px; }
 .card-inner {
   position: relative; transform-style: preserve-3d;
@@ -192,7 +182,6 @@ body.dark-mode .cat-btn.active { color: #000; }
 }
 .dark-theme .card-back { background: #050814; color: var(--dark-ink); border: 1px solid var(--dark-line); }
 
-/* front face */
 .front-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); margin-bottom: 10px; font-weight: 600;}
 .dark-theme .card-front .front-cat { color: var(--dark-acc-s); }
 .front-name { font-family: var(--serif); font-size: 32px; font-weight: 400; flex: 1; display: flex; align-items: center; margin: 8px 0 16px; line-height: 1.1; color: var(--ink);}
@@ -202,7 +191,6 @@ body.dark-mode .cat-btn.active { color: #000; }
 .tap-hint { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--line); margin-top: auto; }
 .dark-theme .card-front .tap-hint { color: var(--dark-line); }
 
-/* back face shared */
 .section-tag {
   display: inline-block;
   font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -214,7 +202,6 @@ body.dark-mode .cat-btn.active { color: #000; }
 .back-name { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 18px; color: var(--acc-light); }
 .back-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 16px 0; }
 
-/* menu back */
 .pitch-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
 .pitch-item { display: flex; align-items: baseline; gap: 12px; }
 .pitch-num { font-size: 10px; color: rgba(255,255,255,0.35); min-width: 16px; }
@@ -231,7 +218,6 @@ body.dark-mode .cat-btn.active { color: #000; }
 .mise-line { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
 .note-line { font-size: 12px; color: rgba(255,255,255,0.45); font-style: italic; margin-top: 12px; border-left: 2px solid var(--acc-light); padding-left: 8px;}
 
-/* quiz back */
 .quiz-q { font-family: var(--serif); font-size: 24px; font-weight: 400; flex: 1; display: flex; align-items: center; line-height: 1.4; margin: 8px 0 16px; color: var(--ink); }
 .dark-theme .quiz-q { color: var(--dark-ink); }
 .quiz-context { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
@@ -239,7 +225,6 @@ body.dark-mode .cat-btn.active { color: #000; }
 .quiz-a { font-family: var(--serif); font-size: 30px; font-weight: 400; flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--acc-light); margin: 20px 0;}
 .quiz-context-back { font-size: 12px; color: rgba(255,255,255,0.45); text-align: center; margin-top: 8px; }
 
-/* NAV BUTTONS */
 .nav-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .deck-controls {
   position: relative;
@@ -272,10 +257,7 @@ body.dark-mode .nav-btn.primary { color: #000; }
 }
 .dark-theme .extra-btn { color: var(--dark-ink-soft); }
 
-/* SPACED REPETITION */
-.sr-row {
-  display: flex; gap: 8px; margin-top: 10px;
-}
+.sr-row { display: flex; gap: 8px; margin-top: 10px; }
 .sr-btn {
   flex: 1; border: none; border-radius: 50px;
   padding: 11px 6px; font-size: 13px; font-weight: 600;
@@ -315,7 +297,48 @@ body.dark-mode .nav-btn.primary { color: #000; }
 }
 .dark-theme .sr-stats { color: var(--dark-ink-soft); }
 
-/* BOTTOM NAV */
+/* WINE DIALS — spectrum bars on wine reference cards */
+.dials-block {
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.dial-row {
+  display: grid;
+  grid-template-columns: 62px 1fr 76px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+.dial-row:last-child { margin-bottom: 0; }
+.dial-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+}
+.dial-track { display: flex; gap: 3px; }
+.dial-dot {
+  flex: 1;
+  height: 7px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.08);
+  transition: background 0.2s;
+}
+.dial-dot.filled.body      { background: var(--dark-acc); }
+.dial-dot.filled.acidity   { background: #6ab0d6; }
+.dial-dot.filled.tannin    { background: #c46b8a; }
+.dial-dot.filled.sweetness { background: #e8a060; }
+.dial-value {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  text-align: right;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0;
   background: rgba(245,236,215,0.95); backdrop-filter: blur(10px);
@@ -343,7 +366,6 @@ body.dark-mode .bottom-nav {
 </head>
 <body>
 
-<!-- THEME TOGGLE -->
 <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()">
   <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
 </button>
@@ -767,7 +789,6 @@ body.dark-mode .bottom-nav {
 </nav>
 
 <script>
-// THEME TOGGLE LOGIC
 function toggleTheme() {
   document.body.classList.toggle('dark-mode');
   const isDark = document.body.classList.contains('dark-mode');
@@ -778,15 +799,12 @@ function toggleTheme() {
 function updateThemeIcon(isDark) {
   const icon = document.getElementById('theme-icon');
   if (isDark) {
-    // Sun icon
     icon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
   } else {
-    // Moon icon
     icon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
   }
 }
 
-// Check for saved preference on load
 if (localStorage.getItem('leoTheme') === 'dark') {
   document.body.classList.add('dark-mode');
   updateThemeIcon(true);
@@ -795,7 +813,6 @@ if (localStorage.getItem('leoTheme') === 'dark') {
 }
 
 const DISHES = [
-  // STARTERS
   {
     "name": "Bread Service",
     "price": 12,
@@ -888,8 +905,6 @@ const DISHES = [
     "standards": "Consommé must be perfectly clear. Lobster tender, never overcooked. Rice cake crisp until broth poured. Broth poured tableside. Keep garnish restrained.",
     "note": "Pao Fan means 'soaked rice'. Signature dish. Consommé made from roasted shells, dried shrimp/scallops, chicken stock."
   },
-  
-  // LAND
   {
     "name": "Australian Striploin",
     "price": 90,
@@ -930,8 +945,6 @@ const DISHES = [
     "allergens": "None (sauce dependent)",
     "note": "Full rack is $130, Half is $70. Josper grilled."
   },
-
-  // SEA
   {
     "name": "Nova Scotia Lobster",
     "price": "MP",
@@ -962,8 +975,6 @@ const DISHES = [
     "allergens": "Fish",
     "note": "Cooked simply to preserve natural sweetness. Choice of Singapore Chili, Malaysian White Pepper, Sichuan Mala, or Chinatown Style sauce."
   },
-
-  // SIDES
   {
     "name": "Wagyu XO Fried Rice",
     "price": 22,
@@ -1020,8 +1031,6 @@ const DISHES = [
     "allergens": "Gluten",
     "note": "Perfect for dipping in leftover seafood sauces."
   },
-
-  // DESSERT
   {
     "name": "Baked Alaska",
     "price": 16,
@@ -1177,7 +1186,6 @@ const SEAFOOD_PREP = [
 ];
 
 const DRINKS = [
-  // COCKTAILS
   { "name": "Leo Smash", "price": 21, "category": "Cocktails", "full": "Tequila Blanco, Thai basil, yuzu, fresh lime juice, pink peppercorn salt [2oz]", "base": "Tequila" },
   { "name": "Southeast Sour", "price": 21, "category": "Cocktails", "full": "Toki whiskey, goji berry, egg white, fresh lemon juice [2oz]", "base": "Whiskey" },
   { "name": "Starry Night", "price": 21, "category": "Cocktails", "full": "Pisco, pandan, coconut water [1.5oz]", "base": "Pisco" },
@@ -1187,14 +1195,10 @@ const DRINKS = [
   { "name": "Spirit of Sichuan", "price": 18, "category": "Cocktails", "full": "Sake, Prosecco, Sichuan peppercorn, Sichuan peppercorn oil, edible pink flower [2.5oz]", "base": "Sake/Prosecco" },
   { "name": "Banana Bang", "price": 21, "category": "Cocktails", "full": "Banana peel palm sugar, cacao bitters, oleo saccharum-infused whisky, brown sugar coated banana [2oz]", "base": "Whiskey" },
   { "name": "Dai-Curry", "price": 21, "category": "Cocktails", "full": "Appleton Rum, Japanese curry, fresh lime juice, clarified milk [2oz]", "base": "Rum" },
-  
-  // MOCKTAILS
   { "name": "Iced Blueberry Tea", "price": 14, "category": "Mocktails", "full": "Blueberry white tea", "base": "NA" },
   { "name": "Tongue Thai'd", "price": 14, "category": "Mocktails", "full": "Yuzu juice, Thai basil, coconut water", "base": "NA" },
   { "name": "Red Lotus", "price": 14, "category": "Mocktails", "full": "Hibiscus cordial, plum juice, clarified strawberry, egg white", "base": "NA" },
   { "name": "Summer's End", "price": 14, "category": "Mocktails", "full": "Clarified strawberry, yuzu lime juice", "base": "NA" },
-  
-  // BEER & MORE
   { "name": "Asahi on Tap", "price": 11, "category": "Beer & More", "full": "Japanese Lager", "base": "Beer" },
   { "name": "Peroni on Tap", "price": 12, "category": "Beer & More", "full": "Italian Lager", "base": "Beer" },
   { "name": "Asahi Zero", "price": 8, "category": "Beer & More", "full": "Non-alcoholic Japanese Lager", "base": "Beer (NA)" },
@@ -1205,118 +1209,132 @@ const DRINKS = [
 ];
 
 // Pairings must reference only items present in DISHES. No dish, no pairing claim.
+// Dials: 1–5 scale. body(1=Very Light → 5=Very Full), acidity(1=Very Low → 5=Very High),
+// tannin(1=Very Soft → 5=Very Firm), sweetness(1=Bone Dry → 5=Sweet).
 const WINES = [
-  // SPARKLING
-  { 
-    "name": "A.J. Adam Spätburgunder Rosé", "price": 80, "category": "Sparkling", "full": "Germany, 2022", 
+  {
+    "name": "A.J. Adam Spätburgunder Rosé", "price": 80, "category": "Sparkling", "full": "Germany, 2022",
     "profile": "Dry, delicate red berries, brioche, and a crisp mineral finish.",
-    "pairing": "Hokkaido Scallop Ceviche, Crab Cake, or as a refreshing aperitif."
+    "pairing": "Hokkaido Scallop Ceviche, Crab Cake, or as a refreshing aperitif.",
+    "dials": { "body": 2, "acidity": 4, "tannin": 1, "sweetness": 1 }
   },
-  { 
-    "name": "Griesel & Compagnie Blanc de Blancs Brut", "price": 95, "category": "Sparkling", "full": "Germany, 2022", 
+  {
+    "name": "Griesel & Compagnie Blanc de Blancs Brut", "price": 95, "category": "Sparkling", "full": "Germany, 2022",
     "profile": "100% Chardonnay. Crisp green apple, citrus, and a chalky minerality.",
-    "pairing": "Hokkaido Scallop Ceviche, Crab Cake, or Fried Bao."
+    "pairing": "Hokkaido Scallop Ceviche, Crab Cake, or Fried Bao.",
+    "dials": { "body": 2, "acidity": 5, "tannin": 1, "sweetness": 1 }
   },
-  { 
+  {
     "name": "Antica Vigna Prosecco Extra Dry", "price": 65, "category": "Sparkling", "full": "Italy", "note": "[5OZ] 16",
     "profile": "Green apple, pear, and white floral notes with a slightly off-dry finish.",
-    "pairing": "Bread Service, Fried Bao, or as an aperitif."
+    "pairing": "Bread Service, Fried Bao, or as an aperitif.",
+    "dials": { "body": 2, "acidity": 4, "tannin": 1, "sweetness": 3 }
   },
-  
-  // RED
-  { 
+  {
     "name": "Château Fleur Haut Gaussens Bordeaux Supérieur", "price": 30, "category": "Red", "full": "Bordeaux, France, 2019", "note": "[5OZ] 22 [8OZ] 30",
     "profile": "Merlot dominant. Dark fruit, cedar, medium body, and smooth tannins.",
-    "pairing": "Canadian Prime Lamb Rack, Bone-In Ibérico Pork Chop, or Grilled Mushrooms."
+    "pairing": "Canadian Prime Lamb Rack, Bone-In Ibérico Pork Chop, or Grilled Mushrooms.",
+    "dials": { "body": 3, "acidity": 3, "tannin": 3, "sweetness": 1 }
   },
-  { 
+  {
     "name": "Château l'Eden", "price": 90, "category": "Red", "full": "Bordeaux, France, 2018", "note": "[5OZ] 30 [8OZ] 40",
     "profile": "Ripe plum, dark chocolate, and a smooth, velvety texture.",
-    "pairing": "Australian Striploin or Bone-In Prime Ribeye."
+    "pairing": "Australian Striploin or Bone-In Prime Ribeye.",
+    "dials": { "body": 4, "acidity": 3, "tannin": 3, "sweetness": 1 }
   },
-  { 
-    "name": "Château Larruau", "price": 155, "category": "Red", "full": "Bordeaux, France, 2019", 
+  {
+    "name": "Château Larruau", "price": 155, "category": "Red", "full": "Bordeaux, France, 2019",
     "profile": "Dark cherry, tobacco, and structured tannins. Classic Bordeaux.",
-    "pairing": "Bone-In Prime Ribeye or the 55oz Tomahawk."
+    "pairing": "Bone-In Prime Ribeye or the 55oz Tomahawk.",
+    "dials": { "body": 4, "acidity": 3, "tannin": 4, "sweetness": 1 }
   },
-  { 
-    "name": "Château Canon Croix Canon", "price": 185, "category": "Red", "full": "Bordeaux, France, 2018", 
+  {
+    "name": "Château Canon Croix Canon", "price": 185, "category": "Red", "full": "Bordeaux, France, 2018",
     "profile": "Lush fruit, earthy undertones, and elegant, refined tannins.",
-    "pairing": "Canadian Prime Lamb Rack, Grilled Mushrooms, or Chicken Liver Parfait."
+    "pairing": "Canadian Prime Lamb Rack, Grilled Mushrooms, or Chicken Liver Parfait.",
+    "dials": { "body": 4, "acidity": 3, "tannin": 4, "sweetness": 1 }
   },
-  { 
-    "name": "Gerard Julien Côte de Nuits-Villages", "price": 125, "category": "Red", "full": "Burgundy, France, 2022", 
+  {
+    "name": "Gerard Julien Côte de Nuits-Villages", "price": 125, "category": "Red", "full": "Burgundy, France, 2022",
     "profile": "Pinot Noir. Red cherry, earthy forest floor, light tannins.",
-    "pairing": "Chicken Liver Parfait, Grilled Mushrooms, or Grilled Sea Bream."
+    "pairing": "Chicken Liver Parfait, Grilled Mushrooms, or Grilled Sea Bream.",
+    "dials": { "body": 2, "acidity": 4, "tannin": 2, "sweetness": 1 }
   },
-  { 
-    "name": "Patrice Rion Nuits-Saint-Georges 1er Cru Clos des Argillières", "price": 245, "category": "Red", "full": "Burgundy, France, 2014", 
+  {
+    "name": "Patrice Rion Nuits-Saint-Georges 1er Cru Clos des Argillières", "price": 245, "category": "Red", "full": "Burgundy, France, 2014",
     "profile": "Aged Pinot Noir. Mushroom, dark cherry, complex earthy notes.",
-    "pairing": "Canadian Prime Lamb Rack, Grilled Mushrooms, or Bone-In Ibérico Pork Chop."
+    "pairing": "Canadian Prime Lamb Rack, Grilled Mushrooms, or Bone-In Ibérico Pork Chop.",
+    "dials": { "body": 2, "acidity": 5, "tannin": 2, "sweetness": 1 }
   },
-  { 
-    "name": "Pierre Girardin Pommard 1er Cru Les Grands Épenots", "price": 300, "category": "Red", "full": "Burgundy, France, 2023", 
+  {
+    "name": "Pierre Girardin Pommard 1er Cru Les Grands Épenots", "price": 300, "category": "Red", "full": "Burgundy, France, 2023",
     "profile": "Structured Pinot Noir. Dark fruit, firm tannins, but elegant.",
-    "pairing": "Bone-In AAA Prime Ribeye or Canadian Prime Lamb Rack."
+    "pairing": "Bone-In AAA Prime Ribeye or Canadian Prime Lamb Rack.",
+    "dials": { "body": 3, "acidity": 4, "tannin": 4, "sweetness": 1 }
   },
-  { 
-    "name": "Grotta del Ninfeo Amarone della Valpolicella", "price": 135, "category": "Red", "full": "Italy, 2020", 
+  {
+    "name": "Grotta del Ninfeo Amarone della Valpolicella", "price": 135, "category": "Red", "full": "Italy, 2020",
     "profile": "Corvina blend. Dried fruit, rich, high alcohol, full-bodied.",
-    "pairing": "Bone-In Prime Ribeye or 55oz Tomahawk."
+    "pairing": "Bone-In Prime Ribeye or 55oz Tomahawk.",
+    "dials": { "body": 5, "acidity": 3, "tannin": 3, "sweetness": 1 }
   },
-  { 
-    "name": "Salvano Barbaresco Riserva", "price": 175, "category": "Red", "full": "Italy, 2018", 
+  {
+    "name": "Salvano Barbaresco Riserva", "price": 175, "category": "Red", "full": "Italy, 2018",
     "profile": "Nebbiolo. Tar, roses, red cherry, and high tannins.",
-    "pairing": "Lamb Rack or Bone-In Prime Ribeye."
+    "pairing": "Lamb Rack or Bone-In Prime Ribeye.",
+    "dials": { "body": 3, "acidity": 5, "tannin": 5, "sweetness": 1 }
   },
-  { 
-    "name": "Cascina Adelaide Barolo Riserva Per Elen", "price": 260, "category": "Red", "full": "Italy, 2015", 
+  {
+    "name": "Cascina Adelaide Barolo Riserva Per Elen", "price": 260, "category": "Red", "full": "Italy, 2015",
     "profile": "Nebbiolo. Intense tar and roses, powerful tannins, long finish.",
-    "pairing": "The richest cuts of beef (Ribeye, Tomahawk)."
+    "pairing": "The richest cuts of beef (Ribeye, Tomahawk).",
+    "dials": { "body": 4, "acidity": 5, "tannin": 5, "sweetness": 1 }
   },
-
-  // WHITE
-  { 
+  {
     "name": "Joseph Castan La Bourgade Chardonnay", "price": 20, "category": "White", "full": "France, 2025", "note": "[5OZ] 16 [8OZ] 20",
     "profile": "Crisp, green apple, pear, and a clean finish.",
-    "pairing": "Hokkaido Scallop Ceviche, Grilled Sea Bream, or The Leo Caesar."
+    "pairing": "Hokkaido Scallop Ceviche, Grilled Sea Bream, or The Leo Caesar.",
+    "dials": { "body": 2, "acidity": 4, "tannin": 1, "sweetness": 1 }
   },
-  { 
+  {
     "name": "The Grange of Prince Edward County Estate Series Chardonnay", "price": 80, "category": "White", "full": "Canada, 2025", "note": "[5OZ] 25 [8OZ] 30",
     "profile": "Cool climate Chardonnay. Mineral-driven, crisp green apple, citrus.",
-    "pairing": "Grilled Sea Bream, Scallops, or Lobster."
+    "pairing": "Grilled Sea Bream, Scallops, or Lobster.",
+    "dials": { "body": 3, "acidity": 4, "tannin": 1, "sweetness": 1 }
   },
-  { 
-    "name": "Gautheron d'Anost Bouzeron Les Loueres Aligoté", "price": 110, "category": "White", "full": "France, 2023", 
+  {
+    "name": "Gautheron d'Anost Bouzeron Les Loueres Aligoté", "price": 110, "category": "White", "full": "France, 2023",
     "profile": "Crisp, high acid, citrus, and a distinct mineral edge.",
-    "pairing": "Hokkaido Scallop Ceviche, The Leo Caesar, or Grilled Sea Bream."
+    "pairing": "Hokkaido Scallop Ceviche, The Leo Caesar, or Grilled Sea Bream.",
+    "dials": { "body": 2, "acidity": 5, "tannin": 1, "sweetness": 1 }
   },
-  { 
-    "name": "Clement Lavallée Chablis Chante Merle", "price": 120, "category": "White", "full": "France, 2021", 
+  {
+    "name": "Clement Lavallée Chablis Chante Merle", "price": 120, "category": "White", "full": "France, 2021",
     "profile": "Unoaked Chardonnay. Steely, oyster shell, green apple, flinty.",
-    "pairing": "Grilled Sea Bream, Nova Scotia Lobster, or Hokkaido Scallop Ceviche."
+    "pairing": "Grilled Sea Bream, Nova Scotia Lobster, or Hokkaido Scallop Ceviche.",
+    "dials": { "body": 2, "acidity": 5, "tannin": 1, "sweetness": 1 }
   },
-  { 
-    "name": "Armand Heitz Meursault", "price": 230, "category": "White", "full": "France, 2023", 
+  {
+    "name": "Armand Heitz Meursault", "price": 230, "category": "White", "full": "France, 2023",
     "profile": "Oaked Chardonnay. Rich, hazelnut, butter, golden apple, long finish.",
-    "pairing": "Lobster Pao Fan, Crab Cake, or rich seafood."
+    "pairing": "Lobster Pao Fan, Crab Cake, or rich seafood.",
+    "dials": { "body": 4, "acidity": 3, "tannin": 1, "sweetness": 1 }
   },
-
-  // RIESLING
-  { 
-    "name": "Schloss Lieser SL Riesling Feinherb", "price": 90, "category": "Riesling", "full": "Germany, 2023", 
+  {
+    "name": "Schloss Lieser SL Riesling Feinherb", "price": 90, "category": "Riesling", "full": "Germany, 2023",
     "profile": "Off-dry. Slate, green apple, lime, and subtle petrol notes.",
-    "pairing": "Typhoon Shelter Eggplant, Chinatown Style Lobster, or Sichuan Mala Crab."
+    "pairing": "Typhoon Shelter Eggplant, Chinatown Style Lobster, or Sichuan Mala Crab.",
+    "dials": { "body": 2, "acidity": 5, "tannin": 1, "sweetness": 3 }
   },
-  { 
-    "name": "Plan B O.D Riesling", "price": 80, "category": "Riesling", "full": "Australia, 2023", 
+  {
+    "name": "Plan B O.D Riesling", "price": 80, "category": "Riesling", "full": "Australia, 2023",
     "profile": "Bone dry. Lime, high acid, and distinct mineral notes.",
-    "pairing": "The Leo Caesar, Typhoon Shelter Eggplant, or Singapore Chili Lobster."
+    "pairing": "The Leo Caesar, Typhoon Shelter Eggplant, or Singapore Chili Lobster.",
+    "dials": { "body": 2, "acidity": 5, "tannin": 1, "sweetness": 1 }
   }
 ];
 
 const FOOD_QUIZ = [
-  // --- TOP 3 PITCH --- (supplementary components where possible; full components for single-component dishes)
   { "section": "Pitch", "q": "Top 3 components: Bread Service?", "a": "Enriched bread · Whipped tallow butter", "context": "Only two components." },
   { "section": "Pitch", "q": "Top 3 components: Hokkaido Scallop Ceviche?", "a": "Nuoc Cham dressing · compressed baby cucumber · cucamelon", "context": "Vietnamese inspiration, dressed to order." },
   { "section": "Pitch", "q": "Top 3 components: Wagyu Carpaccio?", "a": "Ssamjang aioli · pickled shimeji · tamago togarashi rice chips", "context": "Korean-inspired flavors." },
@@ -1342,7 +1360,6 @@ const FOOD_QUIZ = [
   { "section": "Pitch", "q": "Top 3 components: Tiramisu?", "a": "Mascarpone · coffee · ladyfingers", "context": "Contains caffeine." },
   { "section": "Pitch", "q": "Top 3 components: Alcohol Infused Ice Cream?", "a": "Choice of infusion — Pistachio Cointreau · Lemongrass Whisky · Banana Maotai · Makgeolli · Coffee Cognac", "context": "The alcohol is the whole pitch." },
 
-  // --- COMPONENTS ---
   { "section": "Components", "q": "What are the components of the Hokkaido Scallop Ceviche?", "a": "Scallops, Nuoc Cham, compressed cucumber, breakfast radish, cucamelon, chili oil, micro herbs", "context": "Also lime leaf oil." },
   { "section": "Components", "q": "What are the components of the Wagyu Carpaccio?", "a": "Hand-cut beef, ssamjang aioli, white kimchi, pickled shimeji, tamago togarashi rice chips, chives", "context": "Hand-cut daily." },
   { "section": "Components", "q": "What are the components of the Chicken Liver Parfait?", "a": "Sous vide parfait, Asian pear, cured egg yolk, toasted brioche", "context": "Grated egg yolk at pickup." },
@@ -1356,7 +1373,6 @@ const FOOD_QUIZ = [
   { "section": "Components", "q": "What is the base of the Singapore Chili sauce?", "a": "Aromatic veg, shrimp paste, dried shrimp, chili, tomato, lobster stock, palm sugar", "context": "Slowly cooked." },
   { "section": "Components", "q": "What is the base of the Chinatown Style sauce?", "a": "Ginger, garlic, shallots, dried chili, Sichuan peppercorns, chicken stock, eggplant, scallions", "context": "Finished with eggplant and scallions." },
 
-  // --- DETAILS & DEFINITIONS ---
   { "section": "Details", "q": "What does 'Pao Fan' mean?", "a": "Soaked rice", "context": "A traditional Chinese comfort dish." },
   { "section": "Details", "q": "What is Shio Koji?", "a": "A Japanese fermented seasoning used as a marinade and tenderizer.", "context": "Used on the Grilled Mushrooms." },
   { "section": "Details", "q": "What is Ssamjang?", "a": "A Korean fermented soybean and chili paste.", "context": "Used in the aioli for the Wagyu Carpaccio." },
@@ -1368,7 +1384,6 @@ const FOOD_QUIZ = [
   { "section": "Details", "q": "What does the Caesar Salad dressing use instead of Worcestershire/lemon?", "a": "Fish sauce, tamarind, and lime", "context": "Creates a brighter, more aromatic dressing." },
   { "section": "Details", "q": "What is the difference between the two types of crab in the Crab Cake?", "a": "Blue crab and Snow crab", "context": "Focus is on sweet crab meat with minimal filler." },
 
-  // --- SERVICE & THEORY ---
   { "section": "Service", "q": "What are the 5 doneness levels for steaks?", "a": "Rare, Medium Rare, Medium, Medium Well, Well Done", "context": "Medium Rare is recommended for most cuts." },
   { "section": "Service", "q": "Which steak sauce is ONLY for the pork?", "a": "Nduja Vinaigrette", "context": "Spicy, spreadable Calabrian salami sauce." },
   { "section": "Service", "q": "What are the three sauces for the Land cuts?", "a": "Demon Chimichurri, Green Peppercorn, Nduja Vinaigrette", "context": "Additional sauce is +$4." },
@@ -1383,7 +1398,6 @@ const FOOD_QUIZ = [
   { "section": "Service", "q": "Which sauce pairs best with Lobster and Dungeness Crab?", "a": "Singapore Chili", "context": "Sweet, tangy, umami, gentle heat." },
   { "section": "Service", "q": "Which sauce pairs best with Lobster, King Crab, and Dungeness Crab?", "a": "Chinatown Style", "context": "Spicy, umami, numbing, buttery." },
 
-  // --- CRITICAL STANDARDS ---
   { "section": "Standards", "q": "What is the critical rule for the Hokkaido Scallop Ceviche?", "a": "Never allow the scallops to sit in the dressing.", "context": "They must be dressed à la minute and served on a chilled plate." },
   { "section": "Standards", "q": "How is the Lobster Pao Fan served?", "a": "Broth is poured tableside.", "context": "To preserve the crispness of the rice cake and provide a show." },
   { "section": "Standards", "q": "What is the standard for the Chicken Liver Parfait's temperature?", "a": "Serve slightly chilled, never ice cold.", "context": "Ice cold kills the flavor. It should be perfectly smooth." },
@@ -1397,7 +1411,6 @@ const FOOD_QUIZ = [
   { "section": "Standards", "q": "What is the standard for the Singapore Chili sauce?", "a": "Balance sweetness and heat. Do not overpower seafood. Serve piping hot.", "context": "Maintain a rich, glossy texture." },
   { "section": "Standards", "q": "What is the standard for the Chinatown Style sauce?", "a": "Complements rather than overpowers.", "context": "Silky, velvety, glossy." },
 
-  // --- ALLERGENS ---
   { "section": "Allergens", "q": "What are the allergens in the Bread Service?", "a": "Gluten, Dairy", "context": "Whipped tallow butter is dairy." },
   { "section": "Allergens", "q": "What are the allergens in the Hokkaido Scallop Ceviche?", "a": "Shellfish, Fish", "context": "Scallops and Nuoc Cham (fish sauce)." },
   { "section": "Allergens", "q": "What are the allergens in the Wagyu Carpaccio?", "a": "Egg, Soy, Gluten", "context": "Egg yolk, soy/ponzu, and rice chips." },
@@ -1419,7 +1432,6 @@ const FOOD_QUIZ = [
 ];
 
 const DRINK_QUIZ = [
-  // Ingredients
   { "section": "Ingredients", "q": "What is in the Leo Smash?", "a": "Tequila Blanco, Thai basil, yuzu, fresh lime juice, pink peppercorn salt", "context": "$21" },
   { "section": "Ingredients", "q": "What is in the Southeast Sour?", "a": "Toki whiskey, goji berry, egg white, fresh lemon juice", "context": "$21" },
   { "section": "Ingredients", "q": "What is in the Starry Night?", "a": "Pisco, pandan, coconut water", "context": "$21" },
@@ -1430,7 +1442,6 @@ const DRINK_QUIZ = [
   { "section": "Ingredients", "q": "What is in the Banana Bang?", "a": "Banana peel palm sugar, cacao bitters, oleo saccharum-infused whisky, brown sugar coated banana", "context": "$21" },
   { "section": "Ingredients", "q": "What is in the Dai-Curry?", "a": "Appleton Rum, Japanese curry, fresh lime juice, clarified milk", "context": "$21" },
 
-  // Style
   { "section": "Style", "q": "How would you describe the Leo Smash to a guest?", "a": "A bright, refreshing twist on a Margarita with herbal Thai basil and a peppery finish.", "context": "Related to: Margarita. Sweetness: Balanced/Tart." },
   { "section": "Style", "q": "How would you describe the Southeast Sour?", "a": "A silky, frothy whiskey sour with tart lemon and a subtle, fruity goji berry sweetness.", "context": "Related to: Whiskey Sour. Sweetness: Balanced." },
   { "section": "Style", "q": "How would you describe the Starry Night?", "a": "Light, aromatic, and slightly tropical with a unique floral pandan note.", "context": "Related to: Pisco Sour. Sweetness: Lightly Sweet." },
@@ -1441,7 +1452,6 @@ const DRINK_QUIZ = [
   { "section": "Style", "q": "How would you describe the Banana Bang?", "a": "Rich and spirit-forward with caramelized banana notes and a bitter chocolate finish.", "context": "Related to: Old Fashioned. Sweetness: Medium Sweet." },
   { "section": "Style", "q": "How would you describe the Dai-Curry?", "a": "A creamy, clarified milk punch with a savory-sweet curry spice and lime acidity.", "context": "Related to: Milk Punch / Daiquiri. Sweetness: Balanced/Savory." },
 
-  // Mocktails & More
   { "section": "Mocktails & More", "q": "What is in the Iced Blueberry Tea?", "a": "Blueberry white tea", "context": "$14" },
   { "section": "Mocktails & More", "q": "What is in Tongue Thai'd?", "a": "Yuzu juice, Thai basil, coconut water", "context": "$14" },
   { "section": "Mocktails & More", "q": "What is in the Red Lotus?", "a": "Hibiscus cordial, plum juice, clarified strawberry, egg white", "context": "$14" },
@@ -1455,7 +1465,6 @@ const DRINK_QUIZ = [
 ];
 
 const WINE_QUIZ = [
-  // --- REGION & GRAPE ---
   { "section": "Region", "q": "What region is the A.J. Adam Spätburgunder Rosé from?", "a": "Germany", "context": "2022 · Sparkling · $80" },
   { "section": "Region", "q": "What region is the Château l'Eden from?", "a": "Bordeaux, France", "context": "2018 · Red · $90" },
   { "section": "Region", "q": "What region is the Armand Heitz Meursault from?", "a": "France", "context": "2023 · White · $230" },
@@ -1463,23 +1472,17 @@ const WINE_QUIZ = [
   { "section": "Grape", "q": "What grape is used in the Griesel & Compagnie Blanc de Blancs?", "a": "Chardonnay", "context": "Germany, 2022" },
   { "section": "Grape", "q": "What grape is used in the Salvano Barbaresco Riserva?", "a": "Nebbiolo", "context": "Italy, 2018" },
   { "section": "Grape", "q": "What grape is used in the Clement Lavallée Chablis?", "a": "Chardonnay", "context": "France, 2021" },
-  
-  // --- PROFILES ---
   { "section": "Profiles", "q": "What is the tasting profile of the Château Fleur Haut Gaussens Bordeaux?", "a": "Dark fruit, cedar, medium body, smooth tannins.", "context": "Bordeaux, 2019 · $30" },
   { "section": "Profiles", "q": "What is the tasting profile of the Grotta del Ninfeo Amarone?", "a": "Dried fruit, rich, high alcohol, full-bodied.", "context": "Italy, 2020 · $135" },
   { "section": "Profiles", "q": "What is the tasting profile of the Patrice Rion Nuits-Saint-Georges 1er Cru?", "a": "Aged Pinot Noir. Mushroom, dark cherry, complex earthy notes.", "context": "Burgundy, 2014 · $245" },
   { "section": "Profiles", "q": "What is the tasting profile of the Armand Heitz Meursault?", "a": "Oaked Chardonnay. Rich, hazelnut, butter, golden apple, long finish.", "context": "France, 2023 · $230" },
   { "section": "Profiles", "q": "What is the tasting profile of the Schloss Lieser Riesling Feinherb?", "a": "Off-dry. Slate, green apple, lime, and subtle petrol notes.", "context": "Germany, 2023 · $90" },
-
-  // --- PAIRINGS ---
   { "section": "Pairings", "q": "What pairs with the Château Fleur Haut Gaussens Bordeaux?", "a": "Canadian Prime Lamb Rack, Bone-In Ibérico Pork Chop, or Grilled Mushrooms.", "context": "Bordeaux, 2019" },
   { "section": "Pairings", "q": "What pairs with the Château l'Eden?", "a": "Australian Striploin or Bone-In Prime Ribeye.", "context": "Bordeaux, 2018" },
   { "section": "Pairings", "q": "What pairs with the Cascina Adelaide Barolo Riserva?", "a": "The richest cuts of beef (Ribeye, Tomahawk).", "context": "Italy, 2015" },
   { "section": "Pairings", "q": "What pairs with the Clement Lavallée Chablis?", "a": "Grilled Sea Bream, Nova Scotia Lobster, or Hokkaido Scallop Ceviche.", "context": "France, 2021" },
   { "section": "Pairings", "q": "What pairs with the Armand Heitz Meursault?", "a": "Lobster Pao Fan, Crab Cake, or rich seafood.", "context": "France, 2023" },
   { "section": "Pairings", "q": "What pairs with the Plan B O.D Riesling?", "a": "The Leo Caesar, Typhoon Shelter Eggplant, or Singapore Chili Lobster.", "context": "Australia, 2023" },
-
-  // --- PRICES ---
   { "section": "Prices", "q": "How much is the Griesel & Compagnie Blanc de Blancs Brut?", "a": "$95", "context": "Sparkling, Germany" },
   { "section": "Prices", "q": "How much is the Antica Vigna Prosecco Extra Dry?", "a": "$65", "context": "Sparkling, Italy" },
   { "section": "Prices", "q": "How much is the Château Canon Croix Canon?", "a": "$185", "context": "Red, Bordeaux" },
@@ -1656,7 +1659,7 @@ function renderMenu() {
     <div class="tap-hint">Tap to reveal</div>`;
 
   const comps = d.components ? d.components.map(c => `<div class="pitch-item"><span class="pitch-num">·</span><span class="pitch-word" style="font-size:15px">${c}</span></div>`).join('') : '';
-  
+
   let backHtml = `
     <div class="section-tag">${d.category}</div>
     <div class="back-name">${d.name}</div>
@@ -1664,7 +1667,7 @@ function renderMenu() {
       <div class="info-label">Menu Description</div>
       <div class="info-text italic">${d.full}</div>
     </div>`;
-    
+
   if (comps) {
     backHtml += `
     <div class="info-block">
@@ -1672,7 +1675,7 @@ function renderMenu() {
       <div class="pitch-list">${comps}</div>
     </div>`;
   }
-  
+
   if (d.flavour) {
     backHtml += `
     <div class="info-block">
@@ -1680,7 +1683,7 @@ function renderMenu() {
       <div class="info-text">${d.flavour}</div>
     </div>`;
   }
-  
+
   if (d.texture) {
     backHtml += `
     <div class="info-block">
@@ -1696,7 +1699,7 @@ function renderMenu() {
       <div class="info-text">${d.allergens}</div>
     </div>`;
   }
-  
+
   if (d.standards) {
     backHtml += `
     <div class="info-block" style="border-left: 2px solid #cc7a2a;">
@@ -1811,6 +1814,34 @@ function renderDrinks() {
     <div class="note-line">※ Price: $${c.price}</div>`;
 }
 
+function renderDials(w) {
+  if (!w.dials) return '';
+  const labels = {
+    body:      DIAL_LABELS.Body,
+    acidity:   DIAL_LABELS.Acidity,
+    tannin:    DIAL_LABELS.Tannin,
+    sweetness: DIAL_LABELS.Sweetness
+  };
+  const rows = ['body','acidity','tannin','sweetness'];
+  return `
+    <div class="dials-block">
+      ${rows.map(key => {
+        const val = w.dials[key];
+        const text = labels[key][val - 1];
+        const dots = [1,2,3,4,5].map(i =>
+          `<span class="dial-dot ${i <= val ? 'filled ' + key : ''}"></span>`
+        ).join('');
+        const cap = key.charAt(0).toUpperCase() + key.slice(1);
+        return `
+          <div class="dial-row">
+            <span class="dial-label">${cap}</span>
+            <div class="dial-track">${dots}</div>
+            <span class="dial-value">${text}</span>
+          </div>`;
+      }).join('')}
+    </div>`;
+}
+
 function renderWine() {
   const id = 'wine'; const s = states[id];
   const list = filtered(id);
@@ -1839,6 +1870,7 @@ function renderWine() {
       <div class="info-label" style="color:#f0a3bc">Tasting Notes</div>
       <div class="info-text">${w.profile}</div>
     </div>
+    ${renderDials(w)}
     <div class="info-block" style="border-left: 2px solid #4a8fb5;">
       <div class="info-label" style="color:#6ab0d6">Food Pairing</div>
       <div class="info-text">${w.pairing}</div>
@@ -1866,10 +1898,9 @@ function renderQuiz(id, data) {
     ${c.context ? `<div class="quiz-context-back">${c.context}</div>` : ''}`;
 }
 
-// SPACED REPETITION
-const srWeights = {}; 
-const srSkipNext = {}; 
-const srQueue = {}; 
+const srWeights = {};
+const srSkipNext = {};
+const srQueue = {};
 
 function srInit(id, count) {
   srWeights[id] = new Array(count).fill(1);
@@ -1999,14 +2030,12 @@ function srInjectBadge(id) {
   }
 }
 
-// INIT
 initDeck('menu', DISHES, ['Starters','Land','Sea','Sides','Desserts']);
 initDeck('grill', GRILL, ['Cuts','Sauces','Equipment','Standards']);
 initDeck('seafood', SEAFOOD_PREP, ['Sauce']);
 initDeck('drinks', DRINKS, ['Cocktails','Mocktails','Beer & More']);
 initDeck('wine', WINES, ['Sparkling','Red','White','Riesling']);
 
-// Note the section order change here for FOOD_QUIZ
 initDeck('foodq', FOOD_QUIZ, ['Pitch','Components','Details','Service','Standards','Allergens']);
 initDeck('drinkq', DRINK_QUIZ, ['Ingredients','Style','Mocktails & More']);
 initDeck('wineq', WINE_QUIZ, ['Region','Grape','Profiles','Pairings','Prices']);
@@ -2031,7 +2060,6 @@ buildCats('foodq'); buildCats('drinkq'); buildCats('wineq');
 srUpdateProgress('menu'); srUpdateProgress('grill'); srUpdateProgress('seafood'); srUpdateProgress('drinks'); srUpdateProgress('wine');
 srUpdateProgress('foodq'); srUpdateProgress('drinkq'); srUpdateProgress('wineq');
 
-// Update counts dynamically
 document.getElementById('count-menu').textContent = DISHES.length + ' dishes';
 document.getElementById('count-grill').textContent = GRILL.length + ' cards';
 document.getElementById('count-seafood').textContent = SEAFOOD_PREP.length + ' sauces';
@@ -2041,7 +2069,6 @@ document.getElementById('count-foodq').textContent = FOOD_QUIZ.length + ' cards'
 document.getElementById('count-drinkq').textContent = DRINK_QUIZ.length + ' cards';
 document.getElementById('count-wineq').textContent = WINE_QUIZ.length + ' cards';
 
-// Keyboard shortcuts: Space = flip, A = wrong, S = unsure, D = right, Arrows = nav
 document.addEventListener('keydown', function(e) {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
